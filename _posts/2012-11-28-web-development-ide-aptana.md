@@ -9,17 +9,6 @@ Last night I was looking once again into why I had abandoned my efforts to learn
 
 If you haven't already checked out Aptana's IDE, it is worth a look.
 
-```javascript
-var schemaBuilder = mapper.schema();
-  schemaBuilder
-    .add("customers", "customerid")
-      .hasManyWithMany("addresses", "customeraddresses", "addressid")
-      .hasOne("profile", "profiles")
-      .save()
-    .add("addresses", "addressid").save()
-    .add("profiles").save();
-```
-
 {% highlight ruby %}
 def foo
   puts 'foo'
