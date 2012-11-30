@@ -12,5 +12,3 @@ I'm going to undergo what will probably be a very slow and painful migration as 
     <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
   </div>
 {% endfor %}
-
-but this isn't updating
