@@ -1,6 +1,6 @@
 body { font-family: 'Open Sans'; font-size: 15px; color: #333; }
 blockquote { background-color: #D9EDF7; padding: 8px 20px; border: solid 1px #ccc;}
-p { line-height: 24px; text-align: justify; }
+p, li { line-height: 24px; text-align: justify; }
 h2 { font-size: 20px; margin: 18px 0 0 0; padding: 0; }
 h3 { font-size: 26px; color: #000; }
 
@@ -11,3 +11,8 @@ h3 { font-size: 26px; color: #000; }
 
 #blog-title a { text-decoration: none; color: #333; }
 #search-term { padding: 5px; float: right; margin-top: -30px; }
+
+.post a { color: #333; text-decoration: none; font-size: 17px; }
+.post a:visited { text-decoration: none; }
+.post a:hover { text-decoration: underline; }
+.post span.post-date { font-size: 13px; }
