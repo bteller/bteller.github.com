@@ -7,7 +7,7 @@ title: blog.bradley-teller.me
 
 {% for post in site.posts %}
   <div class="post">
-    {{ post.title }} <br />
+    <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a><br />
     {{ post.summary }}
   </div>
 {% endfor %}
