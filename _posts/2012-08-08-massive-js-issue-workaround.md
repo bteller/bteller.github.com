@@ -1,8 +1,7 @@
 ---
 layout: post
-title: massive-js issue workaround
+title: "massive-js issue workaround"
 category : lessons
-published: true
 ---
 
 Yesterday I posted about an issue using I was having with Node.js communicating with a PostgreSQL database. You can view that [here](http://blog.bradley-teller.me/2012/08/08/postgresql-and-node-js-issue/).

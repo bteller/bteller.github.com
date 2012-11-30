@@ -2,7 +2,6 @@
 layout: post
 title: PostgreSQL and Node.js Issue
 category : lessons
-published: true
 ---
 
 Everything was smooth sailing, until now. I tried to setup a mapping table to allow for a many-to-many relationship between tasks and tags in my application and ran into a bit of a snag. From a PostgreSQL perspective everything went just fine. I was allowed to be a good junior DBA and create a composite primary key in my mapping table, and I was also able to define foreign keys for both tagid and taskid. The surprising thing happened when I tried to run my app.
