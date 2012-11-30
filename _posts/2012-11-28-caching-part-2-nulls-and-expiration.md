@@ -4,7 +4,7 @@ title: "Caching Part 2: Nulls and Expiration"
 summary: "This is a post about caching that you will really love."
 ---
 
-One of the problems with the [previous caching sample code](http://www.google.com) I posted is that it doesn't handle null results very well. If were to query a list and nothing was returned then we'd store null in the cache, which is fine, but the problem arises when we try and pull it back out of the cache. When we do this the value is still null, as it should be, but then we check to see if it is null before deciding if we should query the database again. This means that every request will hit the database, even though we really should already know at this point that nothing of interest is in there.
+One of the problems with the [previous caching sample code]({% post_url 2012-11-28-caching-part-2-nulls-and-expiration %}) I posted is that it doesn't handle null results very well. If were to query a list and nothing was returned then we'd store null in the cache, which is fine, but the problem arises when we try and pull it back out of the cache. When we do this the value is still null, as it should be, but then we check to see if it is null before deciding if we should query the database again. This means that every request will hit the database, even though we really should already know at this point that nothing of interest is in there.
 
 ## Allowing for Nulls
 
