@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Caching Part 2: Nulls and Expiration"
+summary: "The next part in a mini-series of posts about caching in .Net. This time we'll be looking at how to handle null values in cache as well as make it possible to set custom expiration times for items in cache."
 ---
 
 One of the problems with the [previous caching sample code](/2012/10/18/really-simple-caching) I posted is that it doesn't handle null results very well. If were to query a list and nothing was returned then we'd store null in the cache, which is fine, but the problem arises when we try and pull it back out of the cache. When we do this the value is still null, as it should be, but then we check to see if it is null before deciding if we should query the database again. This means that every request will hit the database, even though we really should already know at this point that nothing of interest is in there.

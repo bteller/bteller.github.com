@@ -12,7 +12,8 @@ h3 { font-size: 26px; color: #000; }
 #blog-title a { text-decoration: none; color: #333; }
 #search-term { padding: 5px; float: right; margin-top: -30px; }
 
-.post a { color: #333; text-decoration: none; font-size: 17px; }
+.post { margin-bottom: 20px; }
+.post a { color: #333; text-decoration: underline; font-size: 17px; }
 .post a:visited { text-decoration: none; }
 .post a:hover { text-decoration: underline; }
 .post span.post-date { font-size: 13px; }

@@ -2,6 +2,7 @@
 layout: post
 title: Really Simple Caching
 category : lessons
+summary: "The first post in a mini-series about caching. In this installment we uncomplicate caching and show just how simple things can be."
 ---
 
 Caching is one of those fundamental best practices that any software developer should be aware of. There are plenty of options out there where caching is concerned including Redis and Memcached, just look at [Nuget](http://nuget.org/packages?q=cache). What I wanted to point out though is just how simple this code can be.
