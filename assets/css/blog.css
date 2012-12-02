@@ -17,3 +17,9 @@ h3 { font-size: 26px; color: #000; }
 .post a:visited { text-decoration: none; }
 .post a:hover { text-decoration: underline; }
 .post span.post-date { font-size: 13px; }
+
+#site-menu { list-style: none; margin: 0; padding: 0; }
+#site-menu li { display: inline-block; margin-right: 18px; }
+#site-menu li a { text-decoration : none; color: #333; font-size: 18px; }
+#site-menu li a:hover,
+#site-menu li a.active { color: #000; }
