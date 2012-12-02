@@ -23,7 +23,7 @@ And then we'd modify the construct responsible for our query to utilize this new
 public static List<Hoozy> GetAll()
 {
     var result = LazyCache.Retrieve<List<Hoozy>>("hoozies");
-     
+    
     if (!LazyCache.IsInCache("hoozies"))
     {
         result = FakeDatabase.Hoozies;
