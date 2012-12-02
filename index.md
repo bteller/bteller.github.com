@@ -7,7 +7,7 @@ I'm going to undergo what will probably be a very slow and painful migration as 
   
 ## Recent Posts
 
-{% for post in site.posts limit:500 %}
+{% for post in site.posts limit:5 %}
   <div class="post">
     <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a> 
     <span class="post-date">{{ post.date | date_to_string }}</span>
