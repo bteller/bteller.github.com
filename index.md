@@ -7,7 +7,7 @@ I'm going to undergo what will probably be a very slow and painful migration as 
   
 ## The last 10 things I've whined about
 
-{% for post in site.posts limit:10 %}
+{% for post in site.posts limit:100 %}
   <div class="post">
     <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a> 
     <span class="post-date">{{ post.date | date_to_string }}</span>

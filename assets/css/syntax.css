@@ -1,4 +1,4 @@
-.highlight { padding: 2px 20px; }
+.highlight { padding: 2px 20px; overflow: hidden; }
 .highlight .hll { background-color: #49483e }
 .highlight  { background: #272822; color: #f8f8f2 }
 .highlight .c { color: #75715e } /* Comment */
