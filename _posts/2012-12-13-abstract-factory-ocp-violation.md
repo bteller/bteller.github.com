@@ -10,7 +10,7 @@ This is either a tough one, or I'm really overcomplicating things. I'm pretty su
 
 I'm building this game (Okay! Not really but it serves as a good example) and I want to give players the ability to buy weapons from a sleezy armory worker that sells goods out the back door. Imagine if you will that the player sees an interface like this one.
 
-<img src="/assets/images/posts/absfacocp.png" alt="Game Interface" style="display: block; margin: 0 auto;" />
+<img src="/assets/images/posts/absfacocp.PNG" alt="Game Interface" style="display: block; margin: 0 auto;" />
 
 That is all well and good. They just go ahead and select the weapon they have enough money to purchase and click the buy button. The issue is what this means for the code. 
 
