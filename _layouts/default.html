@@ -3,27 +3,51 @@
 <head>
   <title>{{ page.title }}</title>
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/atom.xml" />
-  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/blog.css" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
   <link href='http://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="container">  
-    <div id="blog-title">
-      <a href="/" style="font-family: 'Neucha', cursive; font-size: 60px;">bradley.teller</a>
+  <div class="container-fluid" style="margin-top: 40px;">  
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <a id="blog-title" href="/">bradley.teller</a>
 
-
-      <ul id="site-menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/archive/">Archive</a></li>
-      </ul>      
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/archive/">Archive</a></li>
+            </ul>      
+            <form class="navbar-form pull-right">
+              <input type="text" placeholder="Search" id="search-term" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div id="page-content" class="container">
-    {{ content }}
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span7 offset1">
+        {{ content }}
+      </div>
+      <div class="span3">
+        <ul class="nav nav-list">
+          <li class="nav-header">
+            Open Source Projects
+          </li>
+          <li><a href="https://github.com/bteller/data-mapper-js">data-mapper-js</a></li>
+          <li><a href="https://github.com/bteller/life-js">life-js</a></li>
+          <li><a href="https://github.com/bteller/bootstrap-tag">bootstrap-tag</a></li>
+          <li class="nav-header">Favorite Links</li>
+          <li><a href="http://www.tekpub.com" target="_blank">TekPub</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -36,7 +60,7 @@
         if (code == 13) {
           var url = 'https://www.google.com/search?q=' + $('#search-term').val() + ' site:blog.bradley-teller.me';
           window.open(url);
-        return false;
+          return false;
         }
       });
     });
