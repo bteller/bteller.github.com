@@ -34,6 +34,11 @@
       });
 
       return found;
+    },
+    removetag: function(tag) {
+      if ($(this).data('tag').tags) {
+        $(this).data('tag').tags.splice($(this).data('tag').tags.indexOf(tag), 1);
+      }
     }
   }
 
@@ -61,7 +66,7 @@
 
       if (e.keyCode == 8) {
         if (value.length == 0) {
-          $(this).prev('span').remove();
+          removeTag($(this).prev('span'));
         }  
       }
 
@@ -76,7 +81,14 @@
     });
 
     $('div.tag i.icon-remove').live('click', function() {
-      $(this).parent('span').remove();
+      removeTag($(this).parent('span'));
     });
+
+    function removeTag(span) {
+      if (span.length > 0) {
+        span.parents('div.tag').tag('removetag', span.text());
+        span.remove();
+      }
+    }
   });
 })(jQuery);
