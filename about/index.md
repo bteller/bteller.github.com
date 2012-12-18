@@ -3,6 +3,8 @@ layout: default
 title: about me
 ---
 
+<img src="/assets/images/me.png" alt="a pic of me" />
+
 Probably the best place to find out what I'm up to is out on Twitter, but here is a list of all the places you can find me.
 
 <ul>
