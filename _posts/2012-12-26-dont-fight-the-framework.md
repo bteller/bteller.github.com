@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Don't Fight the Framework"
-summary: ""
+summary: "I've been doing it, and I'm not really proud of it. In this post I share some of my thoughts on why you shouldn't fight the framework machine."
 ---
 
 > This is a little less organized than I would like, but I believe the brain dump is worthwhile.
