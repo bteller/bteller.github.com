@@ -1,3 +1,8 @@
+---
+layout: post
+title: "markdownpad test"
+summary: "nothing yet"
+---
 # This is my test #
 this should be some regular text
 
