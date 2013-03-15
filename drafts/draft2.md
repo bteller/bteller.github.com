@@ -3,8 +3,14 @@ layout: post
 title: code block test
 ---
 
-```javascript
+```js
 $(function() {
   var test = 'yup';
 });
+```
+
+```html
+<div>
+  test
+</div>
 ```
