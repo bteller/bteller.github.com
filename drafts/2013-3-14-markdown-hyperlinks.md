@@ -5,7 +5,9 @@ title: Markdown Hyperlink Targets
 
 With Markdown the syntax for a hyperlink looks like this:
 
-```[Link Text](http://gotohere.com)```
+``` 
+[Link Text](http://gotohere.com) 
+```
 
 It doesn't give you a way of specifying a target. To do that you'd have to introduce HTML markup into your Markdown, which looks a bit "messy", and involves more typing than I'd like.
 
@@ -13,8 +15,8 @@ A quick and easy way around this limitation, which works for me and may work for
 
 {% highlight javascript %}
 $(function() {
-  $('a').attr('target', '_blank');
+  $('a', 'div.post-wrapper').attr('target', '_blank');
 });
 {% endhighlight %}
 
-, and the alternative would be to 
+Now I don't have to remember to specify a target and I don't have to mix markup (not for this case anyway).
