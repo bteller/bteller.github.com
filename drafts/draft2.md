@@ -3,7 +3,7 @@ layout: post
 title: code block test
 ---
 
-``` javascript
+```javascript
 $(function() {
   var test = 'yup';
 });
