@@ -4,4 +4,3 @@ auto: true
 pygments: true
 safe: true
 lsi: false
-markdown: redcarpet2
