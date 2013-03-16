@@ -20,7 +20,7 @@ Okay, so it's a house and there are a lot of things that could go wrong, and it'
 
 In the case of my dinner, I blame it on the waitress bringing me my food for getting it wrong. She either wrote it down wrong, or the kitchen screwed it up... regardless she is on the hook for it in my mind. And as for the hardwood floors... I mean, come on people. Couldn't you flip on a light switch and see for yourselves that you had the wrong flooring? It was immediately apparent to me. 
 
-**Problems with quality are everywhere.**
+Like I said, there are problems with quality everywhere.
 
 ### What Can We Do About It?
 
