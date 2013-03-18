@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Markdown Hyperlink Targets
+summary: "A quick alternative to messy hyperlinks in markdown."
 ---
 
 With Markdown the syntax for a hyperlink looks like this:

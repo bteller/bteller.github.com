@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Quality
+summary: ""
 ---
 
 Writing software is hard. Writing a quality piece of software is even harder. Add to that the fact that people just don't seem to care anymore and it becomes virtually impossible.
