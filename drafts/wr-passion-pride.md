@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Weekly Reflection: Passion and Pride
+title: "Weekly Reflection: Passion and Pride"
 summary: "In this installment I reflect on passion and pride."
 ---
 
@@ -14,6 +14,8 @@ Something that I brought up during this lunch conversation is that I would like 
 
 ### Pride
 > My list of virtues contain’d at first but twelve; but a Quaker friend having kindly informed me that I was generally thought proud; that my pride show’d itself frequently in conversation; that I was not content with being in the right when discussing any point, but was overbearing, and rather insolent, of which he convinc’d me by mentioning several instances; I determined endeavouring to cure myself, if I could, of this vice or folly among the rest, and I added Humility to my list, giving an extensive meaning to the word.
+
+The passage above is from "The Autobiography of Benjamin Franklin", by of course Benjamin Franklin. 
 
 Words to live by, right? I think so anyway. Which is not to say that I do a very good job putting this into practice, because I don't. When I shared earlier that I was proud of my accomplishments the night before when I was writing code I thought about my use of the word "pride" and how it relates to the passage above. In that context I feel it was acceptable to feel that way because it was in a positive way. My pride wasn't hurting anyone and didn't make me feel arrogant in any way, I was just content in my accomplishment. Who knows, maybe content would have been a better word for it. 
 
