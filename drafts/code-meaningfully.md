@@ -19,20 +19,19 @@ else
 }
 {% endhighlight %}
 
-What does this mean? Maybe in this case it jumps right out at you and you say "Oh! They are trying to find out if this person has any grandchildren" and that would be right. I have a few problems with this code though.
+What does this code do? Maybe in this case it jumps right out at you and you say "Oh! They are trying to find out if this person has any grandchildren" and that would be right. But there are problems with this code.
 
-- What happens if your logical check is more complex?
-- What if you need to run this check other places in your code?
+- What happens if your logic is more complex?
+- What if you need to run this logic other places in your code?
 - It took you some time to look over the code to find out exactly what it was doing, right?
-- What happens if you were to change what it means to be a grandparent?
-- What if you decide to save this flag in your persistence layer directly inside the Person record?
+- What happens if you were to change what it means to "have grandchildren"?
 
-In this case I'd recommend refactoring the code a bit to:
+We can make this code much more readable, meaningful, and flexible, with a very simple refactor. Start by doing this.
 
 {% highlight csharp %}
 var p = repo.GetBy(personId);
 
-if (p.IsGrandparent())
+if (p.HasGrandchildren())
 {
     return "somebody old";
 }
@@ -42,10 +41,10 @@ else
 }
 {% endhighlight %}
 
-And push that logical check into *IsGrandparent()* off of *Person*.
+And then push that logical check into *IsGrandparent()* off of *Person*.
 
 {% highlight csharp %}
-public bool IsGrandparent()
+public bool HasGrandchildren()
 {
     return this.Children.Count > 0 && this.Children.Where(c => c.Children.Count() > 0).Count() > 0;
 }
