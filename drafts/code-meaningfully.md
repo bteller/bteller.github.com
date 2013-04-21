@@ -26,6 +26,8 @@ What does this code do? Maybe in this case it jumps right out at you and you say
 - It took you some time to look over the code to find out exactly what it was doing, right?
 - What happens if you were to change what it means to "have grandchildren"?
 
+### Add Meaning
+
 We can make this code much more readable, meaningful, and flexible, with a very simple refactor. Start by doing this.
 
 {% highlight csharp %}
@@ -50,4 +52,8 @@ public bool HasGrandchildren()
 }
 {% endhighlight %}
 
-Now we've taken what it means to be a grandparent and encapsulated it in a single function. So now if we were to ever change what the criteria for being a grandparent are, we only have to modify this in one place. 
+Now we've taken what it means to have grandchildren and encapsulated it in a single function. So if we were to ever change this logic we only have to do so in one place. Not repeating yourself is great, especially in code, but there is another benefit.
+
+### Code Readability
+
+Unless we are working on a personal project that nobody else will ever use or modify we are sharing the source code with those we are working with today, and those who will come after us. Take some time when you write your code and make sure your code is readable. Everyone will benefit from the extra bit of effort. 
