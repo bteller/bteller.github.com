@@ -16,6 +16,10 @@ h3 { font-size: 26px; color: #000; margin: 0; padding: 0; }
 .post a:hover { text-decoration: underline; }
 .post span.post-date { font-size: 13px; }
 
+@media (max-width: 480px) { 
+	.sub-nav { background-color: #333; }
+}
+
 
 .highlight { padding: 2px 20px; overflow: hidden; }
 .highlight .hll { background-color: #49483e }
