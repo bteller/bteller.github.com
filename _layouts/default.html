@@ -3,10 +3,70 @@
 <head>
   <title>{{ page.title }}</title>
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/atom.xml" />
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/blog.css" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+  <link href='http://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="container-fluid" style="margin-top: 40px;">  
+    <div class="row-fluid">
+      <div class="span10 offset1">
+        <a id="blog-title" href="/">bradley.teller</a>
+
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/archive/">Archive</a></li>
+            </ul>      
+            <form class="navbar-form pull-right">
+              <input type="text" placeholder="Search" id="search-term" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span7 offset1">
+        {{ content }}
+      </div>
+      <div class="span3">
+        <ul class="nav nav-list">
+          <li class="nav-header">
+            Open Source Projects
+          </li>
+          <li><a href="https://github.com/bteller/data-mapper-js" target="_blank">data-mapper-js</a></li>
+          <li><a href="https://github.com/bteller/life-js" target="_blank">life-js</a></li>
+          <li><a href="https://github.com/bteller/bootstrap-tag" target="_blank">bootstrap-tag</a></li>
+          <li class="nav-header">Favorite Links</li>
+          <li><a href="http://www.tekpub.com" target="_blank">TekPub</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
   <script>
+    $(function() {
+      $('#search-term').keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+            
+        if (code == 13) {
+          var url = 'https://www.google.com/search?q=' + $('#search-term').val() + ' site:blog.bradley-teller.me';
+          window.open(url);
+          return false;
+        }
+      });
+
+      $('a', 'div.wrap-post').attr('target', '_blank');
+    });
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-1168469-4']);
     _gaq.push(['_trackPageview']);
@@ -17,22 +77,5 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();    
   </script>
-</head>
-<body>
-  <div class="header">
-    <div class="logo">
-      <h1><a href="/">BRAD TELLER</a></h1>
-    </div>
-    <div class="nav">
-      <ul>
-        <li><a href="/about/">about</a></li>
-        <li><a href="/archive/">archive</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="container">
-    {{ content }}
-  </div>
 </body>
 </html>

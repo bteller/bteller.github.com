@@ -1,37 +1,20 @@
-body { font-family: 'Open Sans'; color: #333; margin: 0; padding: 0; } /* 15px */
+body { font-family: 'Open Sans'; font-size: 15px; color: #333; }
 blockquote { background-color: #D9EDF7; padding: 8px 20px; border: solid 1px #ccc;}
-p, li { line-height: 145%; }
+p, li { line-height: 24px; }
+h1 { font-size: 30px; }
+h2 { font-size: 20px; margin: 18px 0 0 0; padding: 0; }
+h3 { font-size: 26px; color: #000; margin: 0; padding: 0; }
 
-h1, h2, h3 { color: #000; }
-h1 { font-size: 250%; }
-h2 { font-size: 200%; }
-h3 { font-size: 175%; }
 
-.container { width: 95%; margin: 0 auto; }
+#blog-title { font-family: 'Neucha', cursive; font-size: 60px; color: #333;
+              display: inline-block; margin-bottom: 30px; }
+#blog-title, #blog-title:hover { text-decoration: none; }
 
-.header { background-color: #111; margin: 0; padding: 0; }
-.header .logo, .header .nav { margin: 0; padding: 0; display: inline-block; }
-.header .logo { width: 30%; }
-.header .nav { width: 60%; }
-.header h1 { font-size: 100%; margin: 0; width: 100%; display: inline-block; }
-.header a { color: #fff; cursor: pointer; }
-.header h1 a, .header h1 a:hover { text-decoration: none; }
-.header a, .header a:hover { text-decoration: underline; }
-.header ul { width: 100%; display: inline-block; text-align: right; }
-.header ul li { display: inline; list-style: none; padding-left: 2%; font-size: 85%; }
-
-.post a { color: #333; text-decoration: underline; }
+.post { margin-bottom: 20px; }
+.post a { color: #333; text-decoration: underline; font-size: 17px; }
 .post a:visited { text-decoration: none; }
 .post a:hover { text-decoration: underline; }
-.wrap-post { font-size: 95%; }
-/*.post span.post-date { font-size: 13px; }*/
-
-@media screen and (max-width: 480px) {
-	h1 { font-size: 150%; }
-	h2 { font-size: 125%; }
-	h3 { font-size: 115% }
-	.header ul { display: none; }
-}
+.post span.post-date { font-size: 13px; }
 
 
 .highlight { padding: 2px 20px; overflow: hidden; }
