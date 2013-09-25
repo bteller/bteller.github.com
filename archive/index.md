@@ -1,6 +1,6 @@
 ---
 layout: default
-title: blog.bradley-teller.me | Archive
+title: bradteller.com | Archive
 ---
 
 {% for post in site.posts %}

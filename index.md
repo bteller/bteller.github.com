@@ -1,6 +1,6 @@
 ---
 layout: default
-title: blog.bradley-teller.me
+title: bradteller.com
 ---
 
 {% for post in site.posts limit:5 %}
