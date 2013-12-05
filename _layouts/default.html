@@ -26,62 +26,16 @@
     <div class="row-fluid">
       <div class="span10 offset1">
         <a id="blog-title" href="/">bradteller.com</a>
-
-        <div class="navbar">
-          <div class="navbar-inner">
-            <ul class="nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about/">About</a></li>
-              <li><a href="/archive/">Archive</a></li>
-            </ul>      
-            <form class="navbar-form pull-right hidden-phone">
-              <input type="text" placeholder="Search" class="search-term" />
-            </form>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span7 offset1">
+      <div class="span10 offset1">	  
         {{ content }}
-      </div>
-      <div class="span3 sub-nav">
-        <ul class="nav nav-list">
-          <li class="nav-header">
-            Open Source Projects
-          </li>
-          <li><a href="https://github.com/bteller/data-mapper-js" target="_blank">data-mapper-js</a></li>
-          <li><a href="https://github.com/bteller/life-js" target="_blank">life-js</a></li>
-          <li><a href="https://github.com/bteller/bootstrap-tag" target="_blank">bootstrap-tag</a></li>
-          <li class="nav-header">Favorite Links</li>
-          <li><a href="http://www.tekpub.com" target="_blank">TekPub</a></li>
-        </ul>
-        <form class="navbar-form pull-right visible-phone">
-          <input type="text" placeholder="Search" class="search-term" />
-        </form>        
       </div>
     </div>
   </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
-  <script>
-    $(function() {
-      $('.search-term').keypress(function(e) {
-        var code = (e.keyCode ? e.keyCode : e.which);
-            
-        if (code == 13) {
-          var url = 'https://www.google.com/search?q=' + $(this).val() + ' site:blog.bradley-teller.me';
-          window.open(url);
-          return false;
-        }
-      });
-
-      $('a', 'div.wrap-post').attr('target', '_blank');
-    }); 
-  </script>
 </body>
 </html>
