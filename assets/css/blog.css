@@ -4,20 +4,54 @@ p, li { line-height: 24px; }
 h1 { font-size: 2em; }
 h2 { font-size: 1.8em; }
 h3 { font-size: 1.5em; }
+nav { font-size: 1.5em; 
+  font-weight: 300;
+}
+nav a, nav a:visited, nav a:hover { 
+  text-decoration: none; 
+  color: #efefef; 
+  line-height: 1.2em; 
+}
+nav ul {
+  margin: 10px;
+  padding: 0;
+}
+
+.push-down {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.container {
+  position: relative;
+  min-height: 100%;
+}
+
+.left-col {
+  width: 23%;
+  height: 100%;
+  position: fixed;
+  background-color: #333;
+}
+
+.right-col {
+  width: 77%;
+  position: absolute;
+  right: 0;
+  min-height: 100%;
+}
 
 a.plain, a.plain:visited, a.plain:hover {
   text-decoration: none;
   color: inherit;
 }
 
-#header {
-  background-color: #333;
-  padding: 30px;
-}
-
-#header a, #header a:hover, #header a:visited {
-  font-size: 2em;
-  color: #fff;
+#site-title {
+  color: #efefef;
+  padding: 8px;
+  margin-top: 0;
+  font-weight: 400;
 }
 
 #content {
