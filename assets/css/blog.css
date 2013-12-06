@@ -1,15 +1,36 @@
-body { font-family: 'Open Sans'; font-size: 15px; color: #333; }
+body { font-family: 'Open Sans'; font-size: 1em; color: #333; margin: 0; padding: 0; }
 blockquote { background-color: #D9EDF7; padding: 8px 20px; border: solid 1px #ccc;}
 p, li { line-height: 24px; }
-h1 { font-size: 30px; }
-h2 { font-size: 20px; margin: 18px 0 0 0; padding: 0; }
-h3 { font-size: 26px; color: #000; margin: 0; padding: 0; }
+h1 { font-size: 2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
+
+a.plain, a.plain:visited, a.plain:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+#header {
+  background-color: #333;
+  padding: 30px;
+}
+
+#header a, #header a:hover, #header a:visited {
+  font-size: 2em;
+  color: #fff;
+}
+
+#content {
+  width: 92%;
+  margin: 0 auto;
+}
 
 
 #blog-title { font-family: 'Neucha', cursive; font-size: 60px; color: #333;
               display: inline-block; margin-bottom: 30px; }
 #blog-title, #blog-title:hover { text-decoration: none; }
 
+/*
 .post { margin-bottom: 20px; }
 .post a { color: #333; text-decoration: underline; font-size: 17px; }
 .post a:visited { text-decoration: none; }
@@ -19,7 +40,7 @@ h3 { font-size: 26px; color: #000; margin: 0; padding: 0; }
 @media (max-width: 480px) { 
 	.sub-nav { background-color: #333; }
 }
-
+*/
 
 .highlight { padding: 2px 20px; overflow: hidden; }
 .highlight .hll { background-color: #49483e }
@@ -82,3 +103,6 @@ h3 { font-size: 26px; color: #000; margin: 0; padding: 0; }
 .highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
 .highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+/* gist override */
+table.highlight { padding: 0; }
