@@ -9,7 +9,7 @@ Minifying your stylesheet and javascript assets for your site is a great idea, a
 If you have a code block like this that simply executes another function and passes in an argument to it.
 
 {% highlight js %}
-function runIIt(functionName, param) {
+function runIt(functionName, param) {
 	eval(functionName + '(param)');
 }
 {% endhighlight %}
@@ -17,7 +17,7 @@ function runIIt(functionName, param) {
 Provided minification isn't in place this will work just fine. But, as soon as you do minify this things will suddenly stop working. The reason for this is that minification tools are actually going through and shortening your variable and parameter names; which means you can't relay on *param* being the same. Luckily though the solution is quite simple because javascript provides us with an *arguments* array. 
 
 {% highlight js %}
-function runIIt(functionName, param) {
+function runIt(functionName, param) {
 	eval(functionName + '(arguments[1])');
 }
 {% endhighlight %}
