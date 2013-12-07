@@ -140,3 +140,28 @@ a.plain, a.plain:visited, a.plain:hover {
 
 /* gist override */
 table.highlight { padding: 0; }
+
+@media screen and (max-width: 700px) { 
+  .left-col {
+      position: relative;
+      width: 100%;
+  }
+
+  .right-col {
+    width: 98%;
+    position: relative;
+  }
+
+  .push-down {
+    position: relative;
+  }
+
+  #site-nav ul {
+    text-align: center;
+  }
+
+  #site-nav ul li {
+    display: inline-block;
+    padding: 5px;
+  }
+}
