@@ -16,6 +16,7 @@ nav ul {
   margin: 10px;
   padding: 0;
 }
+img { max-width: 98%; }
 
 .push-down {
   position: absolute;
