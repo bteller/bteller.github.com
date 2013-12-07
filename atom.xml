@@ -1,28 +1,25 @@
 ---
 layout: nil
 ---
-
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
- 
- <title>blog.bradley-teller.me</title>
- <link href="http://bteller.github.com/feed/" rel="self"/>
- <link href="http://bteller.github.com/"/>
- <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://bteller.github.com/</id>
- <author>
-   <name>Bradley Teller</name>
-   <email>bradley.teller@gmail.com</email>
- </author>
+  <title>bradteller.com</title>
+  <link href="http://bradteller.com/feed/" rel="self"/>
+  <link href="http://bradteller.com/"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://bradteller.com/</id>
+  <author>
+    <name>Brad Teller</name>
+    <email>bradley.teller@gmail.com</email>
+  </author>
 
- {% for post in site.posts %}
- <entry>
-   <title>{{ post.title }}</title>
-   <link href="http://bteller.github.com{{ post.url }}"/>
-   <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://bteller.github.com{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
- </entry>
- {% endfor %}
- 
+  {% for post in site.posts %}
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="http://bradteller.com{{ post.url }}"/>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <id>http://bradteller.com{{ post.id }}</id>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
 </feed>
