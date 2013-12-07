@@ -165,4 +165,8 @@ table.highlight { padding: 0; }
     display: inline-block;
     padding: 5px;
   }
+
+  .social-links {
+    text-align: center;
+  }
 }
