@@ -157,16 +157,12 @@ table.highlight { padding: 0; }
     position: relative;
   }
 
-  #site-nav ul {
-    text-align: center;
-  }
-
   #site-nav ul li {
     display: inline-block;
     padding: 5px;
   }
 
-  .social-links {
+  #site-title, .social-links, #site-nav ul {
     text-align: center;
   }
 }
