@@ -8,7 +8,7 @@ I've been struggling with the unit testability of attributes for a while, and ha
 
 Take a simple attribute like this one.
 
-{% highlight csharp %}
+```csharp
 public class CheckAttribute : Attribute
 {
   public bool CheckIt { get; set; }
@@ -18,11 +18,11 @@ public class CheckAttribute : Attribute
     this.CheckIt = checkIt;
   }
 }
-{% endhighlight %}
+```
 
 I want to use it to trigger some other operation to run later, like to enforce the value of the property is unique before inserting it into the database.
 
-{% highlight csharp %}
+```csharp
 public class Person
 {
   [Check]
@@ -31,11 +31,11 @@ public class Person
   [Check(false)]
   public string Kind { get; set; }
 }
-{% endhighlight %}
+```
 
 Testing this can actually be pretty simple. Instead of unit testing the expected behavior, just verify the attribute appears in code where you expect it to with a test like the one below.
 
-{% highlight csharp %}
+```csharp
 [TestMethod]
 public void Person_WhenValidated_ChecksIt()
 {
@@ -44,7 +44,7 @@ public void Person_WhenValidated_ChecksIt()
 
   Assert.IsTrue(c.CheckIt);
 }
-{% endhighlight %}
+```
 
 The actual enforcement of the underlying business rule would be covered by one or more tests that verify the code that actually enforces this rule. All we really care about here is that the attribute appears where we expect it to.
 
