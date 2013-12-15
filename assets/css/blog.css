@@ -55,6 +55,11 @@ a.plain, a.plain:visited, a.plain:hover {
   font-weight: 400;
 }
 
+#site-title a, #site-title a:hover, #site-title a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 #content {
   width: 92%;
   margin: 0 auto;
