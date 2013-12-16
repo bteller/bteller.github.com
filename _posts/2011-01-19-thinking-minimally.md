@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Thinking Minimally
+exclude: true
 ---
 
 Okay, real quick before I get into this. I think my greatest problem with posting is that I either don't think what I have to say is worth the post even though I know I shouldn't think that way, and the other problem is that whenever I do get inspired to post it is never at a convenient time. So, I said my part on that.

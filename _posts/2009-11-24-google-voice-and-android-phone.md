@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Google Voice and Android Phone
+exclude: true
 ---
 
 So, I've been playing around with Google Voice for a while now, and I really like it.  It is great to only have to give people one number and have the flexibility of routing calls to that number to one or more device.  I also just recently picked up an Android based phone from T-Mobile, the Motorola Cliq.  On this phone I was able to install the Google Voice application for the Android OS, which I thought was going to be great, but I am having certain challenges.

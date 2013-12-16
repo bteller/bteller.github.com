@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Laptop Buying Experience
+exclude: true
 ---
 
 Hooray! A new toy. After almost a full year of hemming and hawing later, I bought a laptop tonight.

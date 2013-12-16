@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Not Missing Facebook
+exclude: true
 ---
 
 Once again I find myself not missing Facebook. I haven't signed into the system for a few days now I think, other than just a moment ago to see what I was missing, and I still just don't get it. For starters I guess I have a problem with the fact that the system never seems to function as I would expect. Status updates posted by my friends fail to display in the summary view for me, and the live feed just contains far too much crap for me to find it useful. Does anyone really care to know when their Facebook friends have friended other people?

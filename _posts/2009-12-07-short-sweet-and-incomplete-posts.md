@@ -2,6 +2,7 @@
 layout: post
 title: "short, sweet, and incomplete... posts"
 published: false
+exclude: true
 ---
 
 I've been trying to figure out why exactly I avoid posting as much as I would like, and I have identified, for the moment, what I believe is a contributing factor.  Most of the time I have what I think is an interesting topic to discuss, but lack the time or desire to put any real effort into it.  Once I figured this out, I of course asked myself why that might be.

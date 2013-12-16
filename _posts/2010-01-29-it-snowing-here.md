@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "It's Snowing Here"
+exclude: true
 ---
 
 It's snowing here in Raleigh, North Carolina. At this point there is only about two inches of snow, and the snow itself seems to be slowing down. Nevertheless I have already heard the first sirens of the night, and they are almost certainly not to be the last.

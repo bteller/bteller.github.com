@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Calling JavaScript Function Passed via JSON"
+exclude: true
 ---
 
 I've had to spend a bit more time with javascript lately than I have in the past, and one of the things I found myself trying to accomplish was to call a javascript function passed into another javascript function via json.

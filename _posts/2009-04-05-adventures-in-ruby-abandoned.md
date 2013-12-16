@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Adventures in Ruby, Abandoned"
+exclude: true
 ---
 
 I have, for the time being at least, abandoned my adventures in Ruby, as well as RoR.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A Really Quick Update
+exclude: true
 ---
 
 This is just a really quick update for you. I've been busy.

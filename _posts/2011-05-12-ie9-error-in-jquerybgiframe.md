@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "IE9 Error in jquery.bgiFrame"
+exclude: true
 ---
 
 I just ran into a problem with the jQuery extension for .bgiFrame() where IE9 throws an error at this code block.

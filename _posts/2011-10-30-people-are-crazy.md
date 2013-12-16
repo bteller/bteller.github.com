@@ -1,6 +1,7 @@
 ---
 layout: post
 title: People are Crazy
+exclude: true
 ---
 
 Right now it's about 38 degrees outside here in the Raleigh, North Carolina area and I just got back from the pool hall. As I'm driving down I40 I pass a car off the side of the road, parked, with its hazard lights on. About a quarer file farther down the road I see a guy running. My suspicion is that he ran out of gas and in order to stay warm, or perhaps to get things done a bit faster, he decided to run. Now, I felt bad for the guy, but I didn't stop, and that got me to thinking.

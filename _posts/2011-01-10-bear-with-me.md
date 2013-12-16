@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Bear with me ..."
+exclude: true
 ---
 
 I'm slowly updating the look and feel of my blog, so hang in there. From what I can tell there aren't any content problems I'm introducing, so anything you want to grab from here should still be accessible. I installed the Thematic Theme Framework plug-in and am using that to shape a new look. Hopefully at the end I'll have better control over things than I would using a packaged theme. I also switched to using the Sociable plug-in for sharing of posts, which looks much cleaner than what I had on here before (deleted it right away, so don't know what it was).

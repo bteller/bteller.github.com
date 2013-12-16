@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Time is Scarce: Blogging"
+exclude: true
 ---
 
 Time truly is a valuable resource, and a rare commodity.

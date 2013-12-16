@@ -2,6 +2,7 @@
 layout: post
 title: Systems Architecture
 published: false
+exclude: true
 ---
 
 > This is really just a draft at this point, but I wanted to put it up in it's present state anyway.

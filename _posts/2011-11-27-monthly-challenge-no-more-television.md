@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Monthly Challenge: No More Television"
+exclude: true
 ---
 
 This is something I have been wanting and meaning to do for a long time now, and finally I think I'm just going to rip off that band-aid. I have unplugged my television and put it in a closet.

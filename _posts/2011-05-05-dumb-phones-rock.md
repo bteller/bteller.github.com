@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dumb Phones Rock!!!
+exclude: true
 ---
 
 Yeah, I said it. That is my opinion so far at least. I've had the new phone for just about two weeks now, and I'm really digging being that unplugged. While the last phone was a complete piece of crap, it was still receiving updates and popping up alerts from Facebook, Twitter and then all the Google services I use. I'll tell you, those dings and dongs and rings and things these smart phones do are really hard to ignore. I was constantly shifting my attention from that which mattered to the phone, just to see what all the fuss was about. It wasn't ever worth it, no exceptions. So, I'm free of all that noise, which has made me more productive at work, and more relaxed to boot.

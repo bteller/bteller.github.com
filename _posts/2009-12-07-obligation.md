@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Obligation
+exclude: true
 ---
 
 I was in the pool hall the other day, practicing on a table alone, and someone sat down near the table and was watching me.  Normally I wouldn't mind, and I guess to an extent I didn't mind, except that I was ready to leave.  Despite being tired and feeling as if I may be coming down with a cold, I strangely felt obligated to continue practicing in order to "entertain" this person, who I didn't know.

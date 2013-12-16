@@ -1,6 +1,7 @@
 ---
 layout: post
 title: gridIt Update
+exclude: true
 ---
 
 I finally spent some time this evening updating gridIt to include pagination support. I would have spent more time, but I had to learn how to remove a file from a root commit from a github repo, which proved a little more complicated than I thought it would be.
