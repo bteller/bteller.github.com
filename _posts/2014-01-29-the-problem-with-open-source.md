@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "The Problem with Open Source"
+title: "The Problem with Open Source Software"
 ---
 
-#The Problem With Open Source Software
 I really like open source software, but I've ran into some problems recently that really make me wonder why. Just a few days ago I was trying to work through getting Graphite up and running to determine if it was something I could leverage, and I ran into all sorts of problems.
 
 ## Why Can't Things Just Work?
