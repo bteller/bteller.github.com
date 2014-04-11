@@ -38,7 +38,7 @@ These other issues were related to some deployment tasks we were trying to run, 
 
 It took me hours to make any sense of what was going on what so ever. I tried opening the .xaml file up in Visual Studio, that sucks. What the hell does this shit mean?
 
-xx inset pic here--
+![XAML Editor](/assets/images/posts/tfs-sucks.png)
 
 I finally gave up on that view and opened the file up in a text editor. Not much of an improvement, but at least a few things make sense now. After a few more hours, and who knows how many commits later, things finally worked. 
 
