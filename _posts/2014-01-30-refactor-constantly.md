@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Refactor Constantly
-published: false
+summary: "I don't know why everyone gets so scared by this term. Just do it already."
 ---
 
 ##Why?
