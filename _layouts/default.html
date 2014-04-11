@@ -19,32 +19,33 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="container">
-    <div id="header">
-      <div class="content">
-        <h1 id="site-title" class="inline col-half"><a href="/">brad teller</a></h1>
-
-        <div class="inline col-half">
-          <nav id="site-nav">
-            <ul>
-              <li><a href="/">home</a></li>
-              <li><a href="/about">about</a></li>
-              <li><a href="/archive">archive</a></li>
-            </ul>
-          </nav>
-
-          <div class="social-links">
-            <a href="https://twitter.com/bradteller"><img src="/assets/images/twitter-48.png" /></a>
-            <a href="https://github.com/bteller"><img src="/assets/images/github-48.png" /></a>
-            <a href="http://feeds.feedburner.com/bradteller"><img src="/assets/images/rss-48.png" /></a>
-            <a href="mailto:bradley.teller@gmail.com"><img src="/assets/images/email-48.png" /></a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="header">
     <div class="content">
-      {{ content }}
+      <h1 id="site-title"><a href="/">brad teller</a></h1>
+
+      <div>
+        <nav id="site-nav">
+          <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/about">about</a></li>
+            <li><a href="/archive">archive</a></li>
+          </ul>
+        </nav>
+      </div>      
     </div>
   </div>
+  <div class="content">
+    {{ content }}
+  </div>
+  <div id="footer">
+    <div class="content">
+      <div class="social-links">
+        <a href="https://twitter.com/bradteller"><img src="/assets/images/twitter-48.png" /></a>
+        <a href="https://github.com/bteller"><img src="/assets/images/github-48.png" /></a>
+        <a href="http://feeds.feedburner.com/bradteller"><img src="/assets/images/rss-48.png" /></a>
+        <a href="mailto:bradley.teller@gmail.com"><img src="/assets/images/email-48.png" /></a>
+      </div>  
+    </div>
+  </div>      
 </body>
 </html>
