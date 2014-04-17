@@ -13,9 +13,14 @@ nav { font-size: 1.5em;
 }
 nav a, nav a:visited, nav a:hover { 
   text-decoration: none; 
-  color: #efefef; 
+  color: #333; 
   line-height: 1.2em; 
 }
+
+nav a:hover {
+  color: #000;
+}
+
 nav ul {
   margin: 10px;
   padding: 0;
@@ -33,7 +38,7 @@ img { max-width: 98%; }
 .pull-right { float: right; }
 
 #header, #footer {
-  background-color: #333;
+  background-color: #efefef;
   width: 100%;
   min-height: 30px;
 }
@@ -49,11 +54,11 @@ a.plain, a.plain:visited, a.plain:hover {
 }
 
 #site-title {
-  color: #efefef;
+  color: #333;
   padding: 8px;
   margin-top: 0;
   font-weight: 400;
-  font-size: 1.8em;
+  font-size: 2.0em;
 }
 
 #site-title a, #site-title a:hover, #site-title a:visited {
@@ -137,4 +142,37 @@ table.highlight { padding: 0; }
 
 @media screen and (max-width: 700px) { 
   .content { width: 80%; }
+}
+
+.text-right {
+  text-align: right;
+}
+
+[class*='col-'] {
+  float: left;
+}
+
+.col-1of2 {
+  width: 50%;
+}
+
+.col-1of3 {
+  width: 33%;
+}
+
+.col-2of3 {
+  width: 67%;
+}
+
+.row {
+  *zoom: 1;
+}
+.row:before,
+.row:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.row:after {
+  clear: both;
 }
