@@ -2,6 +2,7 @@
 layout: post
 title: Sliding Window
 exclude: true
+published: false
 ---
 
 Along the road to implementing a new system, many decisions need to be made. After the proper application system has been identified, the physical architecture of the environment needs to be planned. This post will not help you identify the number of servers you'll need to implement your Microsoft Project Server environment, so stop reading now if that was what you were looking for. What I hope it will do though, is get you giving some serious thought as to the number of distinct environments you'll want to provision as part of the overall solution implementation.

@@ -2,6 +2,7 @@
 layout: post
 title: "What's Up with Facebook?"
 exclude: true
+published: false
 ---
 
 Okay, so I've been unable to access the service now for 3 days. I've sent an email to tech support and received no feedback in return. I've been checking every few hours now to see if my account problems have been corrected, but am met with disappointment every time. And now, all my problems have led me to question the usefulness of the service.

@@ -2,6 +2,7 @@
 layout: post
 title: My New Crappy Cell Phone
 exclude: true
+published: false
 ---
 
 Some quick background information here. About 20 months ago now when the Motorola Cliq, first generation, was hitting the market, I feel in love with the phone from the advertisements. After the first 2 months or so though, I started to realize what a piece of junk it really was. The MotoBlur software would seem to provide some great functionality, but I've come to think of it as bloat-ware, and wish Motorola had gone for a more purist Android experience. Needless to say the phone would hang frequently, and I'd have to wait for it to decide when I could place a call, or update my social network statuses.

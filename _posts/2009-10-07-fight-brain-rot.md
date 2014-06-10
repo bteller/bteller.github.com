@@ -2,6 +2,7 @@
 layout: post
 title: Fight Brain Rot
 exclude: true
+published: false
 ---
 
 Well, it is about as official as it can get. I called the cable company up today to find out what I have to do to cancel my cable service, tv not the internet, and all I have to do is return the equipment, which I'll be doing tomorrow.

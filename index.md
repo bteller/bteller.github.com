@@ -1,19 +1,9 @@
 ---
-layout: default
-title: bradteller.com
+layout: home
+description: "A responsive Jekyll theme with editorial tendencies by designer Michael Rose."
+tags: [Jekyll, theme, responsive, blog, template]
+image:
+  feature: texture-feature-01.jpg
+  credit: Texture Lovers
+  creditlink: http://texturelovers.com
 ---
-
-<div class="col-2of3">
-{% for post in site.posts limit:5 %}
-  <div class="post">
-    <h1><a href="{{ BASE_PATH }}{{ post.url }}" class="plain">{{ post.title }}</a></h1>
-    {{ post.content }}
-  </div>
-{% endfor %}
-</div>
-
-<div class="col-1of3">
-  <div class="pull-right">
-
-  </div>
-</div>

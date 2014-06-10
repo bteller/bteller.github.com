@@ -2,6 +2,7 @@
 layout: post
 title: "Where are my blog readers?"
 exclude: true
+published: false
 ---
 
 I was just looking at the statistics for my blog, and not surprisingly the traffic is very, very low. So, project number 1 for this weekend is to try and turn that around.

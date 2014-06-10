@@ -3,6 +3,7 @@ layout: post
 title: Markdown Hyperlink Targets
 summary: "A quick alternative to messy hyperlinks in markdown."
 exclude: true
+published: false
 ---
 
 With Markdown the syntax for a hyperlink looks like this:

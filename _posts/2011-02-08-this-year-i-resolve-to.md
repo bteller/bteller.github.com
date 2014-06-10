@@ -2,6 +2,7 @@
 layout: post
 title: "This Year I Resolve To ..."
 exclude: true
+published: false
 ---
 
 Okay, so I guess I'll go ahead and try to commit to this. A few weeks ago I was thinking what I could do to make some improvements in my life. You know what I mean, that dreaded self reflection that happens to most of us at the beginning of every new year, and the list below is what I came up with. Initially I was thinking I'd tackle one item a month, but then I ran out of things to add to the list. So instead I'll be tackling as much as I can at one time.

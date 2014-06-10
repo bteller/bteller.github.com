@@ -2,6 +2,7 @@
 layout: post
 title: "Google Docs, Access from Anywhere"
 exclude: true
+published: false
 ---
 
 In the age of rich internet enabled applications, it is now more difficult than ever to separate work and personal life. The challenge comes with ease of access to these tools. Today (okay, for a while now), not only can we access our data from almost anywhere, we have access to tools with which to create and manipulate it as well. Enter tools from Google, and Google Docs in particular.

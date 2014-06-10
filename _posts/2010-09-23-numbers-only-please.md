@@ -2,6 +2,7 @@
 layout: post
 title: Numbers Only Please
 exclude: true
+published: false
 ---
 
 A few weeks ago now, I had to limit the characters entered into a textbox on a site to numeric characters only. This was simple enough I thought, and figured that I’d be able to Google the requirement and find a solution rather quickly, but this proved not to be the case. What I ended up using is this code snippet below, which I hope you find helpful.

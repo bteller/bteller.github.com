@@ -2,6 +2,7 @@
 layout: post
 title: "Adventures in Ruby, Introduction"
 exclude: true
+published: false
 ---
 
 About a year ago I picked up two books from Amazon.com, "The Ruby Programming Language" from O'Reilly, and "The Rails Way" from Addison Wesley. It was my intention, since I was no longer writing any code at all at work, to learn a new programming language, something that took me away from the Microsoft .Net framework, and into a wonderful new world of possibility.

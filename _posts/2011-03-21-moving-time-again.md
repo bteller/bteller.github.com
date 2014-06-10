@@ -2,6 +2,7 @@
 layout: post
 title: Moving Time Again
 exclude: true
+published: false
 ---
 
 I've been trying to think of ways to cut expenses. The overall plan is to try and completely eliminate my debt in the next 3 to 5 years, which means paying off or trading in my car, eliminating my last remaining credit card debt, and then paying off those damn student loans. I'm also a fan of the minimalist blog over at [http://mnmlist.com](http://mnmlist.com/), so basically I'm hoping a lifestyle change to living more minimally will help me to accomplish this.
