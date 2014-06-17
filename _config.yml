@@ -47,7 +47,7 @@ highlighter: pygments
 markdown:    redcarpet
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:categories/:title/
+permalink: /:year/:month/:day/:title 
 
 kramdown:
   auto_ids: true
