@@ -29,6 +29,7 @@ There are a few things I've noticed trying to build a reliable perceptual differ
 
 ## How do I get started with Perceptual Differencing?
 The tools I'm using for our perceptual differencing tool at work are:
+
 - [Selenium](http://docs.seleniumhq.org/)
 - ImageMagick
 - [Resemble.js](http://huddle.github.io/Resemble.js/)
