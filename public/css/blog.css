@@ -1,0 +1,9 @@
+.highlight pre {
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+pre {
+  white-space: pre;
+  word-wrap: normal;
+}
