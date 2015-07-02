@@ -21,11 +21,11 @@ title: Home
 
 <!-- Pagination links -->
 <div class="pagination">
-  {% if paginator.previous_page %}
+  {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path }}" class="button" id="previous-page"><i class="fa fa-chevron-left"></i> Older</a>
   {% endif %}
 
-  {% if paginator.next_page %}
+  {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path }}" class="button" id="next-page">Newer <i class="fa fa-chevron-right"></i></a>
   {% endif %}
 </div>
