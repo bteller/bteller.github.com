@@ -24,10 +24,19 @@ pre {
     margin: 0 20px;
   }
 
+h1.post-title {
+  margin-bottom: 0;
+}
+
+h1.post-title,
 h1.post-title a {
   text-decoration: none;
   line-height: 1.2em;
   color: #000;
+}
+
+.post-date {
+  font-size: 14px;
 }
 
 #next-page {
