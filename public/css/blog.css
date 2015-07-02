@@ -1,3 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", Helvetica;
+  color: #303030;
+  font-size: 1.2em;
+  line-height: 1.6em;
+  font-weight: 300;
+}
+
 .highlight pre {
   overflow: auto;
   overflow-y: hidden;
@@ -6,4 +18,51 @@
 pre {
   white-space: pre;
   word-wrap: normal;
+  background-color: #f9f9f9;
+}
+  .container {
+    margin: 0 20px;
+  }
+
+h1.post-title a {
+  text-decoration: none;
+  line-height: 1.2em;
+  color: #000;
+}
+
+#next-page {
+  float: right;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
+  border: solid 1px #aaa;
+  text-decoration: none;
+  color: #000;
+  text-align:center;
+  font-size: 16px;
+  display: inline-block;
+}
+
+#header a {
+  color: #000;
+  text-decoration: none;
+
+}
+
+#footer {
+  margin-top: 80px;
+  font-size: 14px;
+  clear: both;
+  text-align: center;
+}
+
+@media (min-width: 750px) {
+  .container {
+    max-width: 775px;
+    margin: 0 auto;
+  }
 }
