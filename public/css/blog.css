@@ -7,7 +7,6 @@ body {
   color: #303030;
   font-size: 1.2em;
   line-height: 1.6em;
-  font-weight: 600;
 }
 
 .highlight pre {
@@ -62,10 +61,15 @@ h1.post-title a {
 
 }
 
+p {
+  text-align: justify;
+}
+
 p code {
   color: red;
   border: solid 1px #ccc;
   padding: 2px 5px;
+  text-align: left;
 }
 
 #footer {
