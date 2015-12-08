@@ -1,0 +1,5 @@
+_site/*
+*.lock
+.vagrant
+katas
+node_modules/
