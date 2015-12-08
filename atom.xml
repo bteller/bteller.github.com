@@ -4,7 +4,7 @@
   <title><![CDATA[Brad Teller]]></title>
   <link href="http://bradteller.com/atom.xml" rel="self"/>
   <link href="http://bradteller.com/"/>
-  <updated>2015-12-08T00:14:35-05:00</updated>
+  <updated>2015-12-08T00:21:53-05:00</updated>
   <id>http://bradteller.com/</id>
   <author>
     <name><![CDATA[Brad Teller]]></name>
@@ -171,8 +171,6 @@
 <h3>A Word of Warning</h3>
 
 <p>I want to share one final word of warning before you make the decision to use a framework. Generally speaking, even with a framework as light weight as Skeleton, you get more than just a grid. With the grid you also get opinionated styling of your buttons, forms, tables and typography. You probably don&rsquo;t want this, so just make sure and delete anything undesirable from the framework, or use this as an excuse to roll your own.</p>
-
-<p>photo credit: <a href="http://www.flickr.com/photos/47257185@N03/14829242912">Volcano - Premium WordPress Theme #2</a> via <a href="http://photopin.com">photopin</a> <a href="https://creativecommons.org/licenses/by/2.0/">(license)</a></p>
 ]]></content>
   </entry>
   
