@@ -1,203 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://bradteller.com/blog/2015/07/01/responsive-now/</loc>
+    <loc>http://bradteller.com/2015/07/01/responsive-now/</loc>
     <lastmod>2015-07-01T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/12/15/pdiff-the-right-way/</loc>
+    <loc>http://bradteller.com/2014/12/15/pdiff-the-right-way/</loc>
     <lastmod>2014-12-15T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/07/02/tfs-build-getting-better/</loc>
+    <loc>http://bradteller.com/2014/07/02/tfs-build-getting-better/</loc>
     <lastmod>2014-07-02T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/04/16/maybe-oneget-is-for/</loc>
+    <loc>http://bradteller.com/2014/04/16/maybe-oneget-is-for/</loc>
     <lastmod>2014-04-16T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/04/11/what-is-oneget/</loc>
+    <loc>http://bradteller.com/2014/04/11/what-is-oneget/</loc>
     <lastmod>2014-04-11T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/04/10/why-tfs-sucks/</loc>
+    <loc>http://bradteller.com/2014/04/10/why-tfs-sucks/</loc>
     <lastmod>2014-04-10T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/01/30/refactor-constantly/</loc>
+    <loc>http://bradteller.com/2014/01/30/refactor-constantly/</loc>
     <lastmod>2014-01-30T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2014/01/29/the-problem-with-open-source/</loc>
+    <loc>http://bradteller.com/2014/01/29/the-problem-with-open-source/</loc>
     <lastmod>2014-01-29T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2013/12/15/unit-testing-attributes/</loc>
+    <loc>http://bradteller.com/2013/12/15/unit-testing-attributes/</loc>
     <lastmod>2013-12-15T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2013/08/09/javascript-eval-minification-gotcha/</loc>
+    <loc>http://bradteller.com/2013/08/09/javascript-eval-minification-gotcha/</loc>
     <lastmod>2013-08-09T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2013/04/21/code-meaningfully/</loc>
+    <loc>http://bradteller.com/2013/04/21/code-meaningfully/</loc>
     <lastmod>2013-04-21T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2013/04/18/wr-passion-pride/</loc>
+    <loc>http://bradteller.com/2013/04/18/wr-passion-pride/</loc>
     <lastmod>2013-04-18T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2013/04/04/weekly-reflection/</loc>
+    <loc>http://bradteller.com/2013/04/04/weekly-reflection/</loc>
     <lastmod>2013-04-04T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2013/04/04/quality/</loc>
+    <loc>http://bradteller.com/2013/04/04/quality/</loc>
     <lastmod>2013-04-04T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/12/26/dont-fight-the-framework/</loc>
+    <loc>http://bradteller.com/2012/12/26/dont-fight-the-framework/</loc>
     <lastmod>2012-12-26T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/12/13/abstract-factory-ocp-violation/</loc>
+    <loc>http://bradteller.com/2012/12/13/abstract-factory-ocp-violation/</loc>
     <lastmod>2012-12-13T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/12/07/twitter-bootstrap-tags/</loc>
+    <loc>http://bradteller.com/2012/12/07/twitter-bootstrap-tags/</loc>
     <lastmod>2012-12-07T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/11/28/caching-part-2-nulls-and-expiration/</loc>
+    <loc>http://bradteller.com/2012/11/28/caching-part-2-nulls-and-expiration/</loc>
     <lastmod>2012-11-28T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/10/18/really-simple-caching/</loc>
+    <loc>http://bradteller.com/2012/10/18/really-simple-caching/</loc>
     <lastmod>2012-10-18T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/08/08/massive-js-issue-workaround/</loc>
+    <loc>http://bradteller.com/2012/08/08/massive-js-issue-workaround/</loc>
     <lastmod>2012-08-08T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/08/07/postgresql-and-nodejs-issue/</loc>
+    <loc>http://bradteller.com/2012/08/07/postgresql-and-nodejs-issue/</loc>
     <lastmod>2012-08-07T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/08/05/using-node-inspector-on-windows/</loc>
+    <loc>http://bradteller.com/2012/08/05/using-node-inspector-on-windows/</loc>
     <lastmod>2012-08-05T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/08/05/secure-your-github-repo-for-nodejs/</loc>
+    <loc>http://bradteller.com/2012/08/05/secure-your-github-repo-for-nodejs/</loc>
     <lastmod>2012-08-05T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/08/05/nodejs-express-helpers/</loc>
+    <loc>http://bradteller.com/2012/08/05/nodejs-express-helpers/</loc>
     <lastmod>2012-08-05T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/03/28/unregister-javascript-coffeescript-and/</loc>
+    <loc>http://bradteller.com/2012/03/28/unregister-javascript-coffeescript-and/</loc>
     <lastmod>2012-03-28T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/03/28/aspnet-mvc-client-validation-woes/</loc>
+    <loc>http://bradteller.com/2012/03/28/aspnet-mvc-client-validation-woes/</loc>
     <lastmod>2012-03-28T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/03/10/unregister-ui-requirements/</loc>
+    <loc>http://bradteller.com/2012/03/10/unregister-ui-requirements/</loc>
     <lastmod>2012-03-10T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/03/02/unregister-setting-up-git/</loc>
+    <loc>http://bradteller.com/2012/03/02/unregister-setting-up-git/</loc>
     <lastmod>2012-03-02T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/02/29/unregister-project-manifesto/</loc>
+    <loc>http://bradteller.com/2012/02/29/unregister-project-manifesto/</loc>
     <lastmod>2012-02-29T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/02/27/razorengine-vbnet-and-console/</loc>
+    <loc>http://bradteller.com/2012/02/27/razorengine-vbnet-and-console/</loc>
     <lastmod>2012-02-27T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/02/15/the-weekly-bookshelf/</loc>
+    <loc>http://bradteller.com/2012/02/15/the-weekly-bookshelf/</loc>
     <lastmod>2012-02-15T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/01/25/mvc-html-helper-generate-secure-url/</loc>
+    <loc>http://bradteller.com/2012/01/25/mvc-html-helper-generate-secure-url/</loc>
     <lastmod>2012-01-25T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/01/20/programming-nightmares/</loc>
+    <loc>http://bradteller.com/2012/01/20/programming-nightmares/</loc>
     <lastmod>2012-01-20T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/01/18/the-weekly-bookshelf/</loc>
+    <loc>http://bradteller.com/2012/01/18/the-weekly-bookshelf/</loc>
     <lastmod>2012-01-18T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2012/01/18/object-level-security/</loc>
+    <loc>http://bradteller.com/2012/01/18/object-level-security/</loc>
     <lastmod>2012-01-18T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/12/20/selectfor-helper/</loc>
+    <loc>http://bradteller.com/2011/12/20/selectfor-helper/</loc>
     <lastmod>2011-12-20T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/11/24/unit-testing-and-tdd-make-me-better/</loc>
+    <loc>http://bradteller.com/2011/11/24/unit-testing-and-tdd-make-me-better/</loc>
     <lastmod>2011-11-24T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/11/08/why-not-pay-what-you-can/</loc>
+    <loc>http://bradteller.com/2011/11/08/why-not-pay-what-you-can/</loc>
     <lastmod>2011-11-08T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/09/28/tinymce-in-jquery-dialog/</loc>
+    <loc>http://bradteller.com/2011/09/28/tinymce-in-jquery-dialog/</loc>
     <lastmod>2011-09-28T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/09/28/htmlselectforenum-extension-for-mvc/</loc>
+    <loc>http://bradteller.com/2011/09/28/htmlselectforenum-extension-for-mvc/</loc>
     <lastmod>2011-09-28T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/09/02/delegate-assist-in-dal/</loc>
+    <loc>http://bradteller.com/2011/09/02/delegate-assist-in-dal/</loc>
     <lastmod>2011-09-02T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/08/31/what-up-with-massive/</loc>
+    <loc>http://bradteller.com/2011/08/31/what-up-with-massive/</loc>
     <lastmod>2011-08-31T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/04/29/persistence-ignorant/</loc>
+    <loc>http://bradteller.com/2011/04/29/persistence-ignorant/</loc>
     <lastmod>2011-04-29T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/04/25/aspnet-radiobuttongroupfor-extension/</loc>
+    <loc>http://bradteller.com/2011/04/25/aspnet-radiobuttongroupfor-extension/</loc>
     <lastmod>2011-04-25T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/04/18/sort-order-for-list-with-persistence/</loc>
+    <loc>http://bradteller.com/2011/04/18/sort-order-for-list-with-persistence/</loc>
     <lastmod>2011-04-18T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/04/08/unobtrusive-validation-issue-with-mvc-3/</loc>
+    <loc>http://bradteller.com/2011/04/08/unobtrusive-validation-issue-with-mvc-3/</loc>
     <lastmod>2011-04-08T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2011/01/12/aspnet-mvc-2-client-side-validation/</loc>
+    <loc>http://bradteller.com/2011/01/12/aspnet-mvc-2-client-side-validation/</loc>
     <lastmod>2011-01-12T00:00:00-05:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2010/05/10/jquery-ui-validation-summary/</loc>
+    <loc>http://bradteller.com/2010/05/10/jquery-ui-validation-summary/</loc>
     <lastmod>2010-05-10T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2010/03/23/aspnet-mvc-update-multiple-records-at/</loc>
+    <loc>http://bradteller.com/2010/03/23/aspnet-mvc-update-multiple-records-at/</loc>
     <lastmod>2010-03-23T00:00:00-04:00</lastmod>
   </url>
   <url>
-    <loc>http://bradteller.com/blog/2010/03/21/aspnet-mvc-delete-confirmation/</loc>
+    <loc>http://bradteller.com/2010/03/21/aspnet-mvc-delete-confirmation/</loc>
     <lastmod>2010-03-21T00:00:00-04:00</lastmod>
   </url>
   <url>
@@ -208,5 +208,17 @@
   </url>
   <url>
     <loc>http://bradteller.com/blog/categories/lessons/</loc>
+  </url>
+  <url>
+    <loc>http://bradteller.com/posts/2/</loc>
+  </url>
+  <url>
+    <loc>http://bradteller.com/posts/3/</loc>
+  </url>
+  <url>
+    <loc>http://bradteller.com/posts/4/</loc>
+  </url>
+  <url>
+    <loc>http://bradteller.com/posts/5/</loc>
   </url>
 </urlset>

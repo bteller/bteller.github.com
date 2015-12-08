@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Lessons | Brad Teller]]></title>
   <link href="http://bradteller.com/blog/categories/lessons/atom.xml" rel="self"/>
   <link href="http://bradteller.com/"/>
-  <updated>2015-12-08T00:21:53-05:00</updated>
+  <updated>2015-12-08T00:32:47-05:00</updated>
   <id>http://bradteller.com/</id>
   <author>
     <name><![CDATA[Brad Teller]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Really Simple Caching]]></title>
-    <link href="http://bradteller.com/blog/2012/10/18/really-simple-caching/"/>
+    <link href="http://bradteller.com/2012/10/18/really-simple-caching/"/>
     <updated>2012-10-18T00:00:00-04:00</updated>
-    <id>http://bradteller.com/blog/2012/10/18/really-simple-caching</id>
+    <id>http://bradteller.com/2012/10/18/really-simple-caching</id>
     <content type="html"><![CDATA[<p>Caching is one of those fundamental best practices that any software developer should be aware of. There are plenty of options out there where caching is concerned including Redis and Memcached, just look at <a href="http://nuget.org/packages?q=cache">Nuget</a>. What I wanted to point out though is just how simple this code can be.</p>
 
 <p><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCache</span>
@@ -63,9 +63,9 @@
   
   <entry>
     <title type="html"><![CDATA[Massive-js Issue Workaround]]></title>
-    <link href="http://bradteller.com/blog/2012/08/08/massive-js-issue-workaround/"/>
+    <link href="http://bradteller.com/2012/08/08/massive-js-issue-workaround/"/>
     <updated>2012-08-08T00:00:00-04:00</updated>
-    <id>http://bradteller.com/blog/2012/08/08/massive-js-issue-workaround</id>
+    <id>http://bradteller.com/2012/08/08/massive-js-issue-workaround</id>
     <content type="html"><![CDATA[<p>Yesterday I posted about an issue using I was having with Node.js communicating with a PostgreSQL database. You can view that <a href="http://blog.bradley-teller.me/2012/08/08/postgresql-and-node-js-issue/">here</a>.</p>
 
 <p>I have since been able to confirm my suspicion that this was a problem inside massive-js. At this point I do not have a true solution for the problem, only a recommendation on what you can do to get around it. Part of the issue is that the initialization query massive-js runs does not distinguish between primary keys and foreign keys. This means that if you have one of each defined for the table it will return both of them, and it is the multiple return values that cause this query to error out. This is also an issue if you define a composite key as your primary key. Since both columns have their own records in information_schema.table_constraints multiple records are again returned into that query.</p>
@@ -78,9 +78,9 @@
   
   <entry>
     <title type="html"><![CDATA[PostgreSQL and Node.js Issue]]></title>
-    <link href="http://bradteller.com/blog/2012/08/07/postgresql-and-nodejs-issue/"/>
+    <link href="http://bradteller.com/2012/08/07/postgresql-and-nodejs-issue/"/>
     <updated>2012-08-07T00:00:00-04:00</updated>
-    <id>http://bradteller.com/blog/2012/08/07/postgresql-and-nodejs-issue</id>
+    <id>http://bradteller.com/2012/08/07/postgresql-and-nodejs-issue</id>
     <content type="html"><![CDATA[<p>Everything was smooth sailing, until now. I tried to setup a mapping table to allow for a many-to-many relationship between tasks and tags in my application and ran into a bit of a snag. From a PostgreSQL perspective everything went just fine. I was allowed to be a good junior DBA and create a composite primary key in my mapping table, and I was also able to define foreign keys for both tagid and taskid. The surprising thing happened when I tried to run my app.</p>
 
 <p>Instead of the server starting up and waiting to serve me I got an error that read &ldquo;more than one row returned by a subquery used as an expression&rdquo;. Wow, really helpful. It didn&rsquo;t help at all that I had made a few changes to my server.js file, so I immediately thought I had something wrong in the code. After some rooting around in there, reverting to the previous version from source control, and general head scratching I was at a loss. Truthfully I am still at a loss. Hopefully I will find a better solution for this at some point, but for now I don’t want this to keep me from making progress and learning more that Node.js has to offer.</p>
@@ -97,9 +97,9 @@
   
   <entry>
     <title type="html"><![CDATA[Using Node Inspector on Windows]]></title>
-    <link href="http://bradteller.com/blog/2012/08/05/using-node-inspector-on-windows/"/>
+    <link href="http://bradteller.com/2012/08/05/using-node-inspector-on-windows/"/>
     <updated>2012-08-05T00:00:00-04:00</updated>
-    <id>http://bradteller.com/blog/2012/08/05/using-node-inspector-on-windows</id>
+    <id>http://bradteller.com/2012/08/05/using-node-inspector-on-windows</id>
     <content type="html"><![CDATA[<p>I guess I just have a hard time following directions or something, but just in case I wanted to make it crystal clear for anyone else having problems what you need to do in order to use <a href="https://github.com/dannycoates/node-inspector/">node-inspector</a> to debug a Node.js application on Windows.</p>
 
 <ol>
@@ -122,9 +122,9 @@
   
   <entry>
     <title type="html"><![CDATA[Secure Your GitHub Repo for Node.js]]></title>
-    <link href="http://bradteller.com/blog/2012/08/05/secure-your-github-repo-for-nodejs/"/>
+    <link href="http://bradteller.com/2012/08/05/secure-your-github-repo-for-nodejs/"/>
     <updated>2012-08-05T00:00:00-04:00</updated>
-    <id>http://bradteller.com/blog/2012/08/05/secure-your-github-repo-for-nodejs</id>
+    <id>http://bradteller.com/2012/08/05/secure-your-github-repo-for-nodejs</id>
     <content type="html"><![CDATA[<p>I wanted to commit my code to GitHub for this trial Node.js application I started playing with this weekend but I didn’t want any of my passwords finding there way up to GitHub. To get around this I created a module.</p>
 
 <p><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
