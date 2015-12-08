@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Lessons | Brad Teller]]></title>
+  <link href="http://bradteller.com/blog/categories/lessons/atom.xml" rel="self"/>
+  <link href="http://bradteller.com/"/>
+  <updated>2015-12-08T00:06:33-05:00</updated>
+  <id>http://bradteller.com/</id>
+  <author>
+    <name><![CDATA[Brad Teller]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Really Simple Caching]]></title>
+    <link href="http://bradteller.com/blog/2012/10/18/really-simple-caching/"/>
+    <updated>2012-10-18T00:00:00-04:00</updated>
+    <id>http://bradteller.com/blog/2012/10/18/really-simple-caching</id>
+    <content type="html"><![CDATA[<p>Caching is one of those fundamental best practices that any software developer should be aware of. There are plenty of options out there where caching is concerned including Redis and Memcached, just look at <a href="http://nuget.org/packages?q=cache">Nuget</a>. What I wanted to point out though is just how simple this code can be.</p>
+
+<p><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCache</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">Hashtable</span> <span class="n">_cache</span><span class="p">;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">static</span> <span class="n">LazyCache</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">_cache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">,</span> <span class="kt">object</span> <span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_cache</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Retrieve</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">T</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span></code></pre></div></p>
+
+<p>This is very simplistic but will provide you with an in-memory cache to decrease load on your database. You can then work with this really simple cache very simply like so.</p>
+
+<p><div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">LazyCache</span><span class="p">.</span><span class="n">Retrieve</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;&gt;(&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">hoozies</span><span class="p">&amp;</span><span class="n">rdquo</span><span class="p">;);&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">result</span> <span class="p">=</span> <span class="n">FakeDatabase</span><span class="p">.</span><span class="n">Hoozies</span><span class="p">;</span>
+    <span class="n">LazyCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;hoozies&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span></code></pre></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Massive-js Issue Workaround]]></title>
+    <link href="http://bradteller.com/blog/2012/08/08/massive-js-issue-workaround/"/>
+    <updated>2012-08-08T00:00:00-04:00</updated>
+    <id>http://bradteller.com/blog/2012/08/08/massive-js-issue-workaround</id>
+    <content type="html"><![CDATA[<p>Yesterday I posted about an issue using I was having with Node.js communicating with a PostgreSQL database. You can view that <a href="http://blog.bradley-teller.me/2012/08/08/postgresql-and-node-js-issue/">here</a>.</p>
+
+<p>I have since been able to confirm my suspicion that this was a problem inside massive-js. At this point I do not have a true solution for the problem, only a recommendation on what you can do to get around it. Part of the issue is that the initialization query massive-js runs does not distinguish between primary keys and foreign keys. This means that if you have one of each defined for the table it will return both of them, and it is the multiple return values that cause this query to error out. This is also an issue if you define a composite key as your primary key. Since both columns have their own records in information_schema.table_constraints multiple records are again returned into that query.</p>
+
+<p>Until a more permanent fix is identified, or until the update I made locally finds its way into the package, you can update your copy of /node_modules/massive/lib/postgres.js with the code in this <a href="https://gist.github.com/3300228">gist</a>. Beyond that just remember not to use composite primary keys and you should be okay.</p>
+
+<p>I’ve also forked the repo and have some ideas on some extensions, so you might want to follow watch <a href="https://github.com/bteller/massive-js">my fork</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PostgreSQL and Node.js Issue]]></title>
+    <link href="http://bradteller.com/blog/2012/08/07/postgresql-and-nodejs-issue/"/>
+    <updated>2012-08-07T00:00:00-04:00</updated>
+    <id>http://bradteller.com/blog/2012/08/07/postgresql-and-nodejs-issue</id>
+    <content type="html"><![CDATA[<p>Everything was smooth sailing, until now. I tried to setup a mapping table to allow for a many-to-many relationship between tasks and tags in my application and ran into a bit of a snag. From a PostgreSQL perspective everything went just fine. I was allowed to be a good junior DBA and create a composite primary key in my mapping table, and I was also able to define foreign keys for both tagid and taskid. The surprising thing happened when I tried to run my app.</p>
+
+<p>Instead of the server starting up and waiting to serve me I got an error that read &ldquo;more than one row returned by a subquery used as an expression&rdquo;. Wow, really helpful. It didn&rsquo;t help at all that I had made a few changes to my server.js file, so I immediately thought I had something wrong in the code. After some rooting around in there, reverting to the previous version from source control, and general head scratching I was at a loss. Truthfully I am still at a loss. Hopefully I will find a better solution for this at some point, but for now I don’t want this to keep me from making progress and learning more that Node.js has to offer.</p>
+
+<p>What I found was that either massive-js or one of the modules it uses, perhaps node-postgres, appears to have a problem with the constraints I had created on the mapping table. So, to allow me to move forward I just removed the constraints and everything went back to running as expected.</p>
+
+<p>Check back, I&rsquo;ll provide an actual fix for this once I do finally track one down.</p>
+
+<blockquote><p>UPDATE: So far it seems like the problem is with massive-js. In particular it seems to be an issue starting at line 17 of ./lib/postgres.js where the schema is queried.</p></blockquote>
+
+<p><strong>WORKAROUND:</strong> Since posting this yesterday I have identified and implemented a workaround for this issue. It&rsquo;s the next post up, but just in case here is a <a href="http://blog.bradley-teller.me/2012/08/09/massive-js-issue-workaround/">link to it</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Node Inspector on Windows]]></title>
+    <link href="http://bradteller.com/blog/2012/08/05/using-node-inspector-on-windows/"/>
+    <updated>2012-08-05T00:00:00-04:00</updated>
+    <id>http://bradteller.com/blog/2012/08/05/using-node-inspector-on-windows</id>
+    <content type="html"><![CDATA[<p>I guess I just have a hard time following directions or something, but just in case I wanted to make it crystal clear for anyone else having problems what you need to do in order to use <a href="https://github.com/dannycoates/node-inspector/">node-inspector</a> to debug a Node.js application on Windows.</p>
+
+<ol>
+<li>Temporarily disable your anti-virus software. You damn well better be running anti-virus software. If you aren&rsquo;t because you don&rsquo;t feel you should have to pay for it then you can either use Windows Essentials or run over to AVG and download the <a href="http://free.avg.com/us-en/homepage">free</a> version. I&rsquo;m running AVG and it is really easy to disable, just right-click the tray icon and select the option to &ldquo;Temporarily disable AVG protection&rdquo;. It is even nice enough to let you select a time duration to disable protection for.</li>
+<li>Drop down to a command line and run <code>npm install -g node-inspector</code>.</li>
+<li>This isn&rsquo;t important here, but if you want to be able to quickly launch Notepad++ from the command line run <code>doskey n=notepad++ $*</code>. Note that I have the notepad++ executable in my path. If you don&rsquo;t you should be able to specify the full path, or just add it to your path to make this easier to do in the future.</li>
+<li>From within the root directory of your Node.js application run <code>node-inspector &amp;</code>.</li>
+<li>Now open another command prompt, leaving the one running node-inspector open and navigate to your Node.js application root. Then run <code>node --debug server</code> to start your application up in debug mode. If your primary source file name is something different then use that in place of &ldquo;server&rdquo;. If you want to break at the first line of code run <code>node -debug-brk server</code> instead.</li>
+<li>Open Chrome, or Safari if you have it installed, and go to &ldquo;localhost:8080&rdquo; to view the debug tools.</li>
+<li>Open another tab in Chrome and navigate to your Node.js applications port at localhost.</li>
+<li>Click back over to the node-inspector tab and marvel at how simple that really was.</li>
+</ol>
+
+
+<p>This thing is really great. Once it is up and running you can step through and debug your application just as you would your client-side scripts for any other site you&rsquo;ve worked on. I&rsquo;ve only been using it for a few days now, but I haven&rsquo;t really run into any issues. I&rsquo;ll admit that selecting the script file in which to set breakpoints can be a little difficult. When you are debugging keep in mind that your scripts will not appear until they are pulled in by require statements.</p>
+
+<p>I have experienced some odd behavior with the debugger though. Occasionally it seems to detach itself from the node server. If that happens just rinse and repeat from step 4 above.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Secure Your GitHub Repo for Node.js]]></title>
+    <link href="http://bradteller.com/blog/2012/08/05/secure-your-github-repo-for-nodejs/"/>
+    <updated>2012-08-05T00:00:00-04:00</updated>
+    <id>http://bradteller.com/blog/2012/08/05/secure-your-github-repo-for-nodejs</id>
+    <content type="html"><![CDATA[<p>I wanted to commit my code to GitHub for this trial Node.js application I started playing with this weekend but I didn’t want any of my passwords finding there way up to GitHub. To get around this I created a module.</p>
+
+<p><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">connString</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">postgres</span><span class="o">:</span><span class="c1">//username:password@server/db-name&amp;rdquo;</span>
+<span class="p">};</span></code></pre></div></p>
+
+<p>Then I told my application to consume it.</p>
+
+<p><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;.</span><span class="o">/</span><span class="nx">secure</span><span class="p">.</span><span class="nx">js</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">db</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">connString</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">db</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">lifejs</span> <span class="o">=</span> <span class="nx">db</span><span class="p">;</span>
+<span class="p">});</span></code></pre></div></p>
+
+<p>The thing to pay attention to is where I tell <a href="https://github.com/robconery/massive-js">massive-js</a> the connection string to use for connecting to my local postresql database. I access it by calling “settings.connString” which is nothing more than a constant at this point.</p>
+
+<p>The last thing you have to do is add &ldquo;/secure.js&rdquo; to your .gitignore file. Now you can commit changes to your repository without fear of everybody seeing your connection string information, or anything else you would like to keep private.</p>
+]]></content>
+  </entry>
+  
+</feed>

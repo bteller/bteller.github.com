@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>UnRegister: JavaScript, CoffeeScript and UI Testing - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="I&rsquo;ve been thinking about the UI lately for UnRegister and this means some client-side code, vis-a-vis JavaScript. My plan was to dive right in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2012/03/28/unregister-javascript-coffeescript-and/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">UnRegister: JavaScript, CoffeeScript and UI Testing</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&rsquo;ve been thinking about the UI lately for UnRegister and this means some client-side code, vis-a-vis JavaScript. My plan was to dive right in, but then I read this <a href="http://wekeroad.com/2012/03/21/coffeescript-or-straight-up-js-i-suck-either-way/">post</a>. Now that got me thinking. So what do I think? I think I&rsquo;ll leave CoffeeScript alone.</p>
+
+<h2>Translator Please</h2>
+
+<p>The folks over at <a href="http://coffeescript.org/">coffeescript.org</a> say that &ldquo;CoffeeScript is a little language that compiles into JavaScript.&rdquo; Well how delightful. I&rsquo;m a tremendous fan of the .Net framework. I&rsquo;ve looked around at other programming languages but as a general rule, for the majority of my projects, I tend to return to the .Net framework for my programming needs. Yeah, it helps that I&rsquo;m more comfortable working with it than any other framework, but it also does a great job. At its heart is this thing called the CLR, and that is responsible for compiling your VB.Net or C# code into machine language. Wouldn&rsquo;t it suck some serious ass if we had to write that out directly (unless of course you&rsquo;re into that sort of thing!!).</p>
+
+<p>So can we draw parallels between what the CLR is doing for us and CoffeeScript? Not a damn chance.</p>
+
+<p>To me writing something out in CoffeeScript and &ldquo;compiling&rdquo; it into JavaScript isn&rsquo;t providing enough of a benefit for me to consider it useful, and not at all necessary. Now I admit, I haven&rsquo;t used CoffeeScript, but that&rsquo;s because I don&rsquo;t want to. To me it&rsquo;s a little like using a translator to facilitate communications between somebody that speaks North Carolinian English and someone that speaks Californian English. In Rob&rsquo;s post, linked to above, he links to <a href="http://ryanflorence.com/2011/2012/case-against-coffeescript/">this</a> article which you really drives home some good points and identifies some of what my initial reservations were. You mean to say you want to write something in CoffeeScript, compile it down, consume the outputted JavaScript, run into an error, not have a clue what that error means, have no debug tools available to you, and have to track that back down in CoffeeScript somehow? It sounds like what one tremendous step backwards would feel like if you were standing with your back to the Grand Canyon two feet away from the ledge. Maybe there is some magic pixie dust (STOP! Is there such a thing as non-magical pixie dust???) that someone will sprinkle on you that gives you wings and allows you to soar above me with all the other CoffeeScript adopters. I sure hope I don&rsquo;t miss out on that.</p>
+
+<h2>JavaScript Unit Tests</h2>
+
+<p>I&rsquo;m sorry, what did you say? Man, I&rsquo;ve been standing in opposition of unit testing for years now, only to finally have been won over by its benefits, but I have limits! Hopefully somebody is out there reading this and will tell me what an idiot I am, please feel free. In the meantime I&rsquo;m going to sneeze a handful of good old fashioned man powered testing back at ya. Okay, I&rsquo;ll concede that for those of you developing for node.js, backbone.js, or who knows whatever popular server-side JavaScript platform is popular at the moment that you probably really do need to unit test your JavaScript. For those of us using it to spice up our ASP.Net MVC driven sites, or RoR, PHP, or whatever, I don&rsquo;t get it. NOT AT ALL!</p>
+
+<p>How about a scenario. Okay. I have a site. I want customers to be able to register for my site. I want them to give me an email address, password, confirmation password, name of their first born, if they don&rsquo;t have a first born than the name of their absolute favorite Star Wars character, and how about a date of birth for good measure. Now I&rsquo;ll have server side validation, and not driven by the damn database thank you very much, but I&rsquo;m also expecting millions of new users to register every second, so what am I going to do??? I&rsquo;ll be responsible and add in some client-side validation of course, and I&rsquo;ll feel damn good about myself for doing it. I&rsquo;m not going to reinvent the wheel so I&rsquo;m going to leverage the JQuery Validation plug-in (go find it, it really exists), and drop in my validation rules. After all that I&rsquo;m going to expect when somebody tests my site they know about that little spinny thing that starts its spinning, and that it does this when the browser makes the request of the server. So when they see failed validation when they click on the register button, and they don&rsquo;t see the little spinny thing, they will know that some client-side validation fired.</p>
+
+<p>But seriously &hellip; (man I&rsquo;m exhausting myself) &hellip; is there really a need? I&rsquo;m thinking that for 95% of the JavaScript code out there we don&rsquo;t need to be concerned with writing unit tests for.</p>
+
+<h2>UI Testing in UnRegister</h2>
+
+<p>I&rsquo;m very sad to say that at the very least I will not be doing this up front. I really do want to to try out something like <a href="http://watin.org/">WaitiN</a>, but that will come at the end of the project, time permitting. If you&rsquo;ve used any other tools, please recommend them.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2012/03/28/unregister-javascript-coffeescript-and/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2012/03/28/unregister-javascript-coffeescript-and/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/28/aspnet-mvc-client-validation-woes/" title="Previous Post: ASP.Net MVC Client Validation Woes">&laquo; ASP.Net MVC Client Validation Woes</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/08/05/nodejs-express-helpers/" title="Next Post: Node.js Express Helpers">Node.js Express Helpers &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

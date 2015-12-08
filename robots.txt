@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://bteller.github.io/sitemap.xml 
+Sitemap: http://bradteller.com/sitemap.xml 

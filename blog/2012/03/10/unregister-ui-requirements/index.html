@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>UnRegister: The UI Requirements - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="This is going to be a little rough because I&rsquo;m terrible with graphics applications, and I don&rsquo;t have a scanner, so that makes any sort of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2012/03/10/unregister-ui-requirements/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">UnRegister: The UI Requirements</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-10T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This is going to be a little rough because I&rsquo;m terrible with graphics applications, and I don&rsquo;t have a scanner, so that makes any sort of wire frame impossible. I searched around for something free that might help me get the job done and found a tool called <a href="http://www.evolus.vn/Pencil/Home.html">Pencil</a>, but I&rsquo;m still facing some challenges with it. So to start with, unless I get more ambitious later in the day, this is primarily going to be a wire frame in text. I&rsquo;ll detail my core requirements for these pages in sections below.</p>
+
+<h2>Landing Page</h2>
+
+<p>This is the home page, or index page, and there are a few things this page needs to do. First, it needs to identify the project name and what the project is all about. The &ldquo;all about&rdquo; I&rsquo;d like communicated in a quick project mission statement, much like I&rsquo;ve got up on the github repo today. We also need some log in capabilities, and I&rsquo;d like that to be hidden inside a pull-down triggered from a button click. We&rsquo;ll need some way for new users to register to use the service, so we&rsquo;ll need some sort of link to the registration page. And then, maybe later on down the road once we&rsquo;ve actually got this application doing something we could include a brief tutorial on how to use it.</p>
+
+<p>At the end of the day this might look something like this.</p>
+
+<p><img src="/assets/images/posts/unregister-ui-requirements-1.png" alt="Home Image" /></p>
+
+<h2>The Other Pages</h2>
+
+<blockquote><p>That was the limit of my patience trying to draw things out using any sort of tool, so this will go pretty quick from here on out. I can&rsquo;t see spending hours putting together some drawings when I can get it done equally as fast using HTML and CSS directly.</p></blockquote>
+
+<p>The other pages we&rsquo;ll be needing are.</p>
+
+<ul>
+<li><strong>Login Page</strong> - this will duplicate the drop down box from the landing page and will also provide some forgot password functionality
+Registration Page - we need a place where users can sign up for the service, so that&rsquo;s what this will be for</li>
+<li><strong>Dashboard Page</strong> - this is the main page for the user to interact with where they will see a quick summary of their accounts and have a quick add transaction option</li>
+<li><strong>Account Page</strong> - this will consist of a list of transactions and allow for sorting and filtering within the current account, and of course will allow for adding, editing and deleting of associated transactions</li>
+<li><strong>Profile Page</strong> - the user probably needs a place to change their password and edit other basic information about themselves, so this will be provided here</li>
+</ul>
+
+
+<p>That should probably do it. I wish I had the patience to draw these all out, but this is generally why I don&rsquo;t go through this exercise. When I start working on a project, especially something like this where the requirements are coming from me, I generally have a loose idea in my head about what pages I&rsquo;ll need and the functionality they will provide, and that&rsquo;s about it. I don&rsquo;t have spelled out to the letter what everything is going to do, and I certainly don&rsquo;t have it drawn out. So why did I try and do it this way here? I really don&rsquo;t know. Now you have a little insight into my madness though.</p>
+
+<h2>What&rsquo;s next?</h2>
+
+<p>I&rsquo;m going to be using the <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> tools from Twitter to give this application its basic skin. So next for me is to start working on the page implementations. So that will likely be the topic for the next post.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-03-10T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2012/03/10/unregister-ui-requirements/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2012/03/10/unregister-ui-requirements/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/03/02/unregister-setting-up-git/" title="Previous Post: UnRegister: Setting Up Git">&laquo; UnRegister: Setting Up Git</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/28/aspnet-mvc-client-validation-woes/" title="Next Post: ASP.Net MVC Client Validation Woes">ASP.Net MVC Client Validation Woes &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

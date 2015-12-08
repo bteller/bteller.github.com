@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Refactor Constantly - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="Why? You want to refactor for a number of reasons. Make your code more unit testable.
+Adhere to design patterns.
+Make it more readable.
+Make it more &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2014/01/30/refactor-constantly/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Refactor Constantly</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Why?</h2>
+
+<p>You want to refactor for a number of reasons.</p>
+
+<ul>
+<li>Make your code more unit testable.</li>
+<li>Adhere to design patterns.</li>
+<li>Make it more readable.</li>
+<li>Make it more maintainable.</li>
+<li>And so on &hellip;</li>
+</ul>
+
+
+<p>Does this violate the Open Closed Principle? Yes, I guess it does. The whole idea behind refactoring though is that you will eventually get your code to the point where additional refactorings are no longer needed. If you work in an environment like I do though, you are constantly adding new code, so there is constantly code to <em>improve</em>.</p>
+
+<h2>Have A Plan</h2>
+
+<p>It is important for you to look at the code and come up with a game plan for what you want to see changed. Make sure you know why you want that change too. I can&rsquo;t emphasize that enough. Don&rsquo;t rewrite code for the sake of rewriting it. There has to be a solid reason for doing so, otherwise you are just wasting the companies time, or your own. So, look at the code you want to rewrite, make notes along the way of all the things you&rsquo;d like to improve, and write down why you feel those changes are necessary.</p>
+
+<h2>Don&rsquo;t Start Right Away</h2>
+
+<p>Man, I am notorious for getting myself caught in this trap. I have an idea for something to improve, and then I just jump right in. Hell, a lot of the time it isn&rsquo;t a plan so much as it is a few ideas rolling around in my head. Sometimes that is the best way to get started coming up with a list of things to change&hellip; just don&rsquo;t commit those &ldquo;I have an idea&rdquo; changes until you&rsquo;ve written them down and thought them over.</p>
+
+<p>I like to keep notes about what code to refactor in Evernote. Anything like that I&rsquo;ll add a &ldquo;.refactor&rdquo; tag too, as well as a &ldquo;.todo&rdquo; tag. The &ldquo;.todo&rdquo; tag lets me know that I want to revisit that note for one reason or another. With that note saved off I&rsquo;m not worried about forgetting any of my fantastic ideas, and I can also sleep on it for a night, a week, or for however long it takes.</p>
+
+<h2>Baby Steps</h2>
+
+<p>After you have your plan, take baby steps. Build on that plan and come up with a true plan of attack. You don&rsquo;t want to change everything at once. Hell, ideally you will have a few dozen commits that take place over a few weeks. That way you know your application isn&rsquo;t going to fail horribly in Production.</p>
+
+<p>This is another trap I fall into though&hellip; I start changing everything at once. It feels great too! I&rsquo;ll sit there and marvel at how productive I&rsquo;ve been. It isn&rsquo;t worth it though, because you&rsquo;ll screw something up. Here is my advice.</p>
+
+<ul>
+<li>Take your time.</li>
+<li>Talk things over with your team, if you have one.</li>
+<li>Figure out which changes are the most important or impactful.</li>
+<li>Above all, make sure everybody on your team knows what is coming, and why.</li>
+</ul>
+
+
+<h2>Conclusion</h2>
+
+<p>Refactor, and refactor often. It is well worth the exercise. You&rsquo;ll learn new things, reacquaint yourself with old code, find bugs you didn&rsquo;t realize were there, and overall improve the quality of your codebase. You need to do it slowly though, with an execution plan, and with the buy in from other members of your team.</p>
+
+<p>Happy refactoring!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2014/01/30/refactor-constantly/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2014/01/30/refactor-constantly/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/01/29/the-problem-with-open-source/" title="Previous Post: The Problem with Open Source Software">&laquo; The Problem with Open Source Software</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/10/why-tfs-sucks/" title="Next Post: Why TFS Sucks!">Why TFS Sucks! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

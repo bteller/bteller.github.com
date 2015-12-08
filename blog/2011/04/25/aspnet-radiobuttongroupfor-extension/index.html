@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.Net RadioButtonGroupFor() Extension - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="The other day I wanted to create a group of radio buttons that corresponded to values in an Enum, and there wasn&rsquo;t anything already provided in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2011/04/25/aspnet-radiobuttongroupfor-extension/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ASP.Net RadioButtonGroupFor() Extension</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-04-25T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The other day I wanted to create a group of radio buttons that corresponded to values in an Enum, and there wasn&rsquo;t anything already provided in the framework for doing so, or at least not that I am as of yet aware of. Given that MVC is so extensible though, I was able to hack something together very quickly.</p>
+
+<p>The code below is the extension method itself.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">MvcHtmlString</span> <span class="n">RadioButtonGroupFor</span><span class="p">&lt;</span><span class="n">TModel</span><span class="p">,</span> <span class="n">TValue</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">HtmlHelper</span><span class="p">&lt;</span><span class="n">TModel</span><span class="p">&gt;</span> <span class="n">helper</span><span class="p">,</span> <span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">TModel</span><span class="p">,</span> <span class="n">TValue</span><span class="p">&gt;&gt;</span> <span class="n">expression</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ModelMetadata</span> <span class="n">metaData</span> <span class="p">=</span> <span class="n">ModelMetadata</span><span class="p">.</span><span class="n">FromLambdaExpression</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">helper</span><span class="p">.</span><span class="n">ViewData</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">names</span> <span class="p">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">GetNames</span><span class="p">(</span><span class="n">metaData</span><span class="p">.</span><span class="n">ModelType</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">StringWriter</span> <span class="n">textWriter</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">StringWriter</span><span class="p">();</span>
+ 
+    <span class="k">using</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">HtmlTextWriter</span><span class="p">(</span><span class="n">textWriter</span><span class="p">))</span> 
+    <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">Enum</span><span class="p">.</span><span class="n">GetValues</span><span class="p">(</span><span class="n">metaData</span><span class="p">.</span><span class="n">ModelType</span><span class="p">))</span> 
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">enumName</span> <span class="p">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">GetName</span><span class="p">(</span><span class="n">metaData</span><span class="p">.</span><span class="n">ModelType</span><span class="p">,</span> <span class="n">item</span><span class="p">);</span>
+            
+            <span class="k">if</span> <span class="p">(</span><span class="n">metaData</span><span class="p">.</span><span class="n">Model</span> <span class="p">==</span> <span class="n">item</span><span class="p">)</span> 
+            <span class="p">{</span>
+                <span class="n">writer</span><span class="p">.</span><span class="n">AddAttribute</span><span class="p">(</span><span class="n">HtmlTextWriterAttribute</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="s">&quot;checked&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+            
+            <span class="n">writer</span><span class="p">.</span><span class="n">AddAttribute</span><span class="p">(</span><span class="s">&quot;enum-name&quot;</span><span class="p">,</span> <span class="n">enumName</span><span class="p">);</span>
+            <span class="n">writer</span><span class="p">.</span><span class="n">AddAttribute</span><span class="p">(</span><span class="n">HtmlTextWriterAttribute</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">metaData</span><span class="p">.</span><span class="n">PropertyName</span><span class="p">);</span>
+            <span class="n">writer</span><span class="p">.</span><span class="n">AddAttribute</span><span class="p">(</span><span class="n">HtmlTextWriterAttribute</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToInt32</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="n">ToString</span><span class="p">());</span>
+            <span class="n">writer</span><span class="p">.</span><span class="n">AddAttribute</span><span class="p">(</span><span class="n">HtmlTextWriterAttribute</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="s">&quot;radio&quot;</span><span class="p">);</span>
+            <span class="n">writer</span><span class="p">.</span><span class="n">RenderBeginTag</span><span class="p">(</span><span class="n">HtmlTextWriterTag</span><span class="p">.</span><span class="n">Input</span><span class="p">);</span>
+            <span class="n">writer</span><span class="p">.</span><span class="n">RenderEndTag</span><span class="p">();</span>
+            <span class="n">writer</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">enumName</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+ 
+    <span class="k">return</span> <span class="n">MvcHtmlString</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">textWriter</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>And the markup below is a simple use case.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;label&gt;</span>Type:<span class="nt">&lt;/label&gt;</span>
+  @Html.RadioButtonGroupFor(m =&gt; m.AccountType)
+<span class="nt">&lt;/p&gt;</span></code></pre></div>
+
+
+<p>Now provided your Model has a property on it of a type for your Enum, then all of those possible values will be written out to the screen, and of course the current value for the object, if there is one, will be selected.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2011-04-25T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2011/04/25/aspnet-radiobuttongroupfor-extension/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2011/04/25/aspnet-radiobuttongroupfor-extension/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/18/sort-order-for-list-with-persistence/" title="Previous Post: Sort Order for List with Persistence">&laquo; Sort Order for List with Persistence</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/29/persistence-ignorant/" title="Next Post: Persistence Ignorant">Persistence Ignorant &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

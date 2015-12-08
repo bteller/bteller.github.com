@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.Net MVC - Update Multiple Records at Once - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="I had a need to update multiple records in one view, and as always a quick google search brought me to the following two articles: http://haacked.com &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2010/03/23/aspnet-mvc-update-multiple-records-at/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ASP.Net MVC - Update Multiple Records at Once</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2010-03-23T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I had a need to update multiple records in one view, and as always a quick google search brought me to the following two articles:</p>
+
+<ul>
+<li><a href="http://haacked.com/archive/2008/10/23/model-binding-to-a-list.aspx">http://haacked.com/archive/2008/10/23/model-binding-to-a-list.aspx</a></li>
+<li><a href="http://weblogs.asp.net/bhaskarghosh/archive/2009/06/18/7128803.aspx">http://weblogs.asp.net/bhaskarghosh/archive/2009/06/18/7128803.aspx</a></li>
+</ul>
+
+
+<p>I was going to include some snippets of code from my implementation, but Blogger doesn&rsquo;t seem to like me putting form elements on my blog the way I have it configured presently, so instead here is a quick list of notes.</p>
+
+<ul>
+<li>It is not a typo that the input elements are missing an id and instead are using the name attribute as it will not work otherwise.</li>
+<li>The prefix of the element name, which in my test case was &ldquo;golfCourses&rdquo;, must match the parameter name of the method you are using to handle the post.</li>
+<li>A generic list does work as a parameter type.</li>
+<li>The last thing is that even though other posts would lead you to believe that your would be array indexes in your html input element names can be whatever you want, I have found in my own testing that it does not work as desired unless this is 0 based, meaning your first element must start with 0, and each additional group of elements that define the next object should increment by 1.</li>
+</ul>
+
+
+<p>Other than that, things really are as simple as they seem. So who needs data grids?</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2010-03-23T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2010</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2010/03/23/aspnet-mvc-update-multiple-records-at/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2010/03/23/aspnet-mvc-update-multiple-records-at/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/03/21/aspnet-mvc-delete-confirmation/" title="Previous Post: ASP.Net MVC - Delete Confirmation">&laquo; ASP.Net MVC - Delete Confirmation</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/05/10/jquery-ui-validation-summary/" title="Next Post: jQuery UI Validation Summary">jQuery UI Validation Summary &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

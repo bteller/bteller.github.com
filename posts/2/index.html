@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="I see a lot of code like this. var p = repo.GetBy(personId); if (p.Children.Count &gt; 0 &amp;&amp; p.Children.Where(c =&gt; c.Children.Count() &gt; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/posts/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/21/code-meaningfully/">Code Meaningfully</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-21T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I see a lot of code like this.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">p</span> <span class="p">=</span> <span class="n">repo</span><span class="p">.</span><span class="n">GetBy</span><span class="p">(</span><span class="n">personId</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">&amp;&amp;</span> <span class="n">p</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">).</span><span class="n">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;somebody old&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;maybe old, but maybe no kids&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>What does this code do? Maybe in this case it jumps right out at you and you say &ldquo;Oh! They are trying to find out if this person has any grandchildren&rdquo; and that would be right. But there are problems with this code.</p>
+
+<ul>
+<li>What happens if your logic is more complex?</li>
+<li>What if you need to run this logic other places in your code?</li>
+<li>It took you some time to look over the code to find out exactly what it was doing, right?</li>
+<li>What happens if you were to change what it means to &ldquo;have grandchildren&rdquo;?</li>
+</ul>
+
+
+<h3>Add Meaning</h3>
+
+<p>We can make this code much more readable, meaningful, and flexible, with a very simple refactor. Start by doing this.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">p</span> <span class="p">=</span> <span class="n">repo</span><span class="p">.</span><span class="n">GetBy</span><span class="p">(</span><span class="n">personId</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">HasGrandchildren</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;somebody old&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;maybe old, but maybe no kids&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>And then push that logical check into <em>IsGrandparent()</em> off of <em>Person</em>.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="kt">bool</span> <span class="nf">HasGrandchildren</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Count</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">Children</span><span class="p">.</span><span class="n">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">).</span><span class="n">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Now we&rsquo;ve taken what it means to have grandchildren and encapsulated it in a single function. So if we were to ever change this logic we only have to do so in one place. Not repeating yourself is great, especially in code, but there is another benefit.</p>
+
+<h3>Code Readability</h3>
+
+<p>Unless we are working on a personal project that nobody else will ever use or modify we are sharing the source code with those we are working with today, and those who will come after us. Take some time when you write your code and make sure your code is readable. Everyone will benefit from the extra bit of effort.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/18/wr-passion-pride/">Weekly Reflection: Passion and Pride</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-18T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is the second &ldquo;Weekly Reflection&rdquo; installment. As I suspected it would be, it has been over a week since the first, but I&rsquo;m only a week or so late, and that is better than I had anticipated.</p>
+
+<h3>Passion</h3>
+
+<p>I had a great conversation over lunch today with some co-workers, and among other topics we discussed what motivates people. One opinion voiced was that everyone is driven by money. While I feel that is true for a number of people, I certainly don&rsquo;t believe it&rsquo;s true for everyone. Passion, in my opinion, is a much greater motivator than money. It is passion, I believe, that has fueled the open-source software community, and driven people to post and share a wealth of knowledge on blogs and sites like Wikipedia. It is passion that drives me, too.</p>
+
+<p>I spend a tremendous amount of my time writing code, watching screncasts and reading books. Just last night I was up late as part of a few hour long mini-hackathon putting together some prototype code to be used later as part of a project a colleague of mine will be working on. And you know what? I enjoyed it. It didn&rsquo;t bother me that I woke up this morning without having had as much sleep as I probably could have used, because I woke up with a sense of pride in what I had accomplished the night before.</p>
+
+<p>It&rsquo;s important to do that which you are passionate about, and for me that is writing code, so that is what I do. I&rsquo;m often accused of working too much, and I suppose it could seem that way to some, but when you are doing what you enjoy is it really work? That isn&rsquo;t an open invitation to my boss to pile more work on my plate though&hellip; I&rsquo;ve got a fair load as it is.</p>
+
+<p>When I&rsquo;m not writing code, my eyes do get tired sometimes, I do have to surround myself with other things. My golf game is pretty terrible anymore, but I do rather enjoy shooting pool, so that is a passion I&rsquo;m trying to grow. I&rsquo;ve played for several years now, but I&rsquo;m going to begin making more time for it and try and play a more serious game.</p>
+
+<h3>Pride</h3>
+
+<blockquote><p>My list of virtues contain&rsquo;d at first but twelve; but a Quaker friend having kindly informed me that I was generally thought proud; that my pride show&rsquo;d itself frequently in conversation; that I was not content with being in the right when discussing any point, but was overbearing, and rather insolent, of which he convinc&rsquo;d me by mentioning several instances; I determined endeavouring to cure myself, if I could, of this vice or folly among the rest, and I added Humility to my list, giving an extensive meaning to the word.</p></blockquote>
+
+<p>The passage above is from <em>The Autobiography of Benjamin Franklin</em> by, of course, Benjamin Franklin.</p>
+
+<p>Words to live by, right? I think so anyway. Which is not to say that I do a very good job putting this into practice, because I don&rsquo;t. When I shared earlier that I was proud of my accomplishments the night before when I was writing code I thought about my use of the word <em>pride</em> and how it relates to the passage above. In that particular context I think it&rsquo;s okay to feel a sense of pride, because I don&rsquo;t feel I was being boastful about it. I wasn&rsquo;t calling attention to myself with this whole &ldquo;Look at me, ain&rsquo;t I wonderful&rdquo; kind of attitude. And no, that&rsquo;s not what I&rsquo;m doing right here and now in this post.</p>
+
+<p>There are opposite extremes though where our pride can become a detriment. It is far too easy to cross the line between confidence and arrogance, to make it difficult for others to engage us in conversation, or even want to for that matter. We all need to remember that who we are is a product, in part, of who we have received help from along the way. I for one would not be enjoying the career I have had it not been for the people I&rsquo;ve worked for in the past who decided to take a chance on me. Heck, one of the reasons I know I&rsquo;ve had a problem with pride is that a former boss of mine, after I was no longer working for him, made mention of the fact that I should be grateful for the opportunities that have been afforded me, and he was right.</p>
+
+<h3>That&rsquo;s It</h3>
+
+<p>Let&rsquo;s all run off now and become better people, be nicer to those around us, be less arrogant, be a mentor, or do something we are passionate about and really love doing.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/04/weekly-reflection/">Weekly Reflection</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-04T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>I&rsquo;m going to try and do this weekly. I make no promises though!</p></blockquote>
+
+<h3>Consumerism</h3>
+
+<p>I bought a house recently, which I&rsquo;m pretty happy about, but then I read an article like <a href="http://www.nytimes.com/2013/03/10/opinion/sunday/living-with-less-a-lot-less.html?src=me&amp;ref=general&amp;_r=2&amp;">Living With Less</a> and I wonder if I didn&rsquo;t overdo it a bit. It is especially hard to justify the size of my living space when you look at <a href="http://www.lifeedited.com/see-full-set-of-official-lifeedited-apartment-photos/">what is possible</a>. You have to admit, that is one neat looking little apartment.</p>
+
+<p>There are times when I really do try and live a more minimalistic lifestyle, but it never really seems to stick. I find myself eating out for lunch every day, driving a nice car, buying a pretty big house, drinking at the bar instead of enjoying a few drinks at home with friends, and the list goes on.</p>
+
+<h3>Commitment</h3>
+
+<p>It is far too easy to get distracted throughout the course of the day, be it intentional or not. I&rsquo;m as guilty of procrastinating as the next person (In fact, I&rsquo;m putting off doing laundry right now). At home we are generally only letting ourselves down when we fail to get something done, but that isn&rsquo;t the case at work. Since this doesn&rsquo;t come naturally to us (I read an article somewhere and I&rsquo;d like to link to it here) I&rsquo;m always looking for inspirational reads and slick tools to make it fun and exciting.</p>
+
+<p>As a programmer one of the most inspirational things I&rsquo;ve read is something I&rsquo;ve linked to here before, <a href="http://www.barnesandnoble.com/w/clean-coder-robert-c-martin/1029379635?cm_mmc=googlepla-_-textbook_instock_26to75_pt99-_-q000000633-_-9780137081073&amp;cm_mmca2=pla&amp;ean=9780137081073&amp;isbn=9780137081073&amp;r=1">The Clean Coder: A Code of Conduct for Professional Programmers</a>, so much so that I read the book again just a few weeks ago.</p>
+
+<p>Finding inspiration isn&rsquo;t enough though, we need to follow through on things to meet our commitments. To that end I have a few tools that I use.</p>
+
+<ul>
+<li>Todos: <a href="http://todo.ly">Todo.ly</a></li>
+<li>Notes: <a href="http://www.evernote.com">Evernote</a></li>
+<li>Tracking: <a href="http://www.trello.com">Trello</a></li>
+</ul>
+
+
+<p>And speaking of commitment, what sort of precedent is Google setting by killing Google Reader? Next to gmail and search this has been my favorite product offering from Google, and now its going away. Well, I went out looking for some good alternatives and ended up finding <a href="http://www.feedly.com">feedly</a>, and its pretty slick. So if you find yourself looking for a replacement for Google Reader, you could do much worse, this tool even imports your subscriptions and favorites for you.</p>
+
+<h3>That&rsquo;s It</h3>
+
+<p>That&rsquo;s what has been weighing on my mind lately. Like I said, there will hopefully be more posts like this one in the future. I&rsquo;m adding it to my calendar right after I commit this one.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/04/quality/">Quality</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-04-04T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Writing software is hard. Writing a quality piece of software is even harder. Add to that the fact that people just don&rsquo;t seem to care anymore and it becomes virtually impossible.</p>
+
+<p>But quality isn&rsquo;t just a software problem&hellip;</p>
+
+<h3>It&rsquo;s an Epidemic</h3>
+
+<p>As I&rsquo;ve said before, I bought a house recently. What I was hoping was that when they said the house was &ldquo;done&rdquo;, that the house would really be done. I don&rsquo;t mean livable done, I mean the kind of done where you go over everything with a fine tooth comb and don&rsquo;t find a single problem. Well, that didn&rsquo;t happen. Instead for the past two months I&rsquo;ve had crews coming in and out to fix this thing or that, and it has been a real pain in the ass.</p>
+
+<p>Okay, so it&rsquo;s a house and there are a lot of things that could go wrong, and it&rsquo;s a really crappy example. But let me tell you, there are quality problems all over the place. Here are just a few issues I&rsquo;ve had with quality over the last few months (this is by no means an exhaustive list).</p>
+
+<ul>
+<li>I went to a Red Lobster for dinner and ordered a linguini and crab alfredo. The waitress ended up bringing me the wrong dish.</li>
+<li>I had a problem with the hardwood floors in my new place and they ended up having to fix a section. When they did so they replaced the boards in that section with boards that didn&rsquo;t match the rest of the floor.</li>
+<li>I like cottage cheese (I know, I&rsquo;m weird), and I&rsquo;ve been buying the Daisy brand. Well, I&rsquo;d say that 1 in every 10 or so containers are so watery and runny that I have to throw them out. I&rsquo;ve tried different brands in the past and had the same problem.</li>
+</ul>
+
+
+<p>In the case of my dinner, I blame it on the waitress bringing me my food for getting it wrong. She either wrote it down wrong, or the kitchen screwed it up&hellip; regardless she is on the hook for it in my mind. And as for the hardwood floors&hellip; I mean, come on people. Couldn&rsquo;t you flip on a light switch and see for yourselves that you had the wrong flooring? It was immediately apparent to me.</p>
+
+<p>Like I said, there are problems with quality everywhere.</p>
+
+<h3>What Can We Do About It?</h3>
+
+<p>In general here are a few things I feel that everybody can be doing in their day to day lives:</p>
+
+<ul>
+<li>Stop thinking that just because everybody else is doing it that it is acceptable for you to be doing it.</li>
+<li>Put some quality checks in place.</li>
+<li>Care about the product or service you are offering.</li>
+</ul>
+
+
+<p>As for quality in development there are some more targeted things we can do.</p>
+
+<h4>Understand the Requirements</h4>
+
+<p>You absolutely must have a thorough understanding of the requirements before you begin developing. If you don&rsquo;t know what it is that needs to be done then there is virtually no chance you&rsquo;ll get it right.</p>
+
+<p>Those of you agile practitioners out there, you aren&rsquo;t exactly off the hook for this either. You still need to at least understand the requirements as they pertain to the sprint you&rsquo;re currently working on.</p>
+
+<h4>Test, Constantly</h4>
+
+<p>You need to be constantly testing what you are working on. If you have unit tests, get yourself a test runner like NCrunch so your tests are always running in the background so you get immediate feedback when a change you make breaks something else.</p>
+
+<p>If you don&rsquo;t have unit tests, that&rsquo;s okay. It isn&rsquo;t however an excuse not to test. If you&rsquo;ve got an automated testing tool you use, make sure what you&rsquo;re working on is covered by one or more automated tests. If it isn&rsquo;t covered, create a test that does cover it. If you don&rsquo;t have an automated testing tool, write up some test cases so you can execute those tests, and then repeat them later.</p>
+
+<h4>Care</h4>
+
+<p>Above all else you should care about the product you are producing. Most likely you aren&rsquo;t developing this piece of software for your own personal use. If you are the only user, then screw it up as much as you want, I don&rsquo;t care, but if your product is going to be used by someone else, then be respectful enough of your intended user base to make sure the software works.</p>
+
+<p>Make sure you provide the functionality that your users need, no more, no less. I&rsquo;m an Evernote user and since the latest update to the product I can&rsquo;t expand the toolbar down far enough to let me insert check boxes into a note. That kind of crap doesn&rsquo;t work for me as a user, and makes me want to run off and find an alternative. Do you want your users feeling that way about your product? You are probably not the only product out there with the functionality your users are looking for, and you don&rsquo;t want to give them a reason to switch to using one of your competitors products.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/26/dont-fight-the-framework/">Don't Fight the Framework</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-26T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>This is a little less organized than I would like, but I believe the brain dump is worthwhile.</p></blockquote>
+
+<p>In general I believe there are two types of people out there, those that embrace a framework, and those that fight against it. I&rsquo;ve generally found myself in the fight against it camp. This post is about my never ending battle with the ASP.NET MVC framework in particular, what led up to it, and the events leading up to my final capitulation.</p>
+
+<h2>Why Fight?</h2>
+
+<p>These are a few of the reasons why I&rsquo;ve generally fought against the framework:</p>
+
+<ul>
+<li>I jump around a lot between ASP.NET MVC, Express with Node.js and Ruby on Rails, and I&rsquo;d like to reuse as much code as possible and follow consistent patterns.</li>
+<li>I might also decide to port my website or application over to one of these other frameworks part way through a project, and if that happens I want to rewrite as little as possible.</li>
+<li>I don&rsquo;t always care for the out of the box rendering or syntax.</li>
+<li>Isn&rsquo;t it always better to roll your own?</li>
+</ul>
+
+
+<h4>Form Elements</h4>
+
+<p>What is with the form sytax? Why are there div tags floating around all over the place? Why do we insist on displaying validation error messages inline with the form element instead of in a summary?</p>
+
+<p>This is an example of the output you might get by using <code>Html.EditorForModel()</code>.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">&quot;text-box single-line&quot;</span> <span class="na">id=</span><span class="s">&quot;Name&quot;</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span> 
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;login&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+
+<p>What is the purpose of all these div&rsquo;s? Wouldn&rsquo;t it be better to customize standard HTML elements instead of having all these classes all over the place? I would personally rather layout my form like this instead of living in the div hell generated when you use <code>Html.EditorForModel()</code>.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;fieldset&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+      <span class="nt">&lt;label&gt;</span>Name:<span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Save&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/fieldset&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+
+<h4>Summary</h4>
+
+<p>Some of these arguments may be valid, but more so when you are working on a project by yourself. They fall apart when you start working as part of a larger team though.</p>
+
+<h2>Why Give In?</h2>
+
+<p>Yep, there are reasons why you shouldn&rsquo;t fight the framework as you might have guessed! Here are just a few:</p>
+
+<ul>
+<li>It is already written for you, so why not take advantage of it.</li>
+<li>Good, bad, or indifferent, at least it is consistent.</li>
+<li>You can extend the framework in subtle ways without having to completely fight against it.</li>
+</ul>
+
+
+<h4>Consistency</h4>
+
+<p>Consistency is pretty key here. What happens when you are bringing new people into a project? Chances are they&rsquo;ll have experience with the standard features of the framework, but if you&rsquo;ve deviated from these core standards and rolled your own functionality in many places then you hinder their ability to jump into a project and provide immediate value. Instead of hitting the ground running they end up having to learn &ldquo;your way&rdquo; of doing things.</p>
+
+<p>To that end it is much easier to set certain standards within your organization on what you&rsquo;ll use and when you&rsquo;ll use it than to roll your own mini-framework on top of the framework.</p>
+
+<h4>Extension</h4>
+
+<p>I&rsquo;ve written a great many extension methods in the past, particularly to extend HtmlHelper. Through the use of extension methods we can provide slight customizations without completely rocking the boat.</p>
+
+<h2>Conclusion</h2>
+
+<p>While I sometimes still feel that I&rsquo;d like to be more of a purist and hand-roll many of these things myself, at the end of the day I no longer feel it a worthwhile endeavor. Just make sure, as I will, that you standardize on the things that make sense to you. You might share my aversion to <code>Html.EditorForModel()</code>, but that doesn&rsquo;t mean you should turn your back on helper methods like <code>Html.BeginForm()</code> and <code>Html.TextBoxFor()</code>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/13/abstract-factory-ocp-violation/">Abstract Factory: A Violation of the Open Closed Principle?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-13T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is either a tough one, or I&rsquo;m really overcomplicating things. I&rsquo;m pretty sure though that I&rsquo;m in one of those impossible situations where there really is no right answer. You try, and try, and you just can&rsquo;t please everyone. Anyway, here is my dilema.</p>
+
+<h2>The Game</h2>
+
+<p>I&rsquo;m building this game (Okay! Not really but it serves as a good example) and I want to give players the ability to buy weapons from a sleezy armory worker that sells goods out the back door. Imagine if you will that the player sees an interface like this one.</p>
+
+<p><img src="/assets/images/posts/absfacocp.PNG" alt="Game Interface" style="display: block; margin: 0 auto;" /></p>
+
+<p>That is all well and good. They just go ahead and select the weapon they have enough money to purchase and click the buy button. The issue is what this means for the code.</p>
+
+<h2>The Code</h2>
+
+<p>I&rsquo;m feeling pretty good about it so far. Since players can outfit themselves with any number of weapons, I&rsquo;ve got an abstract class that each of the weapon classes will inherit.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Weapon</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">HitPower</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">protected</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">WaitTime</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">protected</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Strike</span><span class="p">(</span><span class="n">IOpponent</span> <span class="n">opponent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">opponent</span><span class="p">.</span><span class="n">GetHitBy</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Then we&rsquo;ve got individual classes for each of the weapon types. The idea here being that each type of weapon will have some limitations, as well as differing strengths.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Sword</span> <span class="p">:</span> <span class="n">Weapon</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">Sword</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">HitPower</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">WaitTime</span> <span class="p">=</span> <span class="m">4</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">BeerBottle</span> <span class="p">:</span> <span class="n">Weapon</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">BeerBottle</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">HitPower</span> <span class="p">=</span> <span class="m">2</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">WaitTime</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Then to outfit a player with a weapon I&rsquo;ve got an abstract factory to create new instances of the weapons.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">WeaponFactory</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">Weapon</span> <span class="nf">CreateWeapon</span><span class="p">(</span><span class="kt">string</span> <span class="n">weaponName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">weaponName</span><span class="p">.</span><span class="n">ToLower</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">case</span> <span class="s">&quot;sword&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">Sword</span><span class="p">();</span>
+            <span class="k">case</span> <span class="s">&quot;beerbottle&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">BeerBottle</span><span class="p">();</span>
+            <span class="k">default</span><span class="p">:</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">NotImplementedException</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Not bad, right? Perhaps not&hellip;</p>
+
+<h2>The Issue</h2>
+
+<p>The problem I have with this is that it would seem to violate the open closed principle. If I want to add another weapon into the system I&rsquo;m fine, all the way up until I want to be able to create instances of these weapons. So if I wanted to add a knife as a weapon I&rsquo;d have to modify the abstract factory so it can create instances of the knife class, like so.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">WeaponFactory</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">Weapon</span> <span class="nf">CreateWeapon</span><span class="p">(</span><span class="kt">string</span> <span class="n">weaponName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">weaponName</span><span class="p">.</span><span class="n">ToLower</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">case</span> <span class="s">&quot;sword&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">Sword</span><span class="p">();</span>
+            <span class="k">case</span> <span class="s">&quot;beerbottle&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">BeerBottle</span><span class="p">();</span>
+            <span class="k">case</span> <span class="s">&quot;sword&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">Sword</span><span class="p">();</span>
+            <span class="k">default</span><span class="p">:</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">NotImplementedException</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>But to me that hardly seems like it is closed for modification. The only problem is, what the hell choice do I have?</p>
+
+<h2>The Short of It</h2>
+
+<p>Unless someone out there tells me differently, I think this code is about as good as it can be. I&rsquo;ve tried to find a way to make this code conform to the open closed principle and it just does not appear to be possible. Sure, I could create forms for each of the weapon types, but that doesn&rsquo;t improve the situation, just pushes it farther up the chain.</p>
+
+<p>So it would appear that sometimes you just can&rsquo;t get to 100%. Sometimes close is all you can really hope for.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/07/twitter-bootstrap-tags/">Twitter Bootstrap Tags</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-12-07T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;m definitely a fan of using Twitter Bootstrap to quickly scaffold together a UI. The current project I&rsquo;m working on calls for a tagging system though, and I couldn&rsquo;t readily find anything out there to provide that functionality to me for Twitter Bootstrap, so I wrote a quick plugin for it myself.</p>
+
+<h2>Overview</h2>
+
+<p>While probably not all that fancy, I&rsquo;m sure you can find ways to put some lipstick on this pig. If not then it will look a little something like this below. You can take a look at an <a href="/demos/bootstrap-tags/index.html">usable example</a> as well if you like.</p>
+
+<p><img src="/assets/images/posts/tags.png" alt="tag example" /></p>
+
+<p>And using it couldn&rsquo;t be easier to use. Add references to Twitter Bootstrap and jQuery, and then in the markup for your page just drop in the following.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;example&quot;</span> <span class="na">class=</span><span class="s">&quot;tag&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
+
+
+<p>The plugin will automatically set itself up anywhere you have a div with a class of tag. Once it is on the page just click inside of it and start typing. These are the only rules.</p>
+
+<ul>
+<li>New tags will be created when you press ENTER or COMMA on the keyboard.</li>
+<li>Tags that are already in the list will not be added again.</li>
+<li>Pressing the BACKSPACE key while in the tag entry text box will remove the previous tag if the text box does not contain any text.</li>
+<li>Clicking on the &ldquo;X&rdquo; next to existing tags will remove them.</li>
+</ul>
+
+
+<h2>Some Specifics</h2>
+
+<p>It&rsquo;s a short little plugin so you can probably glean what you need from the source itself, but just in case here are the highlights.</p>
+
+<p>If you want to add a tag through javascript you would to this.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">tag</span><span class="p">(</span><span class="s1">&#39;addtag&#39;</span><span class="p">,</span> <span class="s1">&#39;add this tag&#39;</span><span class="p">);</span></code></pre></div>
+
+
+<p>You can also add a bunch of tags at once if you&rsquo;ve got them in an array like so.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;happy&#39;</span><span class="p">,</span> <span class="s1">&#39;flippin&#39;</span><span class="p">,</span> <span class="s1">&#39;holiday&#39;</span><span class="p">];</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">tag</span><span class="p">(</span><span class="s1">&#39;addtags&#39;</span><span class="p">,</span> <span class="nx">tags</span><span class="p">);</span></code></pre></div>
+
+
+<p>You can get back an array of tags currently in the list by running this.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">tags</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">tag</span><span class="p">(</span><span class="s1">&#39;gettags&#39;</span><span class="p">);</span></code></pre></div>
+
+
+<p>And the other thing you could do is check to see if the list of tags already has a particular tag in it.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">isItInThere</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">tag</span><span class="p">(</span><span class="s1">&#39;contains&#39;</span><span class="p">,</span> <span class="s1">&#39;hooray&#39;</span><span class="p">);</span></code></pre></div>
+
+
+<p>I designed this more with ajax in mind than anything else, so in general you&rsquo;d just call into <code>gettags</code>, but you should be able to do something like this to intercept the post.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#save&#39;</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ttt&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example&#39;</span><span class="p">).</span><span class="nx">tag</span><span class="p">(</span><span class="s1">&#39;gettags&#39;</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+
+<h2>The Source</h2>
+
+<p>You can find the source code, as usual, up on <a href="https://github.com/bteller/bootstrap-tag">GitHub</a>. Please feel free to issue a pull request if you want to add in some functionality.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/28/caching-part-2-nulls-and-expiration/">Caching Part 2: Nulls and Expiration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-11-28T00:00:00-05:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the problems with the <a href="/2012/10/18/really-simple-caching">previous caching sample code</a> I posted is that it doesn&rsquo;t handle null results very well. If were to query a list and nothing was returned then we&rsquo;d store null in the cache, which is fine, but the problem arises when we try and pull it back out of the cache. When we do this the value is still null, as it should be, but then we check to see if it is null before deciding if we should query the database again. This means that every request will hit the database, even though we really should already know at this point that nothing of interest is in there.</p>
+
+<h2>Allowing for Nulls</h2>
+
+<p>To get around this limitation we could just check for the existence of the cache key in cache. Building on the LazyCache object from our previous example we&rsquo;d just add in functionality that checks for the existence of the cache key.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsInCache</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">_cache</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>And then we&rsquo;d modify the construct responsible for our query to utilize this new function to decide if we need to query the database again.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">LazyCache</span><span class="p">.</span><span class="n">Retrieve</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;&gt;(</span><span class="s">&quot;hoozies&quot;</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(!</span><span class="n">LazyCache</span><span class="p">.</span><span class="n">IsInCache</span><span class="p">(</span><span class="s">&quot;hoozies&quot;</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">result</span> <span class="p">=</span> <span class="n">FakeDatabase</span><span class="p">.</span><span class="n">Hoozies</span><span class="p">;</span>
+        <span class="n">LazyCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;hoozies&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>But this isn&rsquo;t perfect. The problem with this approach is that it doesn&rsquo;t allow us to set any cache expirations, and that is something any caching system should allow for. To get around this, instead of directly caching the result of the query we should really be storing a special cache object. We don&rsquo;t need all that functionality just yet though, so for now let&rsquo;s just keep it simple.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCacheItem</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">object</span> <span class="n">Value</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Now we can update LazyCache to use it.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCache</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">Hashtable</span> <span class="n">_cache</span><span class="p">;</span>
+
+    <span class="k">static</span> <span class="nf">LazyCache</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_cache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">,</span> <span class="kt">object</span> <span class="k">value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">cacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LazyCacheItem</span><span class="p">()</span> <span class="p">{</span> <span class="n">Value</span> <span class="p">=</span> <span class="k">value</span> <span class="p">};</span>
+        <span class="n">_cache</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">cacheItem</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Retrieve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)((</span><span class="n">LazyCacheItem</span><span class="p">)</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]).</span><span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsInCache</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_cache</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Now that by itself really isn&rsquo;t all that interesting. We could have just implemented .IsInCache() and we&rsquo;d be all set. Where this really provides value is where cache expiration is concerned.</p>
+
+<h2>Cache Expiration</h2>
+
+<p>Our caching strategy so far probably isn&rsquo;t all that effective. So far we&rsquo;ve been setting things in cache and allowing them to live for as long as our application remains in memory. But what happens when our application lives for a very long time? We&rsquo;d never update our cache, so if anything new was entered into the database, our application wouldn&rsquo;t become aware of it until we restarted it, which isn&rsquo;t very handy at all!</p>
+
+<p>So let&rsquo;s modify the LazyCacheItem so we can set a cache expiration on things going into the cache.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCacheItem</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">DateTime</span> <span class="n">_setInCacheAt</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">TimeSpan</span><span class="p">?</span> <span class="n">_ttl</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">object</span> <span class="n">Value</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">LazyCacheItem</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">,</span> <span class="n">TimeSpan</span><span class="p">?</span> <span class="n">ttl</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="n">_setInCacheAt</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+        <span class="n">_ttl</span> <span class="p">=</span> <span class="n">ttl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsFresh</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_ttl</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span> <span class="p">-</span> <span class="n">_setInCacheAt</span> <span class="p">&lt;=</span> <span class="n">_ttl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Now we&rsquo;ve got something we can work with. Notice that I&rsquo;ve made the TTL value nullable, which we&rsquo;ll use to allow us to store something in cache that doesn&rsquo;t ever expire (by checking to see if this value is null).</p>
+
+<p>We&rsquo;ve got to modify LazyCache again to consume the new functionality.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCache</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">Hashtable</span> <span class="n">_cache</span><span class="p">;</span>
+
+    <span class="k">static</span> <span class="nf">LazyCache</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_cache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">,</span> <span class="n">T</span> <span class="k">value</span><span class="p">,</span> <span class="n">TimeSpan</span><span class="p">?</span> <span class="n">ttl</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">cacheItem</span> <span class="p">=</span> <span class="k">new</span> <span class="n">LazyCacheItem</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="n">ttl</span><span class="p">);</span>
+        <span class="n">_cache</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">cacheItem</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Retrieve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">item</span> <span class="p">=</span> <span class="p">(</span><span class="n">LazyCacheItem</span><span class="p">)</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">item</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsInCache</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_cache</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="p">&amp;&amp;</span> 
+            <span class="p">((</span><span class="n">LazyCacheItem</span><span class="p">)</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]).</span><span class="n">IsFresh</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Then we&rsquo;ll just make a quick change to one of the consumers of our cache like so.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(!</span><span class="n">LazyCache</span><span class="p">.</span><span class="n">IsInCache</span><span class="p">(</span><span class="s">&quot;hoozies&quot;</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">LazyCache</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;&gt;(</span><span class="s">&quot;hoozies&quot;</span><span class="p">,</span> <span class="n">FakeDatabase</span><span class="p">.</span><span class="n">Hoozies</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">LazyCache</span><span class="p">.</span><span class="n">Retrieve</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;&gt;(</span><span class="s">&quot;hoozies&quot;</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>I&rsquo;m passing in a null TTL value here, but you could pass in whatever expiration you like and LazyCache will honor it. And that&rsquo;s about it! We&rsquo;ve extended our simple cache example so that it now allows expiration of items in the cache and allows for null values so we can reduce that extra noise.</p>
+
+<blockquote><p>The updated code is out on <a href="https://github.com/bteller/nestedcache" target="_blank">GitHub</a>.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/18/really-simple-caching/">Really Simple Caching</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-18T00:00:00-04:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Caching is one of those fundamental best practices that any software developer should be aware of. There are plenty of options out there where caching is concerned including Redis and Memcached, just look at <a href="http://nuget.org/packages?q=cache">Nuget</a>. What I wanted to point out though is just how simple this code can be.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">LazyCache</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="n">Hashtable</span> <span class="n">_cache</span><span class="p">;</span>
+
+    <span class="k">static</span> <span class="nf">LazyCache</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_cache</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Set</span><span class="p">(</span><span class="kt">string</span> <span class="n">key</span><span class="p">,</span> <span class="kt">object</span> <span class="k">value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_cache</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">Retrieve</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>This is very simplistic but will provide you with an in-memory cache to decrease load on your database. You can then work with this really simple cache very simply like so.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;</span> <span class="n">GetAll</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">LazyCache</span><span class="p">.</span><span class="n">Retrieve</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Hoozy</span><span class="p">&gt;&gt;(</span><span class="s">&quot;hoozies&quot;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">result</span> <span class="p">=</span> <span class="n">FakeDatabase</span><span class="p">.</span><span class="n">Hoozies</span><span class="p">;</span>
+        <span class="n">LazyCache</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="s">&quot;hoozies&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/08/massive-js-issue-workaround/">Massive-js Issue Workaround</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-08-08T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday I posted about an issue using I was having with Node.js communicating with a PostgreSQL database. You can view that <a href="http://blog.bradley-teller.me/2012/08/08/postgresql-and-node-js-issue/">here</a>.</p>
+
+<p>I have since been able to confirm my suspicion that this was a problem inside massive-js. At this point I do not have a true solution for the problem, only a recommendation on what you can do to get around it. Part of the issue is that the initialization query massive-js runs does not distinguish between primary keys and foreign keys. This means that if you have one of each defined for the table it will return both of them, and it is the multiple return values that cause this query to error out. This is also an issue if you define a composite key as your primary key. Since both columns have their own records in information_schema.table_constraints multiple records are again returned into that query.</p>
+
+<p>Until a more permanent fix is identified, or until the update I made locally finds its way into the package, you can update your copy of /node_modules/massive/lib/postgres.js with the code in this <a href="https://gist.github.com/3300228">gist</a>. Beyond that just remember not to use composite primary keys and you should be okay.</p>
+
+<p>I’ve also forked the repo and have some ideas on some extensions, so you might want to follow watch <a href="https://github.com/bteller/massive-js">my fork</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/index.html">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Sort Order for List With Persistence - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="It was brought to my attention that my post wasn&rsquo;t all that informative because it didn&rsquo;t the UI code to go along with this, so I have &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2011/04/18/sort-order-for-list-with-persistence/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Sort Order for List With Persistence</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-04-18T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p>It was brought to my attention that my post wasn&rsquo;t all that informative because it didn&rsquo;t the UI code to go along with this, so I have updated the post to include that information.</p></blockquote>
+
+<p>Something that seems to come up often enough, although not all that recently for myself, is to control the display order for items when presenting them in the user interface. This requirement of course is then paired with another requirement, the content manager needs a means of changing the sort order or items via some administrative tool. I had to do this today, so this will either serve as a reference, or possibly open myself up for criticism, but either way, here it is.</p>
+
+<div class="highlight"><pre><code class="language-vbnet" data-lang="vbnet"><span class="k">Dim</span> <span class="n">originalOrder</span> <span class="o">=</span> <span class="n">MyService</span><span class="p">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="n">SortOrder</span>
+<span class="k">Dim</span> <span class="n">lowerBounds</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="n">upperBounds</span> <span class="ow">As</span> <span class="kt">Integer</span>
+<span class="k">Dim</span> <span class="n">isDecrement</span> <span class="ow">As</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">False</span>
+ 
+<span class="k">If</span> <span class="n">originalOrder</span> <span class="o">&gt;</span> <span class="n">sortOrder</span> <span class="k">Then</span>
+    <span class="n">lowerBounds</span> <span class="o">=</span> <span class="n">sortOrder</span>
+    <span class="n">upperBounds</span> <span class="o">=</span> <span class="n">originalOrder</span>
+<span class="k">Else</span>
+    <span class="n">lowerBounds</span> <span class="o">=</span> <span class="n">originalOrder</span>
+    <span class="n">upperBounds</span> <span class="o">=</span> <span class="n">sortOrder</span>
+    <span class="n">isDecrement</span> <span class="o">=</span> <span class="k">True</span>
+<span class="k">End</span> <span class="k">If</span>
+ 
+<span class="k">For</span> <span class="k">Each</span> <span class="n">item</span> <span class="ow">In</span> <span class="n">MyService</span><span class="p">.</span><span class="n">GetAllItems</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">Function</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="n">m</span><span class="p">.</span><span class="n">SortOrder</span> <span class="o">&lt;=</span> <span class="n">upperBounds</span> <span class="ow">And</span> <span class="n">m</span><span class="p">.</span><span class="n">SortOrder</span> <span class="o">&gt;=</span> <span class="n">lowerBounds</span><span class="p">).</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">Function</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="n">m</span><span class="p">.</span><span class="n">SortOrder</span><span class="p">)</span>
+    <span class="k">If</span> <span class="n">item</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">itemId</span> <span class="k">Then</span>
+        <span class="n">item</span><span class="p">.</span><span class="n">SortOrder</span> <span class="o">=</span> <span class="n">sortOrder</span>
+    <span class="k">Else</span>
+        <span class="n">item</span><span class="p">.</span><span class="n">SortOrder</span> <span class="o">=</span> <span class="n">IIf</span><span class="p">(</span><span class="n">isDecrement</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">SortOrder</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">SortOrder</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">If</span>
+ 
+    <span class="n">item</span><span class="p">.</span><span class="n">Update</span><span class="p">()</span>
+<span class="k">Next</span></code></pre></div>
+
+
+<p>If anyone knows if a more simplistic, or perhaps just better, means of accomplishing this please feel free to comment (not that I&rsquo;ve received comments from anyone to date, still working on that). The approach here is to update only that which requires updating, rather than iterate back over the entire list.</p>
+
+<p>On the presentation end of this I simply have an HTML table and a bit of javascript that makes use of jQuery UI&rsquo;s .sortable(). The code below is what accomplishes this, which I will explain.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable tbody&#39;</span><span class="p">).</span><span class="nx">sortable</span><span class="p">({</span>
+  <span class="nx">update</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$tr</span><span class="p">;</span> 
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">toElement</span><span class="p">.</span><span class="nx">tagName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;td&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$tr</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">toElement</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">$tr</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">toElement</span><span class="p">;</span>
+      <span class="p">}</span>
+ 
+      <span class="kd">var</span> <span class="nx">rowId</span> <span class="o">=</span> <span class="nx">getRowIndex</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTable&#39;</span><span class="p">),</span> <span class="nx">$tr</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">itemId</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="nx">$tr</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">html</span><span class="p">());</span>
+ 
+      <span class="k">if</span> <span class="p">(</span><span class="nx">itemId</span> <span class="o">&amp;&amp;</span> <span class="nx">rowId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+          <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/myStuff/updatesortorder&#39;</span><span class="p">,</span>
+          <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
+          <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">itemId</span><span class="o">:</span> <span class="nx">itemId</span><span class="p">,</span>
+            <span class="nx">sortOrder</span><span class="o">:</span> <span class="nx">rowId</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">cursor</span><span class="o">:</span> <span class="s1">&#39;pointer&#39;</span>
+<span class="p">});</span></code></pre></div>
+
+
+<p>For the most part this is really straight forward, but there are two things I want to point out. First, jQuery .sortable() will return the targetElement as a <code>&lt;tr /&gt;</code>, or sometimes a <code>&lt;td /&gt;</code> and this all depends on where on the row you clicked to drag. For that reason the first few lines of code are responsible for specifically getting the <code>&lt;tr /&gt;</code> so we can then find out where it was dragged to. Then there is also a call to a helper function called .getRowIndex(). This helper is responsible for performing the comparison and returning the index of the <code>&lt;tr /&gt;</code>&rsquo;s new position in the table. With that information we can then increment that index value by 1, since it is 0 based, and then we can call whatever service to perform the update.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getRowIndex</span><span class="p">(</span><span class="nx">table</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+ 
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;tbody tr&#39;</span><span class="p">,</span> <span class="nx">table</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="nx">index</span><span class="p">;</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+ 
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2011-04-18T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2011/04/18/sort-order-for-list-with-persistence/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2011/04/18/sort-order-for-list-with-persistence/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/08/unobtrusive-validation-issue-with-mvc-3/" title="Previous Post: Unobtrusive Validation Issue with MVC 3">&laquo; Unobtrusive Validation Issue with MVC 3</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/25/aspnet-radiobuttongroupfor-extension/" title="Next Post: ASP.Net RadioButtonGroupFor() Extension">ASP.Net RadioButtonGroupFor() Extension &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>UnRegister: Setting Up Git - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="I have jumped on the git bandwagon for providing version control of any personal project I work on. The problem is that I don&rsquo;t really know how &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2012/03/02/unregister-setting-up-git/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">UnRegister: Setting Up Git</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-02T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have jumped on the git bandwagon for providing version control of any personal project I work on. The problem is that I don&rsquo;t really know how to make effective use of the tool. As a developer who spends the majority of my time in the Visual Studio IDE I don&rsquo;t have an overwhelming level of comfort for the command line, and because of this I&rsquo;ve come to rely on GUI interfaces. My interface of choice when working with git is <a href="http://code.google.com/p/tortoisegit/">TortoiseGit</a> which integrates very well into Windows Explorer and is fairly intuitive. What I&rsquo;m still unsure about is if there is a recommended folder structure for a git repository.</p>
+
+<p>Having used Subversion previously I was in the always in the habit of creating two folders, trunk and branch. When browsing GitHub though I don&rsquo;t see any real standards emerging for a folder structure with git. Some people seem to make use of some standard folder names such as &ldquo;src&rdquo; for code storage while others simply drop their code in the root folder of their repository and maybe a &ldquo;tools&rdquo; folder for storage of related assemblies. The projects for Code52 <a href="https://github.com/code52">employ</a> this directory structure. Yet others don&rsquo;t use any nested folder structure at all, and until now this is the pattern I have been following without really knowing why. In fact my only reason for doing so has been simplicity.</p>
+
+<p>I&rsquo;m sad, and sort of surprised, that after googling different search terms and following many links I still do not have an answer. It appears there just isn&rsquo;t a standard directory structure recommendation that exists. I can see why Code 52 has created a &ldquo;src&rdquo; and a &ldquo;tools&rdquo; folder though, and it makes sense to me, so I think I&rsquo;m going to adopt that as my new standard going forward, for .Net projects anyway. When dealing with a project written in Ruby this structure wouldn&rsquo;t make as much sense to me since the sole purpose of the &ldquo;tools&rdquo; folder is to contain dependencies the code has on third-party tools and their executables or assemblies, and the need for managing those disappears because of the Gemfile and bundler. Until Nuget matures and hopefully one day really provides the .Net community with their own version of gems, I think having a folder named tools is the way to go.</p>
+
+<p>One other important thing when using git is to remember to add a .gitignore file at the root of your repository. I believe I remember reading somewhere that there may be a global location you could do this in, but in my case I prefer to do this on a project by project basis. I&rsquo;ve found the following to work pretty well.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">obj</span>
+<span class="nx">bin</span>
+<span class="nx">deploy</span>
+<span class="nx">deploy</span><span class="o">/*</span>
+<span class="nx">_ReSharper</span><span class="p">.</span><span class="o">*</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">csproj</span><span class="p">.</span><span class="nx">user</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">resharper</span><span class="p">.</span><span class="nx">user</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">resharper</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">suo</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">cache</span>
+<span class="o">~</span><span class="nx">$</span><span class="o">*</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">gitignore</span>
+<span class="nx">packages</span>
+<span class="o">/</span><span class="nx">packages</span></code></pre></div>
+
+
+<p>When you are setting up your repository on GitHub you are asked to name it, and then very kindly they provide you with a list of command line instructions to initialize your repository locally and establish the link with GitHub. One of those steps is to create a README file, but that is flat text and if you have seen other repositories out there you&rsquo;ll have noticed that they can contain a little bit more flare. This flare is often courtesy of a markdown file. In the spirit of open-source software, and as a follower of Code 52&rsquo;s efforts, I&rsquo;m using a tool from them called <a href="https://github.com/Code52/DownmarkerWPF">MarkPad</a>.</p>
+
+<p>With that, I&rsquo;m now going to tackle creating a new git repository locally, and create the code skeleton for this project.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2012-03-02T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2012/03/02/unregister-setting-up-git/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2012/03/02/unregister-setting-up-git/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/29/unregister-project-manifesto/" title="Previous Post: UnRegister: A Project Manifesto">&laquo; UnRegister: A Project Manifesto</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/10/unregister-ui-requirements/" title="Next Post: UnRegister: The UI Requirements">UnRegister: The UI Requirements &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

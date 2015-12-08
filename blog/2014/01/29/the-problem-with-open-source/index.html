@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>The Problem With Open Source Software - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="I really like open source software, but I&rsquo;ve ran into some problems recently that really make me wonder why. Just a few days ago I was trying &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2014/01/29/the-problem-with-open-source/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">The Problem With Open Source Software</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-29T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I really like open source software, but I&rsquo;ve ran into some problems recently that really make me wonder why. Just a few days ago I was trying to work through getting Graphite up and running to determine if it was something I could leverage, and I ran into all sorts of problems.</p>
+
+<h2>Why Can&rsquo;t Things Just Work?</h2>
+
+<p>I&rsquo;ve always been one of those people that felt if you wanted true &ldquo;Geek Cred&rdquo; then you had to know Linux. Well, I&rsquo;ve tried. And tried. And tried. Things will go really well for a few days, and then everything will just fall apart on me. Maybe I&rsquo;m just a spoiled geek that lives in Windows happy-land.</p>
+
+<h3>Dependencies</h3>
+
+<p>Why can&rsquo;t they just install by default? I know it&rsquo;s possible, because NPM does this really well. You have a <code>package.json</code> file where you define the dependencies your package or app has on other packages, specify the version of it you need, and then just run <code>npm install -d</code> and everything you need comes down and just works. Sure, every once in a while you run into something that just doesn&rsquo;t work on Windows, but I expect that, and can generally find something that does the exact same thing, and is perfectly happy running on Windows.</p>
+
+<p>Now, move over to your Linux box and try to install something without running into a problem. Guess what&hellip; you can&rsquo;t! First, you can&rsquo;t even rely on the package manager. Which package manager? I don&rsquo;t know&hellip; there are so damn many of them. I know when running Ubuntu 12.04 if I run <code>sudo apt-get install nodejs</code>, I get a very old version of it that doesn&rsquo;t even come packaged with NPM. So that makes sense. Yes, I know you can register a PPA with your apt-get registry and run the command again to pull down the latest, but what I don&rsquo;t get is why the hell that is even necessary.</p>
+
+<p>The first problem, there isn&rsquo;t a central package manager used across every Linux distribution. Even better than that, you have several options per distribution. Using Ubuntu you can try and use their own package manager, or apt-get, or aptitude, or probably 20 others I don&rsquo;t even know about. Clear as mud that is!</p>
+
+<p>When all else fails though you can download the source, generate a make file, and <code>make install</code>, and surely that will work. Well, not in my experience, and not when I tried to install Graphite. I got errors. As luck would have it there was some &ldquo;check-dependencies.py&rdquo; script that I could run, after figuring out how to install python and python-dev on my box, and then I found a list of 10 or so dependencies it had. Well, I&rsquo;m having a hard enough time getting this to install, and had a hard time installing python, why the hell would I install these just to uncover even more dependencies? Nope, I&rsquo;m sorry. NOT GONNA HAPPEN!</p>
+
+<h3>It Works Sometimes</h3>
+
+<p>The first time I used Vagrant I was seriously impressed. Creating a VM and provisioning it from a shell script or using Puppet or Chef was such an incredible idea. You want to refresh your environment, just run <code>vagrant destroy</code> and then <code>vagrant up</code>, and there you go. I barely scratched the surface of what Vagrant to do before I started running into problems on my Windows 8.1 box. What I started to see is that running <code>vagrant up</code> was launching the baseline VM, and no the VM I was expecting it to. So I quit on it the first day it happened, and shut down my computer. A few days later I give it another shot and up comes the correct VM. WTF?</p>
+
+<p>Fast forward to this weekend and I&rsquo;m running up'ing and halt'ing VMs left and right from different projects, and everything is going great, until it doesn&rsquo;t. I run <code>vagrant up</code> and up comes the wrong VM. I only had one defined in this Vagrantfile, so where the hell did this one come from? Turns out it was the baseline image that was downloaded when I first setup Vagrant. Wow, I didn&rsquo;t expect that! I googled, found out others had similar problems, didn&rsquo;t see a resolution, and promptly shook my head in dissappointment.</p>
+
+<p>At this point I have a few options&hellip; I can keep digging around and hopefully run across a solution, dig into the source code and try to fix it, or wipe my hands of it all and go do something else. What did I do? I uninstalled Vagrant, deleted the other manual Linux VM I had created, and then breathed a sigh of relief.</p>
+
+<h3>Documentation</h3>
+
+<p>The last point I want to make is about documentation. You can tell that I like NPM, but that doesn&rsquo;t mean everything out there is well documented. Quite often you have to dig to find out how to use the packages out there.</p>
+
+<p>When trying to get Graphite up and running I ran into another documentation issue. Some of the documentation was great. In fact, it was great, all the way up until the <a href="http://graphite.readthedocs.org/en/latest/config-webapp.html">setting up the webapp</a> step. Ha! Need I say more?</p>
+
+<h2>It Doesn&rsquo;t Have to Be This Way. Really!</h2>
+
+<p>I can&rsquo;t speak for the Linux community. At the end of the day I have to admit that I&rsquo;m completely lost there. I really don&rsquo;t have any interest in losing any more weekends trying to accomplish what seems like a super simple thing, on Linux. I&rsquo;ve tried, put the time in, and have failed pretty much every time. I appreciate the security of it, but with such a lack of standards and standardization on tooling, I just don&rsquo;t see how anybody that doesn&rsquo;t live and breath that system being able to do anything with it.</p>
+
+<p>What am I taking away from all of this? I still love the open source movement, and will still publish as much as I can out to GitHub and BitBucket for others to take, use, and make their own. When I do this though I&rsquo;m going to make sure the documentation is there, and that it is accurate. You are doing your users a disservice otherwise.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-01-29T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2014/01/29/the-problem-with-open-source/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2014/01/29/the-problem-with-open-source/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/15/unit-testing-attributes/" title="Previous Post: Unit testing attributes is easier than I thought">&laquo; Unit testing attributes is easier than I thought</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/01/30/refactor-constantly/" title="Next Post: Refactor Constantly">Refactor Constantly &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

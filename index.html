@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>Brad Teller</title>
+  <meta name="author" content="Brad Teller">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="Even if you aren&rsquo;t ready to jump in with both feet today, you should already be thinking about responsive design. At this point, despite the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,10 +18,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bteller.github.io/">
+  <link rel="canonical" href="http://bradteller.com/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,9 +36,7 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
-  
-    <h2>A blogging framework for hackers.</h2>
+  <h1><a href="/">Brad Teller</a></h1>
   
 </hgroup>
 
@@ -50,7 +48,7 @@
   
 <form action="https://www.google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="bteller.github.io">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -66,7 +64,896 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-01T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Even if you aren&rsquo;t ready to jump in with both feet today, you should already be thinking about responsive design. At this point, despite the responsive versus adaptive design debate, it looks like this is indeed the future of the web. If you do try and wait until later, you&rsquo;ll end up with a lot of extra work that you could have easily avoided.</p>
+
+<p>So, how does one go about applying responsive design techniques when working on a not-yet-responsive site?</p>
+
+<h2>Never Use Inline Styles</h2>
+
+<p>This one should really go with out saying by now, but I&rsquo;m saying it again, just in case. * Never use inline styles*. If you do use them today, you will end up having <code>!important</code> all over your style sheets when it comes time to make your site more responsive, and that is a bad practice by itself.</p>
+
+<h2>Use Percentages</h2>
+
+<p>This is an easy one that will help you immensely down the road. If you have a simple page.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;column-1&quot;</span><span class="nt">&gt;</span>My Wonderful Site<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;column-2&quot;</span><span class="nt">&gt;</span>Links Here<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;column-3&quot;</span><span class="nt">&gt;</span>Welcome to You!<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        And here is all my wonderful content.
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And a basic stylesheet that looks something like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#container</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">1000px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#column-1</span><span class="o">,</span>
+</span><span class='line'><span class="nf">#column-3</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#column-2</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">600px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You end up with what you need, but lose flexibilty when you make this responsive later on. What you want instead is a stylesheet more like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#container</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">1000px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#column-1</span><span class="o">,</span>
+</span><span class='line'><span class="nf">#column-3</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">20%</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#column-2</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">60%</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you have a fixed width parent container, but everything inside is percentage based. These percentages are easy to calculate though, and will look exactly the same the fixed width design.</p>
+
+<h2>Use a Grid</h2>
+
+<p>This is an opinionated topic, but I think you will likely benefit from using a CSS Grid framework. You don&rsquo;t need Twitter Bootstrap necessarily, but perhaps something like Skeleton, which is much ligther weight than Twitter Bootstrap, will meet your needs. There is of course always &ldquo;roll your own&rdquo; option.</p>
+
+<p>Regardless of which path you choose, you will want to make sure that your grid is something you must <em>explicitly</em> opt into. This is because most grid frameworks make use of <code>box-sizing</code> to help deal with odd behaviors of the CSS box model. The important ways this differs from traditional rendering is that borders and paddings are now considered as part of the width and height of the element.</p>
+
+<p>Consider this wildcard application of the technique.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">*</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">box</span><span class="o">-</span><span class="n">sizing</span><span class="o">:</span> <span class="k">border</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The above rule has now been applied to all your elements, which means many bits of your page have shifted about, making things look a little nasty. Instead of applying this as a global wildcard, you can change this in one simple way to make it possible to opt into this behavior.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.responsive</span> <span class="o">*</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">box</span><span class="o">-</span><span class="n">sizing</span><span class="o">:</span> <span class="k">border</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you&rsquo;ve removed the global wildcard and you don&rsquo;t have to worry about things moving around your page until you actually start making a region more responsive. This allows you to very gradually move towards a more responsive design.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;responsive&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-12&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    Your content here.
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>A Word of Warning</h3>
+
+<p>I want to share one final word of warning before you make the decision to use a framework. Generally speaking, even with a framework as light weight as Skeleton, you get more than just a grid. With the grid you also get opinionated styling of your buttons, forms, tables and typography. You probably don&rsquo;t want this, so just make sure and delete anything undesirable from the framework, or use this as an excuse to roll your own.</p>
+
+<p>photo credit: <a href="http://www.flickr.com/photos/47257185@N03/14829242912">Volcano - Premium WordPress Theme #2</a> via <a href="http://photopin.com">photopin</a> <a href="https://creativecommons.org/licenses/by/2.0/">(license)</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-15T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>What is Perceptual Differencing</h2>
+
+<p>Perceptual differencing is a testing technique where browser automation tools take screen captures of the browser contents during test execution. These captures are then compared with baseline captures, and if the capture matches the baseline, the test is deemed to have passed.</p>
+
+<h2>Why leverage Perceptual Differencing?</h2>
+
+<p>One of the main reasons a human being is required to run manual regression tests is to verify the output of the page is visually correct. We can eliminate this need by leveraging browser automation and perceptual differencing.</p>
+
+<p>Beyond that simple fact, the technique provides a very quick way to verify a lot of your site functionality without having to <code>Assert</code> your life away. Consider a form that should prevent submission when certain input elements contain invalid data or no data at all. You could create assertions for each of the input elements, and maybe compare that with the DOM level changes made to the browser after a failed submission, or you could take a screen capture and verify the functionality with a single image.</p>
+
+<h2>How do I use Perceptual Differencing effectively?</h2>
+
+<p>There are a few things I&rsquo;ve noticed trying to build a reliable perceptual differencing tool.
+- Full page screen captures are unreliable.
+- Not all browsers support full page screen captures.
+- The OS can have an effect on how your pages are rendered, causing perceived differences in the output of the page.
+- Browsers take time to load and finalize your page, so the initial capture you take might not be what the end user actually sees.
+- Differencing tools, like ImageMagick, do basic comparisons such as comparing the dimensions of an image, but also do other comparisions that consider every pixel. Simply comparing the dimensions of an image is not enough.
+- Some of your content will always be dynamic, such as maybe a visit counter, and those elements must be excluded from your captures.</p>
+
+<h3>Working around these issues</h3>
+
+<ul>
+<li>Use a browser that supports full page screen captures, like Firefox.</li>
+<li>To make full page captures more reliable, take a number of screen captures for every test, waiting a prescribed amount of time between captures, and only send a capture after 3 of these have matched.</li>
+<li>Make sure the comparision tool you use considers both the dimensions of the image, and the pixel level differences.</li>
+<li>Instead of always taking full page captures, take captures that target specific elements on the page, or others that remove the element completely from your full page capture.</li>
+</ul>
+
+
+<h2>How do I get started with Perceptual Differencing?</h2>
+
+<p>The tools I&rsquo;m using for our perceptual differencing tool at work are:</p>
+
+<ul>
+<li><a href="http://docs.seleniumhq.org/">Selenium</a></li>
+<li>ImageMagick</li>
+<li><a href="http://huddle.github.io/Resemble.js/">Resemble.js</a></li>
+<li>SQL Database</li>
+<li>Disk Storage</li>
+</ul>
+
+
+<p>Our automated test suite captures difference images and sends those to a web site. That site is then responsible for comparing the capture with the baseline. There is then a web app that provides a dashboard and mechanisms for approving and denying differences, and establishing new baselines.</p>
+
+<p>The code below is a simple extension method to the Selenium <code>IWebDriver</code> that will take up to 10 captures, waiting 1 second between each capture, and return the one that matched 3 times, or the very last capture taken.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="kt">byte</span><span class="p">[]</span> <span class="nf">Diff</span><span class="p">(</span><span class="k">this</span> <span class="n">IWebDriver</span> <span class="n">driver</span><span class="p">,</span> <span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">MagickImage</span> <span class="n">baseline</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">var</span> <span class="n">matches</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">((</span><span class="n">IJavaScriptExecutor</span><span class="p">)</span><span class="n">driver</span><span class="p">).</span><span class="n">ExecuteScript</span><span class="p">(</span><span class="s">&quot;$(&#39;.carousel&#39;).carousel(&#39;pause&#39;);&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">var</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">capture</span> <span class="p">=</span> <span class="p">((</span><span class="n">ITakesScreenshot</span><span class="p">)</span><span class="n">driver</span><span class="p">).</span><span class="n">GetScreenshot</span><span class="p">().</span><span class="n">AsByteArray</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">baseline</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">baseline</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MagickImage</span><span class="p">(</span><span class="n">capture</span><span class="p">);</span>
+</span><span class='line'>            <span class="k">continue</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">currentImage</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MagickImage</span><span class="p">(</span><span class="n">capture</span><span class="p">);</span>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">different</span> <span class="p">=</span> <span class="n">baseline</span><span class="p">.</span><span class="n">CompareTo</span><span class="p">(</span><span class="n">currentImage</span><span class="p">)</span> <span class="p">!=</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(!</span><span class="n">different</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">baseline</span><span class="p">.</span><span class="n">Compare</span><span class="p">(</span><span class="n">currentImage</span><span class="p">);</span>
+</span><span class='line'>            <span class="n">different</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">MeanErrorPerPixel</span> <span class="p">&gt;</span> <span class="m">0.0</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(!</span><span class="n">different</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">matches</span><span class="p">++;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">matches</span> <span class="p">&gt;</span> <span class="m">2</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">break</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">matches</span> <span class="p">&lt;</span> <span class="m">2</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;failed to match&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">baseline</span><span class="p">.</span><span class="n">ToByteArray</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You might have noticed this line of code. Its purose is to disable the Twitter Bootstrap caurousel which might otherwise cause your captures to differ. If you have other dynamic content elements on the page, you should consider hiding them, or disabling them in this manner.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="p">((</span><span class="n">IJavaScriptExecutor</span><span class="p">)</span><span class="n">driver</span><span class="p">).</span><span class="n">ExecuteScript</span><span class="p">(</span><span class="s">&quot;$(&#39;.carousel&#39;).carousel(&#39;pause&#39;);&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The ability to capture full page screen captures or compare image contents isn&rsquo;t specific to Selenium or ImageMagick. You might choose to use PhantomJS for your browser automation, or to use only Resemble.js to compare your images. Instead of using SQL you might want to push your data into a document data store, or store your image captures directly in your database. The choice is yours.</p>
+
+<h2>Conclusion</h2>
+
+<p>Adding perceptual differencing to your existing automated tests is something I would recommend everyone do. With that being said, it doesn&rsquo;t completely eliminate the need for manual testing by a human being. You will always need people to do exploratory testing, to review and approve captures as baselines, to ensure your automation test suite is testing all of what it should test, to approve a build for release, and more of course.</p>
+
+<p>I don&rsquo;t yet have our own internal test tool in a state that I can push it out as an open-source project. Last night I was proving out some consistency issues though, so I had to write a quick stress test app, and that is available on GitHub at <a href="https://github.com/bteller/StressPdiff.">https://github.com/bteller/StressPdiff.</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-02T00:00:00-04:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First, I&rsquo;m wrong quite a bit. It&rsquo;s okay with me&hellip; you live and learn. Right now I&rsquo;m thinking this might be another one of those times. A short while back I <a href="/2014/04/10/why-tfs-sucks/">tore into Microsoft TFS</a>, especially the Build Automation side of it. I&rsquo;d been struggling with it off and on for months, and I just had to vent.</p>
+
+<p>Fast forward to last week and I came across this video on Vimeo from NDC Oslo 2014. In it Roy Osherove discusses simplifying certain stages of the build process, and centralizing the management of those scripts to be included within your project code, rather than out on your build/continuous integration server.</p>
+
+<iframe src="//player.vimeo.com/video/97516289" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<p>Then I was looking into something else just the other day, and I should probably remember what that was, but I don&rsquo;t&hellip; but, I came across a post about <a href="http://www.alexandervanwynsberghe.be/whats-new-in-tfs-2013-build/">changes to TFS in 2013</a>. It has me thinking that maybe, just maybe, this TFS Build product might not be quite as evil as I made it out to be. Hopefully we will be upgrading to TFS 2013 soon and I&rsquo;ll be able to get some hands on experience with these changes. In the meantime I&rsquo;m encouraged by the content of this post, and hopeful that things are <em>really</em> getting better.</p>
+
+<p>That doesn&rsquo;t mean I will ever be a fan of these XAML templates. If I don&rsquo;t ever have to touch them though, and can simply consume and logically extend them, without having to write any XAML, I&rsquo;ll be content with my blissful ignorance.</p>
+
+<p>And oh yeah, TFS 2013 supports Git as well.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-04-16T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The other day I was asking about OneGet, and what exactly it might be for. My initial opinion was that there are a whole host of other tools already out there, with established user bases and ecosystems, that it hardly seems worth while to build another tool.</p>
+
+<p>I have a thought though.</p>
+
+<h2>A Possible Purpose</h2>
+
+<p>I&rsquo;ve been using Vagrant more and more to stand up new virtual machines. In order to configure this box, you need to have a base image that gets cloned, and that is what Vagrant ends up managing. One of the configuration options in your <em>Vagrantfile</em> file is a provisioner. Among other options you can use a shell script, Chef, Puppet, and Docker. I think it is the growing popularity of such tools that could be leading the development of OneGet.</p>
+
+<p>Right now I think Microsoft Windows isn&rsquo;t getting that much love for the plain and simple fact that it is so damn easy to stand up and tear down instances of Linux. You want a clean install, no problem, destroy your local VM and <code>vagrant up</code> a new instance.</p>
+
+<p>I could be wrong, but hat&rsquo;s what I&rsquo;m thinking anyway.</p>
+
+<h2>What about .MSI Automation</h2>
+
+<p>The only thing I don&rsquo;t quite understand though is, I thought it was possible to automate the installation of MSI packages. Searching around the interwebs it certainly seems possible. So, why wouldn&rsquo;t you just have a repository of MSIs out there, and have your provisioner download the version you specify, and allow for you to automate the installation of them?</p>
+
+<p>We&rsquo;ll see.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-04-11T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>What Is It?</h2>
+
+<p>Honestly, I don&rsquo;t really know. I was just reading a blog post from Jeremy Miller who referenced <a href="https://groups.google.com/forum/#!topic/chocolatey/a8WdEoF-M58f">OneGet</a> in it. If I&rsquo;m understanding this correctly, I don&rsquo;t know what need we are trying to meet here. Hasn&rsquo;t this niche already been filled?</p>
+
+<p>In that same post, which is <a href="http://jeremydmiller.com/2014/04/10/fubumvc-lessons-learned-fubu-new-standardization-and-polyglot-programming/">over here</a> there are some remarks about the lack of a good ecosystem for .NET in terms of plug-ins and extensibility, and that the new kids on the block are way ahead when you consider <em>gem</em> and <em>npm</em>, and he is right. I don&rsquo;t know if this is the best response though. I don&rsquo;t need to use <a href="https://chocolatey.org/">Choclatey</a> to install sofware. I really don&rsquo;t want to. Are we trying to turn Windows into the kind of platform where we make our users run commands like <code>apt-get install nodejs</code> to install things? I wouldn&rsquo;t think so.</p>
+
+<p>I really happen to like being able to download an <em>exe</em> or <em>msi</em> file and install things on Windows. I don&rsquo;t want to be forced to the command line, or a powershell window, to install software. I&rsquo;d rather not be forced to a powershell window at all to be honest.</p>
+
+<p>And even if that were okay&hellip;</p>
+
+<h2>Reinvent the Wheel. Umm&hellip; why?</h2>
+
+<p>I guess I don&rsquo;t understand why we would want to reinvent the wheel on this one. There are a lot of really cool tools out there, again created by these new kids, that we should probably just consume as is.</p>
+
+<p>Let&rsquo;s take a look.</p>
+
+<ul>
+<li><strong>bower</strong> - quick installation of script packages like Twitter Bootstrap, jQuery, Angular, and so on.</li>
+<li><strong>yeoman</strong> - a scaffolding tool for standing up sites and related assets.</li>
+<li><strong>grunt</strong> - a task runner, great for dealing with builds.</li>
+<li><strong>npm</strong> - install packages for Node.js</li>
+<li><strong>gem</strong> - install Ruby gems.</li>
+</ul>
+
+
+<p>Do we need to rewrite things in .NET before we&rsquo;ll use them for .NET projects? Why don&rsquo;t we just consume what is already there?</p>
+
+<p>If we really want to help build an ecosystem, we should be building a software development ecosystem, and not one specially tailored for .NET, because there really isn&rsquo;t anything special we are doing. Let&rsquo;s spend our time adding better cross-platform support to some of these packages or package managers.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/10/why-tfs-sucks/">Why TFS Sucks!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-04-10T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>What am I talking about?</h2>
+
+<p>The tools I&rsquo;ve been having the bulk of my problems with are the:
+- Automated Build System
+- Version Control System</p>
+
+<p>In quick defense of TFS, I really haven&rsquo;t had any problems with their Task Management System. These other two though, have been a huge thorn in my side for months now.</p>
+
+<h2>Oh,the Horror&hellip;</h2>
+
+<p>It all started about a year ago, after upgrading from TFS 2010 to TFS2012. I didn&rsquo;t perform the upgrade myself, but we had all sorts of problems.
+- Sharepoint portal projects wouldn&rsquo;t upgrade.
+- Dead or broken links in Sharepoint projects.
+- Build controller wouldn&rsquo;t start.
+- Automated builds wouldn&rsquo;t run.</p>
+
+<p>These were not good days.</p>
+
+<p>Things slowly got a little better. The problems with Sharepoint were addressed by one of our engineers with some help from Microsoft support, and they also patched up the build controller so it would come online. They never did manage to get the automated build process to work.</p>
+
+<h2>Fast forward a few months</h2>
+
+<p>The automated build process still isn&rsquo;t working. Different people on the team looked at it, and all attempts to fix it failed. Then the calls to Microsoft started, and the best advice they can provide is &ldquo;upgrade all of your projects to .Net 4.5 and see what happens&rdquo;. Seriously? That is all you&rsquo;ve got?</p>
+
+<p>Well, that isn&rsquo;t what we ended up doing. To be honest, it has been so long now, and I was so pissed off my the whole thing, I don&rsquo;t know what I did to fix it. I finally hammered at the problem deep into the wee hours of the night, and I finally had some success with it. And by some I mean that, I finally got the build running and outputing some information to the log. I think, but don&rsquo;t quote me on it, that the problem was with the workspace target being set incorrectly. You&rsquo;d really think Microsoft support would have backed things up a bit and looked at started from step one configuring an automated build. Nope, we got what I can only assumed is that canned response suggesting a framework update would miraculously solve all our problems.</p>
+
+<p>Now, I said that it didn&rsquo;t resolve all of the build issues&hellip; the remaining issues apparently existed before the upgrade, so we were back to where we started.</p>
+
+<h2>What is with all this XAML?</h2>
+
+<p>These other issues were related to some deployment tasks we were trying to run, so the next step was to figure out why they were failing. And so begins my first experience with the .xaml file that drives the build.</p>
+
+<p>It took me hours to make any sense of what was going on what so ever. I tried opening the .xaml file up in Visual Studio, that sucks. What the hell does this shit mean?</p>
+
+<p><img src="/assets/images/posts/tfs-sucks.PNG" alt="XAML Editor" /></p>
+
+<p>I finally gave up on that view and opened the file up in a text editor. Not much of an improvement, but at least a few things make sense now. After a few more hours, and who knows how many commits later, things finally worked.</p>
+
+<blockquote><p>Things shouldn&rsquo;t be this hard.</p></blockquote>
+
+<p>I&rsquo;ve said it before&hellip; and yet&hellip; there it is again. I don&rsquo;t understand why anybody dreamt up XAML in the first place.</p>
+
+<ul>
+<li>It is code, represented as XML.</li>
+<li>Okay, it isn&rsquo;t really code, so maybe you don&rsquo;t need to be a developer to use it.</li>
+<li>The editor is useless. Really. Go open your build.xaml file and see how you like it.</li>
+</ul>
+
+
+<h2>Things Get a Bit Better</h2>
+
+<p>To be honest, they really didn&rsquo;t. I thought they did though. We found out there were these Custom Build Process Template things you could do, <a href="http://msdn.microsoft.com/en-us/library/dd647551.aspx">kinda like this</a>. It was damn near impossible to track down all the dependencies before it actually worked, but when it was up and running, I was able to get a few custom activities running. Along the way though there was an immediate issue&hellip; I tried to build an update to the project and got some error about how Visual Studio was unable to update a DLL. Enter my version control system woes.</p>
+
+<h2>Ignore that&hellip; I THINK NOT!</h2>
+
+<p>One of the things I really like about Git is the .gitignore file. Well, TFS is supposed to support this same functionality using a .tfignore file. So, I tried to use it, and couldn&rsquo;t get it to work. At first the issue appeared to be that I wasn&rsquo;t using a local workspace, but I converted my workspace to one, and the damn files were still appearing in my excluded changes window. What the heck man?</p>
+
+<p>Apparently the folks over on the TFS team feel that you should never be able to exclude a file, not completely anyway. Does that make sense? It doesn&rsquo;t make any sense to me. Why not, if you really want to cram a file into source control, edit the .tfignore and add an exception to your exclude rule? Would that be too straight forward?</p>
+
+<p>That would be all well in good if Visual Studio didn&rsquo;t also think this was the most assanine thing it had ever heard. In order to get the custom build project to actually build I had to check out the damn DLLs, and then build. Wow! Really?</p>
+
+<p>Regardless, onward we go.</p>
+
+<h2>MSBuild, You Have Been Forgotten</h2>
+
+<p>Until last night I&rsquo;ve really taken MSBuild for granted. I fire up Visual Studio, write some code, build it, publish it, and there we go. I wanted to get JSHint running as part of the build process though, so I read up on it. It turns out it was actually pretty easy to make this happen (post to follow). I was actually pretty excited. If I can do these things with MSBuild, then maybe I can live with TFS Build after all. So, I commit the changes, fire off a build, and nothing. The custom target I created didn&rsquo;t get fired at all.</p>
+
+<p>What the hell!!!</p>
+
+<p>The only thing I can figure is that the TFS build process doesn&rsquo;t respect the build files. Why on earth would that be? What got of Microsoft or TFS demanded that XAML be king? Why not just update MSBuild to provide the functionality you need? Isn&rsquo;t the XAML just supposed to be a wrapper around MSBuild anyway?</p>
+
+<p>I spent hours today trying to get it to work, and failed. Finally at 6:11 PM EST today I fired up a Windows 8.1 VM, downloaded TeamCity from JetBrains, installed it, added a test project into TFS, created a build defintion, having no prior experience with TeamCity mind you, and was able to get a build to run that did run my custom target. I realized success with that at exactly 6:39 PM EST. That&rsquo;s right. It took me under 30 minutes to accomplish something I had failed to make work in the previous 8 hours of the day.</p>
+
+<h2>Other Issues</h2>
+
+<p>Things post is getting long, and those are just a few of the pain points I&rsquo;ve had with TFS. Some others:</p>
+
+<ul>
+<li>Offline Mode (and don&rsquo;t say local workspaces)</li>
+<li>Local Workspaces</li>
+<li>Branching</li>
+</ul>
+
+
+<h2>So What Next?</h2>
+
+<p>I&rsquo;m done with TFS. Seriously. Maybe I&rsquo;m wrong about it. Maybe there is an expert over there at Microsoft that wants to send me an email and convince me I&rsquo;m wrong. I&rsquo;m more than happy to spend some time on Skype and let them set me straight. I don&rsquo;t think I&rsquo;m wrong though.</p>
+
+<p>So, maybe I&rsquo;ll give TeamCity a serious look, or Bamboo, or Jenkins, or maybe just use a scheduled task and run MSBuild right from the command line.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/30/refactor-constantly/">Refactor Constantly</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Why?</h2>
+
+<p>You want to refactor for a number of reasons.</p>
+
+<ul>
+<li>Make your code more unit testable.</li>
+<li>Adhere to design patterns.</li>
+<li>Make it more readable.</li>
+<li>Make it more maintainable.</li>
+<li>And so on &hellip;</li>
+</ul>
+
+
+<p>Does this violate the Open Closed Principle? Yes, I guess it does. The whole idea behind refactoring though is that you will eventually get your code to the point where additional refactorings are no longer needed. If you work in an environment like I do though, you are constantly adding new code, so there is constantly code to <em>improve</em>.</p>
+
+<h2>Have A Plan</h2>
+
+<p>It is important for you to look at the code and come up with a game plan for what you want to see changed. Make sure you know why you want that change too. I can&rsquo;t emphasize that enough. Don&rsquo;t rewrite code for the sake of rewriting it. There has to be a solid reason for doing so, otherwise you are just wasting the companies time, or your own. So, look at the code you want to rewrite, make notes along the way of all the things you&rsquo;d like to improve, and write down why you feel those changes are necessary.</p>
+
+<h2>Don&rsquo;t Start Right Away</h2>
+
+<p>Man, I am notorious for getting myself caught in this trap. I have an idea for something to improve, and then I just jump right in. Hell, a lot of the time it isn&rsquo;t a plan so much as it is a few ideas rolling around in my head. Sometimes that is the best way to get started coming up with a list of things to change&hellip; just don&rsquo;t commit those &ldquo;I have an idea&rdquo; changes until you&rsquo;ve written them down and thought them over.</p>
+
+<p>I like to keep notes about what code to refactor in Evernote. Anything like that I&rsquo;ll add a &ldquo;.refactor&rdquo; tag too, as well as a &ldquo;.todo&rdquo; tag. The &ldquo;.todo&rdquo; tag lets me know that I want to revisit that note for one reason or another. With that note saved off I&rsquo;m not worried about forgetting any of my fantastic ideas, and I can also sleep on it for a night, a week, or for however long it takes.</p>
+
+<h2>Baby Steps</h2>
+
+<p>After you have your plan, take baby steps. Build on that plan and come up with a true plan of attack. You don&rsquo;t want to change everything at once. Hell, ideally you will have a few dozen commits that take place over a few weeks. That way you know your application isn&rsquo;t going to fail horribly in Production.</p>
+
+<p>This is another trap I fall into though&hellip; I start changing everything at once. It feels great too! I&rsquo;ll sit there and marvel at how productive I&rsquo;ve been. It isn&rsquo;t worth it though, because you&rsquo;ll screw something up. Here is my advice.</p>
+
+<ul>
+<li>Take your time.</li>
+<li>Talk things over with your team, if you have one.</li>
+<li>Figure out which changes are the most important or impactful.</li>
+<li>Above all, make sure everybody on your team knows what is coming, and why.</li>
+</ul>
+
+
+<h2>Conclusion</h2>
+
+<p>Refactor, and refactor often. It is well worth the exercise. You&rsquo;ll learn new things, reacquaint yourself with old code, find bugs you didn&rsquo;t realize were there, and overall improve the quality of your codebase. You need to do it slowly though, with an execution plan, and with the buy in from other members of your team.</p>
+
+<p>Happy refactoring!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/29/the-problem-with-open-source/">The Problem With Open Source Software</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-29T00:00:00-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I really like open source software, but I&rsquo;ve ran into some problems recently that really make me wonder why. Just a few days ago I was trying to work through getting Graphite up and running to determine if it was something I could leverage, and I ran into all sorts of problems.</p>
+
+<h2>Why Can&rsquo;t Things Just Work?</h2>
+
+<p>I&rsquo;ve always been one of those people that felt if you wanted true &ldquo;Geek Cred&rdquo; then you had to know Linux. Well, I&rsquo;ve tried. And tried. And tried. Things will go really well for a few days, and then everything will just fall apart on me. Maybe I&rsquo;m just a spoiled geek that lives in Windows happy-land.</p>
+
+<h3>Dependencies</h3>
+
+<p>Why can&rsquo;t they just install by default? I know it&rsquo;s possible, because NPM does this really well. You have a <code>package.json</code> file where you define the dependencies your package or app has on other packages, specify the version of it you need, and then just run <code>npm install -d</code> and everything you need comes down and just works. Sure, every once in a while you run into something that just doesn&rsquo;t work on Windows, but I expect that, and can generally find something that does the exact same thing, and is perfectly happy running on Windows.</p>
+
+<p>Now, move over to your Linux box and try to install something without running into a problem. Guess what&hellip; you can&rsquo;t! First, you can&rsquo;t even rely on the package manager. Which package manager? I don&rsquo;t know&hellip; there are so damn many of them. I know when running Ubuntu 12.04 if I run <code>sudo apt-get install nodejs</code>, I get a very old version of it that doesn&rsquo;t even come packaged with NPM. So that makes sense. Yes, I know you can register a PPA with your apt-get registry and run the command again to pull down the latest, but what I don&rsquo;t get is why the hell that is even necessary.</p>
+
+<p>The first problem, there isn&rsquo;t a central package manager used across every Linux distribution. Even better than that, you have several options per distribution. Using Ubuntu you can try and use their own package manager, or apt-get, or aptitude, or probably 20 others I don&rsquo;t even know about. Clear as mud that is!</p>
+
+<p>When all else fails though you can download the source, generate a make file, and <code>make install</code>, and surely that will work. Well, not in my experience, and not when I tried to install Graphite. I got errors. As luck would have it there was some &ldquo;check-dependencies.py&rdquo; script that I could run, after figuring out how to install python and python-dev on my box, and then I found a list of 10 or so dependencies it had. Well, I&rsquo;m having a hard enough time getting this to install, and had a hard time installing python, why the hell would I install these just to uncover even more dependencies? Nope, I&rsquo;m sorry. NOT GONNA HAPPEN!</p>
+
+<h3>It Works Sometimes</h3>
+
+<p>The first time I used Vagrant I was seriously impressed. Creating a VM and provisioning it from a shell script or using Puppet or Chef was such an incredible idea. You want to refresh your environment, just run <code>vagrant destroy</code> and then <code>vagrant up</code>, and there you go. I barely scratched the surface of what Vagrant to do before I started running into problems on my Windows 8.1 box. What I started to see is that running <code>vagrant up</code> was launching the baseline VM, and no the VM I was expecting it to. So I quit on it the first day it happened, and shut down my computer. A few days later I give it another shot and up comes the correct VM. WTF?</p>
+
+<p>Fast forward to this weekend and I&rsquo;m running up'ing and halt'ing VMs left and right from different projects, and everything is going great, until it doesn&rsquo;t. I run <code>vagrant up</code> and up comes the wrong VM. I only had one defined in this Vagrantfile, so where the hell did this one come from? Turns out it was the baseline image that was downloaded when I first setup Vagrant. Wow, I didn&rsquo;t expect that! I googled, found out others had similar problems, didn&rsquo;t see a resolution, and promptly shook my head in dissappointment.</p>
+
+<p>At this point I have a few options&hellip; I can keep digging around and hopefully run across a solution, dig into the source code and try to fix it, or wipe my hands of it all and go do something else. What did I do? I uninstalled Vagrant, deleted the other manual Linux VM I had created, and then breathed a sigh of relief.</p>
+
+<h3>Documentation</h3>
+
+<p>The last point I want to make is about documentation. You can tell that I like NPM, but that doesn&rsquo;t mean everything out there is well documented. Quite often you have to dig to find out how to use the packages out there.</p>
+
+<p>When trying to get Graphite up and running I ran into another documentation issue. Some of the documentation was great. In fact, it was great, all the way up until the <a href="http://graphite.readthedocs.org/en/latest/config-webapp.html">setting up the webapp</a> step. Ha! Need I say more?</p>
+
+<h2>It Doesn&rsquo;t Have to Be This Way. Really!</h2>
+
+<p>I can&rsquo;t speak for the Linux community. At the end of the day I have to admit that I&rsquo;m completely lost there. I really don&rsquo;t have any interest in losing any more weekends trying to accomplish what seems like a super simple thing, on Linux. I&rsquo;ve tried, put the time in, and have failed pretty much every time. I appreciate the security of it, but with such a lack of standards and standardization on tooling, I just don&rsquo;t see how anybody that doesn&rsquo;t live and breath that system being able to do anything with it.</p>
+
+<p>What am I taking away from all of this? I still love the open source movement, and will still publish as much as I can out to GitHub and BitBucket for others to take, use, and make their own. When I do this though I&rsquo;m going to make sure the documentation is there, and that it is accurate. You are doing your users a disservice otherwise.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/15/unit-testing-attributes/">Unit Testing Attributes Is Easier Than I Thought</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-15T00:00:00-05:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve been struggling with the unit testability of attributes for a while, and have wanted to abandon their use completely. The problem with that is, I&rsquo;m working with ASP.Net MVC, and it can make pretty heavy, but effective, use of attributes.</p>
+
+<p>Take a simple attribute like this one.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">CheckAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">public</span> <span class="kt">bool</span> <span class="n">CheckIt</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">public</span> <span class="nf">CheckAttribute</span><span class="p">(</span><span class="kt">bool</span> <span class="n">checkIt</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="n">CheckIt</span> <span class="p">=</span> <span class="n">checkIt</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I want to use it to trigger some other operation to run later, like to enforce the value of the property is unique before inserting it into the database.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">  [Check]</span>
+</span><span class='line'>  <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">  [Check(false)]</span>
+</span><span class='line'>  <span class="k">public</span> <span class="kt">string</span> <span class="n">Kind</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Testing this can actually be pretty simple. Instead of unit testing the expected behavior, just verify the attribute appears in code where you expect it to with a test like the one below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[TestMethod]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">Person_WhenValidated_ChecksIt</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">var</span> <span class="n">p</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+</span><span class='line'>  <span class="kt">var</span> <span class="n">c</span> <span class="p">=</span> <span class="p">(</span><span class="n">CheckAttribute</span><span class="p">)</span> <span class="n">p</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">).</span><span class="n">GetCustomAttributes</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CheckAttribute</span><span class="p">),</span> <span class="k">false</span><span class="p">)[</span><span class="m">0</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">Assert</span><span class="p">.</span><span class="n">IsTrue</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">CheckIt</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The actual enforcement of the underlying business rule would be covered by one or more tests that verify the code that actually enforces this rule. All we really care about here is that the attribute appears where we expect it to.</p>
+
+<p>I had thought this was an original idea of my own, but ended up finding something very similar in a post by <a href="http://bradwilson.typepad.com/blog/2009/04/dataannotations-and-aspnet-mvc.html">Brad Wilson</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/09/javascript-eval-minification-gotcha/">A Javascript Eval Gotcha When Minifying Javascript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-08-09T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Minifying your stylesheet and javascript assets for your site is a great idea, and something that nobody should likely not look into for speeding up their website. It brings with it a few challenges though, one of those being the use of <em>eval</em> in javascript.</p>
+
+<p>If you have a code block like this that simply executes another function and passes in an argument to it.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">runIt</span><span class="p">(</span><span class="nx">functionName</span><span class="p">,</span> <span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">eval</span><span class="p">(</span><span class="nx">functionName</span> <span class="o">+</span> <span class="s1">&#39;(param)&#39;</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Provided minification isn&rsquo;t in place this will work just fine. But, as soon as you do minify this things will suddenly stop working. The reason for this is that minification tools are actually going through and shortening your variable and parameter names; which means you can&rsquo;t relay on <em>param</em> being the same. Luckily though the solution is quite simple because javascript provides us with an <em>arguments</em> array.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">runIt</span><span class="p">(</span><span class="nx">functionName</span><span class="p">,</span> <span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">eval</span><span class="p">(</span><span class="nx">functionName</span> <span class="o">+</span> <span class="s1">&#39;(arguments[1])&#39;</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>While I have seen so called safe modes built into minifiers that will try and address this problem I suggest this is a better pattern to follow, and not just because you&rsquo;ve decided to minify your assets. Do yourself a favor and just make this a standard.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -78,7 +965,56 @@
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -91,7 +1027,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Your Name -
+  Copyright &copy; 2015 - Brad Teller -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -100,7 +1036,24 @@
 
 
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
 
 

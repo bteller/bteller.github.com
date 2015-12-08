@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="Everything was smooth sailing, until now. I tried to setup a mapping table to allow for a many-to-many relationship between tasks and tags in my &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/posts/3/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/07/postgresql-and-nodejs-issue/">PostgreSQL and Node.js Issue</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-08-07T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Everything was smooth sailing, until now. I tried to setup a mapping table to allow for a many-to-many relationship between tasks and tags in my application and ran into a bit of a snag. From a PostgreSQL perspective everything went just fine. I was allowed to be a good junior DBA and create a composite primary key in my mapping table, and I was also able to define foreign keys for both tagid and taskid. The surprising thing happened when I tried to run my app.</p>
+
+<p>Instead of the server starting up and waiting to serve me I got an error that read &ldquo;more than one row returned by a subquery used as an expression&rdquo;. Wow, really helpful. It didn&rsquo;t help at all that I had made a few changes to my server.js file, so I immediately thought I had something wrong in the code. After some rooting around in there, reverting to the previous version from source control, and general head scratching I was at a loss. Truthfully I am still at a loss. Hopefully I will find a better solution for this at some point, but for now I don’t want this to keep me from making progress and learning more that Node.js has to offer.</p>
+
+<p>What I found was that either massive-js or one of the modules it uses, perhaps node-postgres, appears to have a problem with the constraints I had created on the mapping table. So, to allow me to move forward I just removed the constraints and everything went back to running as expected.</p>
+
+<p>Check back, I&rsquo;ll provide an actual fix for this once I do finally track one down.</p>
+
+<blockquote><p>UPDATE: So far it seems like the problem is with massive-js. In particular it seems to be an issue starting at line 17 of ./lib/postgres.js where the schema is queried.</p></blockquote>
+
+<p><strong>WORKAROUND:</strong> Since posting this yesterday I have identified and implemented a workaround for this issue. It&rsquo;s the next post up, but just in case here is a <a href="http://blog.bradley-teller.me/2012/08/09/massive-js-issue-workaround/">link to it</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/05/using-node-inspector-on-windows/">Using Node Inspector on Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-08-05T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I guess I just have a hard time following directions or something, but just in case I wanted to make it crystal clear for anyone else having problems what you need to do in order to use <a href="https://github.com/dannycoates/node-inspector/">node-inspector</a> to debug a Node.js application on Windows.</p>
+
+<ol>
+<li>Temporarily disable your anti-virus software. You damn well better be running anti-virus software. If you aren&rsquo;t because you don&rsquo;t feel you should have to pay for it then you can either use Windows Essentials or run over to AVG and download the <a href="http://free.avg.com/us-en/homepage">free</a> version. I&rsquo;m running AVG and it is really easy to disable, just right-click the tray icon and select the option to &ldquo;Temporarily disable AVG protection&rdquo;. It is even nice enough to let you select a time duration to disable protection for.</li>
+<li>Drop down to a command line and run <code>npm install -g node-inspector</code>.</li>
+<li>This isn&rsquo;t important here, but if you want to be able to quickly launch Notepad++ from the command line run <code>doskey n=notepad++ $*</code>. Note that I have the notepad++ executable in my path. If you don&rsquo;t you should be able to specify the full path, or just add it to your path to make this easier to do in the future.</li>
+<li>From within the root directory of your Node.js application run <code>node-inspector &amp;</code>.</li>
+<li>Now open another command prompt, leaving the one running node-inspector open and navigate to your Node.js application root. Then run <code>node --debug server</code> to start your application up in debug mode. If your primary source file name is something different then use that in place of &ldquo;server&rdquo;. If you want to break at the first line of code run <code>node -debug-brk server</code> instead.</li>
+<li>Open Chrome, or Safari if you have it installed, and go to &ldquo;localhost:8080&rdquo; to view the debug tools.</li>
+<li>Open another tab in Chrome and navigate to your Node.js applications port at localhost.</li>
+<li>Click back over to the node-inspector tab and marvel at how simple that really was.</li>
+</ol>
+
+
+<p>This thing is really great. Once it is up and running you can step through and debug your application just as you would your client-side scripts for any other site you&rsquo;ve worked on. I&rsquo;ve only been using it for a few days now, but I haven&rsquo;t really run into any issues. I&rsquo;ll admit that selecting the script file in which to set breakpoints can be a little difficult. When you are debugging keep in mind that your scripts will not appear until they are pulled in by require statements.</p>
+
+<p>I have experienced some odd behavior with the debugger though. Occasionally it seems to detach itself from the node server. If that happens just rinse and repeat from step 4 above.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/05/secure-your-github-repo-for-nodejs/">Secure Your GitHub Repo for Node.js</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-08-05T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I wanted to commit my code to GitHub for this trial Node.js application I started playing with this weekend but I didn’t want any of my passwords finding there way up to GitHub. To get around this I created a module.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">connString</span><span class="o">:</span> <span class="s2">&quot;postgres://username:password@server/db-name&quot;</span>
+<span class="p">};</span></code></pre></div>
+
+
+<p>Then I told my application to consume it.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./secure.js&#39;</span><span class="p">);</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">connString</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">db</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">lifejs</span> <span class="o">=</span> <span class="nx">db</span><span class="p">;</span>
+<span class="p">});</span></code></pre></div>
+
+
+<p>The thing to pay attention to is where I tell <a href="https://github.com/robconery/massive-js">massive-js</a> the connection string to use for connecting to my local postresql database. I access it by calling “settings.connString” which is nothing more than a constant at this point.</p>
+
+<p>The last thing you have to do is add &ldquo;/secure.js&rdquo; to your .gitignore file. Now you can commit changes to your repository without fear of everybody seeing your connection string information, or anything else you would like to keep private.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/05/nodejs-express-helpers/">Node.js Express Helpers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-08-05T00:00:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>What the hell Node.js community? I&rsquo;m trying to create a simple helper to format data before rendering it out and I can&rsquo;t find a single example of how to accomplish this?</p>
+
+<p>And here I thought there were problem in the .Net community. &lt;&lt;<strong>sigh</strong>>></p>
+
+<p>Okay, so my goal was to create a helper that would take a Date and write it out in the format of MM/DD/YYYY. Maybe there is something out there in JS land that already does this, but that is rather beside the point. The point here is that it was painful as hell to find out how to create a helper method for Express. The documentation I did find was from <a href="http://dailyjs.com/2011/01/03/node-tutorial-8/">DailyJS</a>, but that didn&rsquo;t work for me, although I&rsquo;ll say that there is a lot of great information in that series of posts. The other article I found that eluded to a solution was <a href="http://nicolahibbert.com/migrating-to-expressjs-v3/">here</a> but alas again, no dice. It did point me to the Express migration from 2.x to 3.x <a href="https://github.com/visionmedia/express/wiki/Migrating-from-2.x-to-3.x">page on GitHub</a> but that again wasn
+t very helpful. The only indication there was that app.dynamicHelpers has been removed, not deprecated but removed, and that I should use app.locals instead. Where are the examples? They have some example applications out there in their GitHub repo but I didn&rsquo;t find anything in there that resembled what I was trying to do.</p>
+
+<p>In the end I was able to get something to work. I arrived at this solution through trial and error and have no idea if this was the intended method for defining helpers, but based on how I understand the limited documentation that does exist I believe it is. So, this is how I defined my helper. As it turns out this appears to be the exact same format as when you were setting up dynamic helpers for Express.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">helpers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">stringifyDate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">d</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+      <span class="nx">result</span> <span class="o">+=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">;</span>
+      <span class="nx">result</span> <span class="o">+=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">;</span>
+      <span class="nx">result</span> <span class="o">+=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
+
+      <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>    
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
+
+
+<p>And this is the code to register the helper methods from my helpers.js file.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">locals</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./helpers.js&#39;</span><span class="p">).</span><span class="nx">helpers</span><span class="p">;</span></code></pre></div>
+
+
+<p>Now just in case you have the same thought I did, it does not seem to be possible to register helpers from an additional file in this manner, which means all your helpers must be contained in a single file. Please let me know if I am mistaken about that.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/28/unregister-javascript-coffeescript-and/">UnRegister: JavaScript, CoffeeScript and UI Testing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve been thinking about the UI lately for UnRegister and this means some client-side code, vis-a-vis JavaScript. My plan was to dive right in, but then I read this <a href="http://wekeroad.com/2012/03/21/coffeescript-or-straight-up-js-i-suck-either-way/">post</a>. Now that got me thinking. So what do I think? I think I&rsquo;ll leave CoffeeScript alone.</p>
+
+<h2>Translator Please</h2>
+
+<p>The folks over at <a href="http://coffeescript.org/">coffeescript.org</a> say that &ldquo;CoffeeScript is a little language that compiles into JavaScript.&rdquo; Well how delightful. I&rsquo;m a tremendous fan of the .Net framework. I&rsquo;ve looked around at other programming languages but as a general rule, for the majority of my projects, I tend to return to the .Net framework for my programming needs. Yeah, it helps that I&rsquo;m more comfortable working with it than any other framework, but it also does a great job. At its heart is this thing called the CLR, and that is responsible for compiling your VB.Net or C# code into machine language. Wouldn&rsquo;t it suck some serious ass if we had to write that out directly (unless of course you&rsquo;re into that sort of thing!!).</p>
+
+<p>So can we draw parallels between what the CLR is doing for us and CoffeeScript? Not a damn chance.</p>
+
+<p>To me writing something out in CoffeeScript and &ldquo;compiling&rdquo; it into JavaScript isn&rsquo;t providing enough of a benefit for me to consider it useful, and not at all necessary. Now I admit, I haven&rsquo;t used CoffeeScript, but that&rsquo;s because I don&rsquo;t want to. To me it&rsquo;s a little like using a translator to facilitate communications between somebody that speaks North Carolinian English and someone that speaks Californian English. In Rob&rsquo;s post, linked to above, he links to <a href="http://ryanflorence.com/2011/2012/case-against-coffeescript/">this</a> article which you really drives home some good points and identifies some of what my initial reservations were. You mean to say you want to write something in CoffeeScript, compile it down, consume the outputted JavaScript, run into an error, not have a clue what that error means, have no debug tools available to you, and have to track that back down in CoffeeScript somehow? It sounds like what one tremendous step backwards would feel like if you were standing with your back to the Grand Canyon two feet away from the ledge. Maybe there is some magic pixie dust (STOP! Is there such a thing as non-magical pixie dust???) that someone will sprinkle on you that gives you wings and allows you to soar above me with all the other CoffeeScript adopters. I sure hope I don&rsquo;t miss out on that.</p>
+
+<h2>JavaScript Unit Tests</h2>
+
+<p>I&rsquo;m sorry, what did you say? Man, I&rsquo;ve been standing in opposition of unit testing for years now, only to finally have been won over by its benefits, but I have limits! Hopefully somebody is out there reading this and will tell me what an idiot I am, please feel free. In the meantime I&rsquo;m going to sneeze a handful of good old fashioned man powered testing back at ya. Okay, I&rsquo;ll concede that for those of you developing for node.js, backbone.js, or who knows whatever popular server-side JavaScript platform is popular at the moment that you probably really do need to unit test your JavaScript. For those of us using it to spice up our ASP.Net MVC driven sites, or RoR, PHP, or whatever, I don&rsquo;t get it. NOT AT ALL!</p>
+
+<p>How about a scenario. Okay. I have a site. I want customers to be able to register for my site. I want them to give me an email address, password, confirmation password, name of their first born, if they don&rsquo;t have a first born than the name of their absolute favorite Star Wars character, and how about a date of birth for good measure. Now I&rsquo;ll have server side validation, and not driven by the damn database thank you very much, but I&rsquo;m also expecting millions of new users to register every second, so what am I going to do??? I&rsquo;ll be responsible and add in some client-side validation of course, and I&rsquo;ll feel damn good about myself for doing it. I&rsquo;m not going to reinvent the wheel so I&rsquo;m going to leverage the JQuery Validation plug-in (go find it, it really exists), and drop in my validation rules. After all that I&rsquo;m going to expect when somebody tests my site they know about that little spinny thing that starts its spinning, and that it does this when the browser makes the request of the server. So when they see failed validation when they click on the register button, and they don&rsquo;t see the little spinny thing, they will know that some client-side validation fired.</p>
+
+<p>But seriously &hellip; (man I&rsquo;m exhausting myself) &hellip; is there really a need? I&rsquo;m thinking that for 95% of the JavaScript code out there we don&rsquo;t need to be concerned with writing unit tests for.</p>
+
+<h2>UI Testing in UnRegister</h2>
+
+<p>I&rsquo;m very sad to say that at the very least I will not be doing this up front. I really do want to to try out something like <a href="http://watin.org/">WaitiN</a>, but that will come at the end of the project, time permitting. If you&rsquo;ve used any other tools, please recommend them.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/28/aspnet-mvc-client-validation-woes/">ASP.Net MVC Client Validation Woes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-28T00:00:00-04:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve posted in the past about problems with MVC validation and how it all works in Microsoft land when using data annotations and the like. Here are the past posts if you are interested, as uninformative as they might be.</p>
+
+<ul>
+<li><a href="http://blog.bradley-teller.me/2011/04/08/unobtrusive-validation-issue-with-mvc-3/">Unobtrusive validation issue with MVC 3</a></li>
+<li><a href="http://blog.bradley-teller.me/2010/05/11/jquery-ui-validation-summary/">jQuery UI Validation Summary</a></li>
+<li><a href="http://blog.bradley-teller.me/2011/01/12/asp-net-mvc-2-client-side-validation-with-jquery-error/">ASP.Net MVC 2 Client-Side Validation with JQuery Error</a></li>
+</ul>
+
+
+<p>So I was trying to do something similar to the JQuery UI validation summary with an extension method and started getting pissed off that things are so difficult. So I&rsquo;m giving up for now in favor of a different approach.</p>
+
+<p>Rather than fight the machine I thought I&rsquo;d work around it. My goal, to get my validation summary to use the formatting from Twitter Bootstrap. The solution, pretty simple actually. Just add this bit of javascript in your some global.js or init.js type file, and link it up in your layout page.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.validation-summary-valid, .validation-summary-errors&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;alert alert-error&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;&lt;strong&gt;Validation Exceptions:&lt;/strong&gt;&lt;/p&gt;&#39;</span><span class="p">);</span></code></pre></div>
+
+
+<p>And you also need to add some show/hide styles to your stylesheet. If you don&rsquo;t that thing will start showing up before you want it to.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.validation-summary-valid</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.validation-summary-errors</span> <span class="p">{</span> <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
+
+
+<p>Now, without having to do anything out of the ordinary you can have a from with an Html.ValidationSummary() inside of it, and when there are errors in the ModelState, or client validation violations you&rsquo;ll see something like this here.</p>
+
+<blockquote><p>Sorry, I misplaced this image. I am trying to recover it.</p></blockquote>
+
+<p>Now we&rsquo;ve got our validation errors displaying in a Twitter Bootstrap formatted alert container. To me this approach is much simpler than messing with the .js files provided by Microsoft.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/10/unregister-ui-requirements/">UnRegister: The UI Requirements</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-10T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is going to be a little rough because I&rsquo;m terrible with graphics applications, and I don&rsquo;t have a scanner, so that makes any sort of wire frame impossible. I searched around for something free that might help me get the job done and found a tool called <a href="http://www.evolus.vn/Pencil/Home.html">Pencil</a>, but I&rsquo;m still facing some challenges with it. So to start with, unless I get more ambitious later in the day, this is primarily going to be a wire frame in text. I&rsquo;ll detail my core requirements for these pages in sections below.</p>
+
+<h2>Landing Page</h2>
+
+<p>This is the home page, or index page, and there are a few things this page needs to do. First, it needs to identify the project name and what the project is all about. The &ldquo;all about&rdquo; I&rsquo;d like communicated in a quick project mission statement, much like I&rsquo;ve got up on the github repo today. We also need some log in capabilities, and I&rsquo;d like that to be hidden inside a pull-down triggered from a button click. We&rsquo;ll need some way for new users to register to use the service, so we&rsquo;ll need some sort of link to the registration page. And then, maybe later on down the road once we&rsquo;ve actually got this application doing something we could include a brief tutorial on how to use it.</p>
+
+<p>At the end of the day this might look something like this.</p>
+
+<p><img src="/assets/images/posts/unregister-ui-requirements-1.png" alt="Home Image" /></p>
+
+<h2>The Other Pages</h2>
+
+<blockquote><p>That was the limit of my patience trying to draw things out using any sort of tool, so this will go pretty quick from here on out. I can&rsquo;t see spending hours putting together some drawings when I can get it done equally as fast using HTML and CSS directly.</p></blockquote>
+
+<p>The other pages we&rsquo;ll be needing are.</p>
+
+<ul>
+<li><strong>Login Page</strong> - this will duplicate the drop down box from the landing page and will also provide some forgot password functionality
+Registration Page - we need a place where users can sign up for the service, so that&rsquo;s what this will be for</li>
+<li><strong>Dashboard Page</strong> - this is the main page for the user to interact with where they will see a quick summary of their accounts and have a quick add transaction option</li>
+<li><strong>Account Page</strong> - this will consist of a list of transactions and allow for sorting and filtering within the current account, and of course will allow for adding, editing and deleting of associated transactions</li>
+<li><strong>Profile Page</strong> - the user probably needs a place to change their password and edit other basic information about themselves, so this will be provided here</li>
+</ul>
+
+
+<p>That should probably do it. I wish I had the patience to draw these all out, but this is generally why I don&rsquo;t go through this exercise. When I start working on a project, especially something like this where the requirements are coming from me, I generally have a loose idea in my head about what pages I&rsquo;ll need and the functionality they will provide, and that&rsquo;s about it. I don&rsquo;t have spelled out to the letter what everything is going to do, and I certainly don&rsquo;t have it drawn out. So why did I try and do it this way here? I really don&rsquo;t know. Now you have a little insight into my madness though.</p>
+
+<h2>What&rsquo;s next?</h2>
+
+<p>I&rsquo;m going to be using the <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> tools from Twitter to give this application its basic skin. So next for me is to start working on the page implementations. So that will likely be the topic for the next post.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/03/02/unregister-setting-up-git/">UnRegister: Setting Up Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-03-02T00:00:00-05:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have jumped on the git bandwagon for providing version control of any personal project I work on. The problem is that I don&rsquo;t really know how to make effective use of the tool. As a developer who spends the majority of my time in the Visual Studio IDE I don&rsquo;t have an overwhelming level of comfort for the command line, and because of this I&rsquo;ve come to rely on GUI interfaces. My interface of choice when working with git is <a href="http://code.google.com/p/tortoisegit/">TortoiseGit</a> which integrates very well into Windows Explorer and is fairly intuitive. What I&rsquo;m still unsure about is if there is a recommended folder structure for a git repository.</p>
+
+<p>Having used Subversion previously I was in the always in the habit of creating two folders, trunk and branch. When browsing GitHub though I don&rsquo;t see any real standards emerging for a folder structure with git. Some people seem to make use of some standard folder names such as &ldquo;src&rdquo; for code storage while others simply drop their code in the root folder of their repository and maybe a &ldquo;tools&rdquo; folder for storage of related assemblies. The projects for Code52 <a href="https://github.com/code52">employ</a> this directory structure. Yet others don&rsquo;t use any nested folder structure at all, and until now this is the pattern I have been following without really knowing why. In fact my only reason for doing so has been simplicity.</p>
+
+<p>I&rsquo;m sad, and sort of surprised, that after googling different search terms and following many links I still do not have an answer. It appears there just isn&rsquo;t a standard directory structure recommendation that exists. I can see why Code 52 has created a &ldquo;src&rdquo; and a &ldquo;tools&rdquo; folder though, and it makes sense to me, so I think I&rsquo;m going to adopt that as my new standard going forward, for .Net projects anyway. When dealing with a project written in Ruby this structure wouldn&rsquo;t make as much sense to me since the sole purpose of the &ldquo;tools&rdquo; folder is to contain dependencies the code has on third-party tools and their executables or assemblies, and the need for managing those disappears because of the Gemfile and bundler. Until Nuget matures and hopefully one day really provides the .Net community with their own version of gems, I think having a folder named tools is the way to go.</p>
+
+<p>One other important thing when using git is to remember to add a .gitignore file at the root of your repository. I believe I remember reading somewhere that there may be a global location you could do this in, but in my case I prefer to do this on a project by project basis. I&rsquo;ve found the following to work pretty well.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">obj</span>
+<span class="nx">bin</span>
+<span class="nx">deploy</span>
+<span class="nx">deploy</span><span class="o">/*</span>
+<span class="nx">_ReSharper</span><span class="p">.</span><span class="o">*</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">csproj</span><span class="p">.</span><span class="nx">user</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">resharper</span><span class="p">.</span><span class="nx">user</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">resharper</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">suo</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">cache</span>
+<span class="o">~</span><span class="nx">$</span><span class="o">*</span>
+<span class="o">*</span><span class="p">.</span><span class="nx">gitignore</span>
+<span class="nx">packages</span>
+<span class="o">/</span><span class="nx">packages</span></code></pre></div>
+
+
+<p>When you are setting up your repository on GitHub you are asked to name it, and then very kindly they provide you with a list of command line instructions to initialize your repository locally and establish the link with GitHub. One of those steps is to create a README file, but that is flat text and if you have seen other repositories out there you&rsquo;ll have noticed that they can contain a little bit more flare. This flare is often courtesy of a markdown file. In the spirit of open-source software, and as a follower of Code 52&rsquo;s efforts, I&rsquo;m using a tool from them called <a href="https://github.com/Code52/DownmarkerWPF">MarkPad</a>.</p>
+
+<p>With that, I&rsquo;m now going to tackle creating a new git repository locally, and create the code skeleton for this project.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/29/unregister-project-manifesto/">UnRegister: A Project Manifesto</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-02-29T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the things I&rsquo;ve been really interested in doing this year is getting involved with an open source project. Unfortunately I&rsquo;ve been a little remiss in my efforts to find a current project to get involved with. Early on I had a few thoughts of projects I&rsquo;d like to become a contributor to, such as the Aptana IDE, but I feel those thoughts were over ambitious. Then I came across a great project currently ongoing from <a href="http://code52.org/">Code 52</a>, and was thinking about getting involved with something they are doing, and I still might. For anybody that isn&rsquo;t familiar with Code 52, head on over to their site. Basically though their goal is to start up 52 open source projects this year, one for every week on the calendar. It&rsquo;s a very ambitious goal and they&rsquo;ve already churned out some really cool things. At present though, I don&rsquo;t feel any of these projects and efforts are a great fit for me, so enter UnRegister.</p>
+
+<h2>Why UnRegister?</h2>
+
+<p>I&rsquo;m a programmer, and as a programmer I have problems at times, well actually quite often, using other peoples products. Let&rsquo;s face it, for the vast majority of us we always think there is something we could have done better or would have done differently, and if not that then there is always the desire to have more control over the behavior of the tool we&rsquo;re using. One of those real problem areas for me is with finance software. Several months ago I picked up a copy of Quicken 2011 and after a month I stopped using it. It&rsquo;s probably a really good product for what it does, but I don&rsquo;t require all those bells and whistles. What I really want is a tool that gets out of my way. My ideal tool isn&rsquo;t a spreadsheet, and isn&rsquo;t Quicken, it is something somewhere in between. I don&rsquo;t need to be able to synchronize with my various accounts at different financial institutions, I just want to be able to track the deposits and withdrawals, provide some categorization of them, and maybe every now and then run some sort of query against that data. So that is the goal of UnRegister.</p>
+
+<h2>My Hidden Agenda</h2>
+
+<p>With anything in life there is a reason I&rsquo;m doing this. At work I&rsquo;m constrained by the work. I have people dictating to me what the requirements are, and I&rsquo;ve got a boss and a project manager telling me to get things done as fast as possible but don&rsquo;t sacrifice functionality. I do have some creative license, but at the end of the day the customer wants what the customer wants, and I&rsquo;m one of several programmers there seeing to it that they get exactly that. What that means for me is that there are technologies and practices I&rsquo;d like to be leveraging, or at the very least researching and evaluating, but there really isn&rsquo;t time enough to do that.</p>
+
+<blockquote><p>I&rsquo;ll stop right here for a moment just in case my boss is reading this and say: &ldquo;First, I didn&rsquo;t realize you read my blog. Second, I&rsquo;m still having fun and not going anywhere, I just need a place to flex that creative muscle a little. After all this should only make me that much more effective at the office.&rdquo;</p></blockquote>
+
+<p>Okay, sorry about that. So what am I looking to get out of this personally? A few things, in no particular order.</p>
+
+<ul>
+<li>Get better at writing tests, designing for testability, and just maybe fall in love with test driven development.</li>
+<li>Learn some new things, like perhaps a javascript unit testing tool, maybe some UI testing with <a href="http://watin.org/">WaitiN</a>, and who knows what else.</li>
+<li>Use a new project management tool such as <a href="http://agilezen.com/">AgileZen</a> or <a href="https://trello.com/">Trello</a>.</li>
+<li>And probably above all, I want to make a contribution to this <a href="http://www.hanselman.com/blog/YourBlogIsTheEngineOfCommunity.aspx">community</a> of programmers out here on the web that devote their time so selflessly so that others may learn from their sweat, blood, and countless hours of effort.</li>
+</ul>
+
+
+<p>Those are just some high level goals anyway. Probably at this point I should admit I&rsquo;ve been inspired by Rob Connery&rsquo;s current effort to recreate TekPub using server side javascript. I&rsquo;m looking forward to it though.</p>
+
+<h2>So What&rsquo;s Next?</h2>
+
+<p>Well, I&rsquo;m going to try and post updates just as frequently as I possibly can. I&rsquo;m hoping I can maintain this level of excitement throughout the project. This isn&rsquo;t the first time I&rsquo;ve tried doing something like this, but I think I&rsquo;ve got the proper goals in mind this time around. I&rsquo;m not trying to get rich off of this, although it would be nice, but instead I&rsquo;m trying to learn, practice, and contribute. Those should be sufficient motivators. As soon as I get something, anything done, on the code side, I&rsquo;m going to put it up on <a href="https://github.com/bteller">my GitHub account</a>. I also think I&rsquo;ll start by giving Trello a shot, I setup a quick <a href="https://trello.com/board/unregister/4f4f09872954dad1720e1477">board</a>  so you can hop over there and see what is in store.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/27/razorengine-vbnet-and-console/">RazorEngine, VB.Net and a Console Application</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-02-27T00:00:00-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>This solution only works for v3.0 of RazorEngine.</strong></p>
+
+<p>Man, ain&rsquo;t it always the case that you can&rsquo;t find good documentation for how to apply something in VB.Net. I&rsquo;m trying to use the Razor view engine to parse content from the database instead of running it through the view engine, and I want this code to live outside the presentation tier, so in this case a console application. I kept running across this delightfully concise articles that make use of <a href="http://razorengine.codeplex.com/">RazorEngine</a>. Trying to follow the basic example though I kept getting silly little errors about how $ was not defined (a lot of help that was). I then realized if I didn&rsquo;t try and pass in an anonymous object but instead passed in a class instance everything was happy, but that doesn&rsquo;t meet my needs. So, at this point in the night I&rsquo;m getting a little pissed off.</p>
+
+<p>More time goes by though, and that&rsquo;s why I&rsquo;m writing this up at 2:15 AM, and finally a few things started to click. If you want to be able to use this RazorEngine with the VB language there is something you&rsquo;ll need to do which is to tell this thing we are trying to use it with VB. I didn&rsquo;t find any great documentation on the site about this so it took some digging, and we finally arrived at this here. This is so painfully simple, and now there is a VB example.</p>
+
+<div class="highlight"><pre><code class="language-vbnet" data-lang="vbnet"><span class="k">Imports</span> <span class="nn">RazorEngine</span>
+<span class="k">Imports</span> <span class="nn">RazorEngine.Configuration</span>
+
+<span class="k">Module</span> <span class="nn">Module1</span>
+    <span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+        <span class="k">Dim</span> <span class="n">config</span> <span class="o">=</span> <span class="k">New</span> <span class="n">TemplateServiceConfiguration</span><span class="p">()</span> <span class="k">With</span> <span class="p">{</span>
+          <span class="p">.</span><span class="n">Language</span> <span class="o">=</span> <span class="n">RazorEngine</span><span class="p">.</span><span class="n">Language</span><span class="p">.</span><span class="n">VisualBasic</span>
+        <span class="p">}</span>
+        <span class="k">Dim</span> <span class="n">service</span> <span class="o">=</span> <span class="k">New</span> <span class="n">Templating</span><span class="p">.</span><span class="n">TemplateService</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">Razor</span><span class="p">.</span><span class="n">SetTemplateService</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+
+        <span class="k">Dim</span> <span class="n">template</span> <span class="o">=</span> <span class="s">&quot;I declare at this hour @Model.Declaration&quot;</span>
+        <span class="k">Dim</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Razor</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="k">Of</span> <span class="kt">Object</span><span class="p">)(</span><span class="n">template</span><span class="p">,</span> <span class="k">New</span> <span class="k">With</span> <span class="p">{.</span><span class="n">Declaration</span> <span class="o">=</span> <span class="s">&quot;SUCCESS!!!!&quot;</span><span class="p">})</span>
+
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">Sub</span>
+<span class="k">End</span> <span class="k">Module</span></code></pre></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/4">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/2">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

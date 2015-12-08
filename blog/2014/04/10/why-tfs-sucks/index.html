@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Why TFS Sucks! - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="What am I talking about? The tools I&rsquo;ve been having the bulk of my problems with are the:
+- Automated Build System
+- Version Control System In &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2014/04/10/why-tfs-sucks/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Why TFS Sucks!</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-04-10T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>What am I talking about?</h2>
+
+<p>The tools I&rsquo;ve been having the bulk of my problems with are the:
+- Automated Build System
+- Version Control System</p>
+
+<p>In quick defense of TFS, I really haven&rsquo;t had any problems with their Task Management System. These other two though, have been a huge thorn in my side for months now.</p>
+
+<h2>Oh,the Horror&hellip;</h2>
+
+<p>It all started about a year ago, after upgrading from TFS 2010 to TFS2012. I didn&rsquo;t perform the upgrade myself, but we had all sorts of problems.
+- Sharepoint portal projects wouldn&rsquo;t upgrade.
+- Dead or broken links in Sharepoint projects.
+- Build controller wouldn&rsquo;t start.
+- Automated builds wouldn&rsquo;t run.</p>
+
+<p>These were not good days.</p>
+
+<p>Things slowly got a little better. The problems with Sharepoint were addressed by one of our engineers with some help from Microsoft support, and they also patched up the build controller so it would come online. They never did manage to get the automated build process to work.</p>
+
+<h2>Fast forward a few months</h2>
+
+<p>The automated build process still isn&rsquo;t working. Different people on the team looked at it, and all attempts to fix it failed. Then the calls to Microsoft started, and the best advice they can provide is &ldquo;upgrade all of your projects to .Net 4.5 and see what happens&rdquo;. Seriously? That is all you&rsquo;ve got?</p>
+
+<p>Well, that isn&rsquo;t what we ended up doing. To be honest, it has been so long now, and I was so pissed off my the whole thing, I don&rsquo;t know what I did to fix it. I finally hammered at the problem deep into the wee hours of the night, and I finally had some success with it. And by some I mean that, I finally got the build running and outputing some information to the log. I think, but don&rsquo;t quote me on it, that the problem was with the workspace target being set incorrectly. You&rsquo;d really think Microsoft support would have backed things up a bit and looked at started from step one configuring an automated build. Nope, we got what I can only assumed is that canned response suggesting a framework update would miraculously solve all our problems.</p>
+
+<p>Now, I said that it didn&rsquo;t resolve all of the build issues&hellip; the remaining issues apparently existed before the upgrade, so we were back to where we started.</p>
+
+<h2>What is with all this XAML?</h2>
+
+<p>These other issues were related to some deployment tasks we were trying to run, so the next step was to figure out why they were failing. And so begins my first experience with the .xaml file that drives the build.</p>
+
+<p>It took me hours to make any sense of what was going on what so ever. I tried opening the .xaml file up in Visual Studio, that sucks. What the hell does this shit mean?</p>
+
+<p><img src="/assets/images/posts/tfs-sucks.PNG" alt="XAML Editor" /></p>
+
+<p>I finally gave up on that view and opened the file up in a text editor. Not much of an improvement, but at least a few things make sense now. After a few more hours, and who knows how many commits later, things finally worked.</p>
+
+<blockquote><p>Things shouldn&rsquo;t be this hard.</p></blockquote>
+
+<p>I&rsquo;ve said it before&hellip; and yet&hellip; there it is again. I don&rsquo;t understand why anybody dreamt up XAML in the first place.</p>
+
+<ul>
+<li>It is code, represented as XML.</li>
+<li>Okay, it isn&rsquo;t really code, so maybe you don&rsquo;t need to be a developer to use it.</li>
+<li>The editor is useless. Really. Go open your build.xaml file and see how you like it.</li>
+</ul>
+
+
+<h2>Things Get a Bit Better</h2>
+
+<p>To be honest, they really didn&rsquo;t. I thought they did though. We found out there were these Custom Build Process Template things you could do, <a href="http://msdn.microsoft.com/en-us/library/dd647551.aspx">kinda like this</a>. It was damn near impossible to track down all the dependencies before it actually worked, but when it was up and running, I was able to get a few custom activities running. Along the way though there was an immediate issue&hellip; I tried to build an update to the project and got some error about how Visual Studio was unable to update a DLL. Enter my version control system woes.</p>
+
+<h2>Ignore that&hellip; I THINK NOT!</h2>
+
+<p>One of the things I really like about Git is the .gitignore file. Well, TFS is supposed to support this same functionality using a .tfignore file. So, I tried to use it, and couldn&rsquo;t get it to work. At first the issue appeared to be that I wasn&rsquo;t using a local workspace, but I converted my workspace to one, and the damn files were still appearing in my excluded changes window. What the heck man?</p>
+
+<p>Apparently the folks over on the TFS team feel that you should never be able to exclude a file, not completely anyway. Does that make sense? It doesn&rsquo;t make any sense to me. Why not, if you really want to cram a file into source control, edit the .tfignore and add an exception to your exclude rule? Would that be too straight forward?</p>
+
+<p>That would be all well in good if Visual Studio didn&rsquo;t also think this was the most assanine thing it had ever heard. In order to get the custom build project to actually build I had to check out the damn DLLs, and then build. Wow! Really?</p>
+
+<p>Regardless, onward we go.</p>
+
+<h2>MSBuild, You Have Been Forgotten</h2>
+
+<p>Until last night I&rsquo;ve really taken MSBuild for granted. I fire up Visual Studio, write some code, build it, publish it, and there we go. I wanted to get JSHint running as part of the build process though, so I read up on it. It turns out it was actually pretty easy to make this happen (post to follow). I was actually pretty excited. If I can do these things with MSBuild, then maybe I can live with TFS Build after all. So, I commit the changes, fire off a build, and nothing. The custom target I created didn&rsquo;t get fired at all.</p>
+
+<p>What the hell!!!</p>
+
+<p>The only thing I can figure is that the TFS build process doesn&rsquo;t respect the build files. Why on earth would that be? What got of Microsoft or TFS demanded that XAML be king? Why not just update MSBuild to provide the functionality you need? Isn&rsquo;t the XAML just supposed to be a wrapper around MSBuild anyway?</p>
+
+<p>I spent hours today trying to get it to work, and failed. Finally at 6:11 PM EST today I fired up a Windows 8.1 VM, downloaded TeamCity from JetBrains, installed it, added a test project into TFS, created a build defintion, having no prior experience with TeamCity mind you, and was able to get a build to run that did run my custom target. I realized success with that at exactly 6:39 PM EST. That&rsquo;s right. It took me under 30 minutes to accomplish something I had failed to make work in the previous 8 hours of the day.</p>
+
+<h2>Other Issues</h2>
+
+<p>Things post is getting long, and those are just a few of the pain points I&rsquo;ve had with TFS. Some others:</p>
+
+<ul>
+<li>Offline Mode (and don&rsquo;t say local workspaces)</li>
+<li>Local Workspaces</li>
+<li>Branching</li>
+</ul>
+
+
+<h2>So What Next?</h2>
+
+<p>I&rsquo;m done with TFS. Seriously. Maybe I&rsquo;m wrong about it. Maybe there is an expert over there at Microsoft that wants to send me an email and convince me I&rsquo;m wrong. I&rsquo;m more than happy to spend some time on Skype and let them set me straight. I don&rsquo;t think I&rsquo;m wrong though.</p>
+
+<p>So, maybe I&rsquo;ll give TeamCity a serious look, or Bamboo, or Jenkins, or maybe just use a scheduled task and run MSBuild right from the command line.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-04-10T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2014/04/10/why-tfs-sucks/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2014/04/10/why-tfs-sucks/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/01/30/refactor-constantly/" title="Previous Post: Refactor Constantly">&laquo; Refactor Constantly</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/11/what-is-oneget/" title="Next Post: OneGet... What For?">OneGet... What For? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

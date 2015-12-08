@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Persistence Ignorant - Brad Teller</title>
+  <meta name="author" content="Brad Teller">
+
+  
+  <meta name="description" content="I&rsquo;ve wasted more time than I would like to admit tonight trying to work out a few things for an open source pet project of mine that I&rsquo;m &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://bradteller.com/blog/2011/04/29/persistence-ignorant/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Brad Teller" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Brad Teller</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="bradteller.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Persistence Ignorant</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-04-29T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&rsquo;ve wasted more time than I would like to admit tonight trying to work out a few things for an open source pet project of mine that I&rsquo;m finally trying to breathe some life into. There were, well I guess still are, a few issues I was trying to deal with.</p>
+
+<ul>
+<li>I&rsquo;m not in love with code first</li>
+<li>MySql works best for my hosting company, but MySql sucks</li>
+<li>At the end of the day I hate SQL the most</li>
+</ul>
+
+
+<p>Some explanation here &hellip;</p>
+
+<p><strong>I&rsquo;m not in love with code first</strong>. At first it seems very appealing, and I&rsquo;m not entirely convinced at this point I will be trying to avoid it, but I have some problems using it for building anything more than a very basic, spin it up once and never maintain it, site. Perhaps the documentation is forthcoming, but I have yet to see any guidance from the folks over at Microsoft to indicate how to handle updates to existing schemas without overwriting all of the data contained in any of the tables you&rsquo;d be modifying. It has support so that you can pass in your own custom implementation of <code>IDatabaseInitializer</code> if you want (a decent overview can be found <a href="http://sankarsan.wordpress.com/2010/10/14/entity-framework-ctp-4-0-database-initialization/">here</a>). But basically you are talking about the code below being used to setup your context.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">FreedomContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Calendar</span><span class="p">&gt;</span> <span class="n">Calendars</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;</span> <span class="n">Tasks</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="nf">FreedomContext</span><span class="p">()</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">nameOrConnectionString</span><span class="p">:</span><span class="s">&quot;FreedomDataServices&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="n">AutoDetectChangesEnabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="n">Database</span><span class="p">.</span><span class="n">SetInitializer</span><span class="p">&lt;</span><span class="n">FreedomContext</span><span class="p">&gt;(</span><span class="k">new</span> <span class="n">DropCreateDatabaseIfModelChanges</span><span class="p">&lt;</span><span class="n">FreedomContext</span><span class="p">&gt;());</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>Unless of course you want to spell out all of the relationships on your own, and in that case you&rsquo;d have to override OnModelCreating and deal with that mess of code. But with this code above, if you&rsquo;ve changed any of your objects then we are going to recreate everything. It appears that Microsoft is actively working on a project to provide better support for migrations, but from what I can tell it isn&rsquo;t actually available at this time (<a href="http://blogs.msdn.com/b/efdesign/archive/2010/10/22/code-first-database-evolution-aka-migrations.aspx">http://blogs.msdn.com/b/efdesign/archive/2010/10/22/code-first-database-evolution-aka-migrations.aspx</a>).</p>
+
+<p><strong>MySql works best for my hosting company, but MySql sucks</strong>. I realize this so before I went too far along I figured I&rsquo;d take and point Entity Framework over at a local instance of MySql just to get ahead of the game. This introduced its own set of problems though, since there appear to be limitations to the connector provided by the folks over at MySql. The main limitation is that you can&rsquo;t even get the drop and recreate type functionality that the code block above demanded because the provider doesn&rsquo;t have any support for it. I hit my head up against that for a while before finally giving up. I had seen indications that you could create the database manually before launching the application, and then everything would behave normally, but that didn&rsquo;t prove to be the case. Another thing I noticed is that there is a NuGet package out there for this, but it doesn&rsquo;t add the necessary sections in your .config file to register MySql with the database factories, so if you haven&rsquo;t ran the installation for the .Net connector you are screwed.</p>
+
+<p>Another issue I have with MySql, and this could just be a knowledge gap, but I was pretty pissed that it wasn&rsquo;t straight forward, is that you can&rsquo;t control the case of characters in your table names. In order to seamlessly use MySql with Entity Framework, we&rsquo;d want to have table names like Users and Calendars, but MySql likes to rename them to users and calendars. I saw noted somewhere that this may only happen when you introduce foreign keys, and somewhere else noted that this has something to do with the case insensitivity of the Windows file system. That isn&rsquo;t correct though. I will say that I&rsquo;m trying to use the MySql Workbench to manage everything as a substitute to SSMS, and it has a problem if you try and alter an existing table, say Users, unless you change the name to users, which then changes the database name. You can afterwards then alter users all you want and the name persists. The option available to you here, which might be what I&rsquo;ll use so I can stay on MySql throughout this process, is to follow a more traditional Entity Framework POCO pattern, <a href="http://blogs.msdn.com/b/adonet/archive/2009/05/21/poco-in-the-entity-framework-part-1-the-experience.aspx">http://blogs.msdn.com/b/adonet/archive/2009/05/21/poco-in-the-entity-framework-part-1-the-experience.aspx</a>, and use the MySql .Net Connector, and then just edit the table names on the designer surface. In that way I don&rsquo;t really care what MySql is doing with the table names, and everything is presented to me in code the way I&rsquo;d prefer to see it. So as illustrated by the <a href="http://blogs.msdn.com/b/adonet/archive/2009/05/21/poco-in-the-entity-framework-part-1-the-experience.aspx">POCO</a> article I&rsquo;d end up with code like this here.</p>
+
+<div class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">FreedomContext</span> <span class="p">:</span> <span class="n">ObjectContext</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">ObjectSet</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ObjectSet</span><span class="p">&lt;</span><span class="n">Calendar</span><span class="p">&gt;</span> <span class="n">Calendars</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ObjectSet</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;</span> <span class="n">Tasks</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+ 
+    <span class="k">public</span> <span class="nf">FreedomContext</span><span class="p">()</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="s">&quot;name=freedomEntities&quot;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Users</span> <span class="p">=</span> <span class="n">CreateObjectSet</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;();</span>
+        <span class="n">Calendars</span> <span class="p">=</span> <span class="n">CreateObjectSet</span><span class="p">&lt;</span><span class="n">Calendar</span><span class="p">&gt;();</span>
+        <span class="n">Tasks</span> <span class="p">=</span> <span class="n">CreateObjectSet</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+<p>In this way I have avoided some of the issues, and still appear to have a workable solution. What this gains me is that I&rsquo;m not losing the data because I&rsquo;m making these changes to the database first, and then updating my Entity Framework model from there. I guess <strong>hate</strong> is a strong word to describe my feelings towards MySql. I do understand they have a unique problem because they are capable of running on multiple platforms, not just Microsoft Windows, so there are inherent challenges in that. And, now that I&rsquo;ve done some testing, the solution might be workable after all.</p>
+
+<p><strong>At the end of the day I hate SQL the most</strong>. And I&rsquo;m sure that most of you do as well. Nobody wants to spend any more time than absolutely necessary writing scripts to create tables, add data, stored procedures, figuring out what relationships go where, and so on. That is one of the things that I really do like about the code first approach. If you follow a few conventions in your code, all of these relationships are interpolated for you, which is pretty damn awesome. I think there are still some short comings to code first, although you can get a lot accomplished very quickly, and I would certainly recommend it for small projects where speed out the door is of high importance. In fact, it&rsquo;s probably best suited at this point for prototyping of systems. Personally I would caution against the use of it for production systems, especially if you don&rsquo;t understand all of what is going on, because you are liable to get yourself into some trouble. I&rsquo;ve been testing things here and there as I&rsquo;ve been writing this, and at this point I think I&rsquo;ll continue to roll with Entity Framework POCO for this particular project, with source code following soon.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Brad Teller</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2011-04-29T00:00:00-04:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bradteller.com/blog/2011/04/29/persistence-ignorant/" data-via="bradteller" data-counturl="http://bradteller.com/blog/2011/04/29/persistence-ignorant/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/04/25/aspnet-radiobuttongroupfor-extension/" title="Previous Post: ASP.Net RadioButtonGroupFor() Extension">&laquo; ASP.Net RadioButtonGroupFor() Extension</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/08/31/what-up-with-massive/" title="Next Post: What's Up With Massive?">What's Up With Massive? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/01/responsive-now/">Start Planning for Responsive Design, NOW!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/pdiff-the-right-way/">Perceptual Differencing, the Right Way!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/02/tfs-build-getting-better/">TFS Build Might Be Getting Better</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/16/maybe-oneget-is-for/">Maybe I Know What OneGet Is For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/11/what-is-oneget/">OneGet... What For?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/bteller">@bteller</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'bteller',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Brad Teller -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
