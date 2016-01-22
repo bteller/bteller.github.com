@@ -55,10 +55,24 @@ h1.post-title a {
   display: inline-block;
 }
 
+#header {
+  height: 80px;
+}
+
 #header a {
   color: #000;
   text-decoration: none;
 
+}
+
+#header-icons a {
+  font-size: 30px;
+  display: inline-block;
+  color: #669999;
+  width: 50px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 0;
 }
 
 p {
@@ -84,4 +98,35 @@ p code {
     max-width: 775px;
     margin: 0 auto;
   }
+}
+
+#archive-list, #recent-posts {
+  margin: 0;
+  padding: 0;
+}
+
+#recent-posts {
+  list-style: none;
+}
+
+#archive-list li {
+  list-style: none;
+  border-bottom: dashed 1px #ddd;
+  display: inline-block;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+  color: #000;
+  text-decoration: none;
+}
+
+.archive-date {
+  color: #aaa;
+}
+
+.post a {
+  text-decoration: underline;
 }
