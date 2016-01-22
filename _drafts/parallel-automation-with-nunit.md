@@ -1,3 +1,8 @@
+---
+layout: post
+title: Parallel NUnit
+---
+
 # This is going to be a post
 
 If you look around, you can't find a good solution for runnign tests in parallel. That stops today.

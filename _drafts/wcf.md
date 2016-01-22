@@ -1,3 +1,8 @@
+---
+layout: post
+title: WCF
+---
+
 # WCF Troubles
 This is a placeholder for now.
 

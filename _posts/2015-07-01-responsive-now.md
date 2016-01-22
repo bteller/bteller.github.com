@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Start Planning for Responsive Design, NOW!
+showImage: true
+image: "/public/post_images/responsive-now.jpg"
 ---
 
 Even if you aren't ready to jump in with both feet today, you should already be thinking about responsive design. At this point, despite the responsive versus adaptive design debate, it looks like this is indeed the future of the web. If you do try and wait until later, you'll end up with a lot of extra work that you could have easily avoided.
@@ -9,7 +11,7 @@ So, how does one go about applying responsive design techniques when working on 
 
 ## Never Use Inline Styles
 
-This one should really go with out saying by now, but I'm saying it again, just in case. * Never use inline styles*. If you do use them today, you will end up having `!important` all over your style sheets when it comes time to make your site more responsive, and that is a bad practice by itself. 
+This one should really go with out saying by now, but I'm saying it again, just in case. * Never use inline styles*. If you do use them today, you will end up having `!important` all over your style sheets when it comes time to make your site more responsive, and that is a bad practice by itself.
 
 ## Use Percentages
 
@@ -75,7 +77,7 @@ This is an opinionated topic, but I think you will likely benefit from using a C
 
 Regardless of which path you choose, you will want to make sure that your grid is something you must *explicitly* opt into. This is because most grid frameworks make use of `box-sizing` to help deal with odd behaviors of the CSS box model. The important ways this differs from traditional rendering is that borders and paddings are now considered as part of the width and height of the element.
 
-Consider this wildcard application of the technique. 
+Consider this wildcard application of the technique.
 
 ```css
 * {
@@ -103,3 +105,7 @@ Now you've removed the global wildcard and you don't have to worry about things 
 
 ### A Word of Warning
 I want to share one final word of warning before you make the decision to use a framework. Generally speaking, even with a framework as light weight as Skeleton, you get more than just a grid. With the grid you also get opinionated styling of your buttons, forms, tables and typography. You probably don't want this, so just make sure and delete anything undesirable from the framework, or use this as an excuse to roll your own.
+
+<div class="credits">
+photo credit: <a href="http://www.flickr.com/photos/59217476@N00/10173857405">Feedback</a> via <a href="http://photopin.com">photopin</a> <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">(license)</a>
+</div>

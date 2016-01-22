@@ -1,13 +1,15 @@
 ---
 layout: post
 title: Perceptual Differencing, the Right Way!
+showImage: true
+image: "/public/post_images/pdiff-the-right-way.jpg"
 ---
 
 ##What is Perceptual Differencing
-Perceptual differencing is a testing technique where browser automation tools take screen captures of the browser contents during test execution. These captures are then compared with baseline captures, and if the capture matches the baseline, the test is deemed to have passed. 
+Perceptual differencing is a testing technique where browser automation tools take screen captures of the browser contents during test execution. These captures are then compared with baseline captures, and if the capture matches the baseline, the test is deemed to have passed.
 
 ## Why leverage Perceptual Differencing?
-One of the main reasons a human being is required to run manual regression tests is to verify the output of the page is visually correct. We can eliminate this need by leveraging browser automation and perceptual differencing. 
+One of the main reasons a human being is required to run manual regression tests is to verify the output of the page is visually correct. We can eliminate this need by leveraging browser automation and perceptual differencing.
 
 Beyond that simple fact, the technique provides a very quick way to verify a lot of your site functionality without having to ```Assert``` your life away. Consider a form that should prevent submission when certain input elements contain invalid data or no data at all. You could create assertions for each of the input elements, and maybe compare that with the DOM level changes made to the browser after a failed submission, or you could take a screen capture and verify the functionality with a single image.
 
@@ -36,7 +38,7 @@ The tools I'm using for our perceptual differencing tool at work are:
 - SQL Database
 - Disk Storage
 
-Our automated test suite captures difference images and sends those to a web site. That site is then responsible for comparing the capture with the baseline. There is then a web app that provides a dashboard and mechanisms for approving and denying differences, and establishing new baselines. 
+Our automated test suite captures difference images and sends those to a web site. That site is then responsible for comparing the capture with the baseline. There is then a web app that provides a dashboard and mechanisms for approving and denying differences, and establishing new baselines.
 
 The code below is a simple extension method to the Selenium ```IWebDriver``` that will take up to 10 captures, waiting 1 second between each capture, and return the one that matched 3 times, or the very last capture taken.
 
@@ -92,4 +94,8 @@ The ability to capture full page screen captures or compare image contents isn't
 ## Conclusion
 Adding perceptual differencing to your existing automated tests is something I would recommend everyone do. With that being said, it doesn't completely eliminate the need for manual testing by a human being. You will always need people to do exploratory testing, to review and approve captures as baselines, to ensure your automation test suite is testing all of what it should test, to approve a build for release, and more of course.
 
-I don't yet have our own internal test tool in a state that I can push it out as an open-source project. Last night I was proving out some consistency issues though, so I had to write a quick stress test app, and that is available on GitHub at https://github.com/bteller/StressPdiff. 
+I don't yet have our own internal test tool in a state that I can push it out as an open-source project. Last night I was proving out some consistency issues though, so I had to write a quick stress test app, and that is available on GitHub at https://github.com/bteller/StressPdiff.
+
+<div class="credits">
+photo credit: <a href="http://www.flickr.com/photos/12335386@N00/3429136829">Cat Eye Macro</a> via <a href="http://photopin.com">photopin</a> <a href="https://creativecommons.org/licenses/by-nd/2.0/">(license)</a>
+</div>
