@@ -113,8 +113,6 @@ p code {
 
 #archive-list li {
   list-style: none;
-  border-bottom: dashed 1px #ddd;
-  display: inline-block;
 }
 
 a,
