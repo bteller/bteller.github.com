@@ -95,7 +95,3 @@ The ability to capture full page screen captures or compare image contents isn't
 Adding perceptual differencing to your existing automated tests is something I would recommend everyone do. With that being said, it doesn't completely eliminate the need for manual testing by a human being. You will always need people to do exploratory testing, to review and approve captures as baselines, to ensure your automation test suite is testing all of what it should test, to approve a build for release, and more of course.
 
 I don't yet have our own internal test tool in a state that I can push it out as an open-source project. Last night I was proving out some consistency issues though, so I had to write a quick stress test app, and that is available on GitHub at https://github.com/bteller/StressPdiff.
-
-<div class="credits">
-photo credit: <a href="http://www.flickr.com/photos/12335386@N00/3429136829">Cat Eye Macro</a> via <a href="http://photopin.com">photopin</a> <a href="https://creativecommons.org/licenses/by-nd/2.0/">(license)</a>
-</div>

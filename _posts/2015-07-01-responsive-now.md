@@ -105,7 +105,3 @@ Now you've removed the global wildcard and you don't have to worry about things 
 
 ### A Word of Warning
 I want to share one final word of warning before you make the decision to use a framework. Generally speaking, even with a framework as light weight as Skeleton, you get more than just a grid. With the grid you also get opinionated styling of your buttons, forms, tables and typography. You probably don't want this, so just make sure and delete anything undesirable from the framework, or use this as an excuse to roll your own.
-
-<div class="credits">
-photo credit: <a href="http://www.flickr.com/photos/59217476@N00/10173857405">Feedback</a> via <a href="http://photopin.com">photopin</a> <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">(license)</a>
-</div>
