@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Object Level Security
+showImage: true
+image: "/public/post_images/object-level-security.jpg"
+imageStyle: "width: 75%;"
 ---
 
 A few weeks ago at work I had the need to provide object level security in a system. I looked around on the web and didn't really see anything other than slight hints at possible solutions to the problem, but nothing really comprehensive. To that end I've got the following few snippets of code that might help someone else looking to solve a similar problem. I'm also going to upload the sample code here as well, but don't expect much more than what you see in the snippets below just yet, but I'll try and build out something more functional in the near future.
