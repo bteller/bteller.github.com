@@ -96,7 +96,8 @@ p code {
 
 @media (min-width: 750px) {
   .container {
-    max-width: 775px;
+    max-width: 790px;
+    padding: 0 20px;
     margin: 0 auto;
   }
 }
@@ -151,6 +152,10 @@ blockquote:before {
 */
 blockquote p {
   display: inline;
+}
+
+.post-image {
+  text-align: center;
 }
 
 .post-image img {

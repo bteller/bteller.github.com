@@ -2,7 +2,7 @@
 layout: post
 title: Perceptual Differencing, the Right Way!
 showImage: true
-image: "/public/post_images/pdiff-the-right-way.jpg"
+image: "/public/post_images/pdiff-the-right-way.png"
 ---
 
 ##What is Perceptual Differencing

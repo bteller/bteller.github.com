@@ -2,11 +2,14 @@
 layout: post
 title: "Don't Fight the Framework"
 summary: "I've been doing it, and I'm not really proud of it. In this post I share some of my thoughts on why you shouldn't fight the framework machine."
+showImage: true
+image: "/public/post_images/fight-the-framework.jpg"
+imageStyle: "width: 75%;"
 ---
 
 > This is a little less organized than I would like, but I believe the brain dump is worthwhile.
 
-In general I believe there are two types of people out there, those that embrace a framework, and those that fight against it. I've generally found myself in the fight against it camp. This post is about my never ending battle with the ASP.NET MVC framework in particular, what led up to it, and the events leading up to my final capitulation. 
+In general I believe there are two types of people out there, those that embrace a framework, and those that fight against it. I've generally found myself in the fight against it camp. This post is about my never ending battle with the ASP.NET MVC framework in particular, what led up to it, and the events leading up to my final capitulation.
 
 ## Why Fight?
 
@@ -19,7 +22,7 @@ These are a few of the reasons why I've generally fought against the framework:
 
 #### Form Elements
 
-What is with the form sytax? Why are there div tags floating around all over the place? Why do we insist on displaying validation error messages inline with the form element instead of in a summary? 
+What is with the form sytax? Why are there div tags floating around all over the place? Why do we insist on displaying validation error messages inline with the form element instead of in a summary?
 
 This is an example of the output you might get by using `Html.EditorForModel()`.
 
@@ -29,14 +32,14 @@ This is an example of the output you might get by using `Html.EditorForModel()`.
     <label for="Name">Name</label>
   </div>
   <div class="editor-field">
-    <input class="text-box single-line" id="Name" name="Name" type="text" value=""> 
+    <input class="text-box single-line" id="Name" name="Name" type="text" value="">
   </div>
 
   <input type="submit" value="login">
 </form>
 {% endhighlight %}
 
-What is the purpose of all these div's? Wouldn't it be better to customize standard HTML elements instead of having all these classes all over the place? I would personally rather layout my form like this instead of living in the div hell generated when you use `Html.EditorForModel()`. 
+What is the purpose of all these div's? Wouldn't it be better to customize standard HTML elements instead of having all these classes all over the place? I would personally rather layout my form like this instead of living in the div hell generated when you use `Html.EditorForModel()`.
 
 {% highlight html %}
 <form>
@@ -61,7 +64,7 @@ Some of these arguments may be valid, but more so when you are working on a proj
 Yep, there are reasons why you shouldn't fight the framework as you might have guessed! Here are just a few:
 
 - It is already written for you, so why not take advantage of it.
-- Good, bad, or indifferent, at least it is consistent. 
+- Good, bad, or indifferent, at least it is consistent.
 - You can extend the framework in subtle ways without having to completely fight against it.
 
 #### Consistency
@@ -76,4 +79,4 @@ I've written a great many extension methods in the past, particularly to extend 
 
 ## Conclusion
 
-While I sometimes still feel that I'd like to be more of a purist and hand-roll many of these things myself, at the end of the day I no longer feel it a worthwhile endeavor. Just make sure, as I will, that you standardize on the things that make sense to you. You might share my aversion to `Html.EditorForModel()`, but that doesn't mean you should turn your back on helper methods like `Html.BeginForm()` and `Html.TextBoxFor()`. 
+While I sometimes still feel that I'd like to be more of a purist and hand-roll many of these things myself, at the end of the day I no longer feel it a worthwhile endeavor. Just make sure, as I will, that you standardize on the things that make sense to you. You might share my aversion to `Html.EditorForModel()`, but that doesn't mean you should turn your back on helper methods like `Html.BeginForm()` and `Html.TextBoxFor()`.

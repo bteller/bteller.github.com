@@ -2,6 +2,9 @@
 layout: post
 title: "Code Meaningfully"
 summary: "Code really shouldn't be hard to understand. If yours is then I suggest you are doing something wrong!"
+showImage: true
+image: "/public/post_images/code-meaningfully.png"
+imageStyle: "width: 50%;"
 ---
 
 I see a lot of code like this.
@@ -56,4 +59,4 @@ Now we've taken what it means to have grandchildren and encapsulated it in a sin
 
 ### Code Readability
 
-Unless we are working on a personal project that nobody else will ever use or modify we are sharing the source code with those we are working with today, and those who will come after us. Take some time when you write your code and make sure your code is readable. Everyone will benefit from the extra bit of effort. 
+Unless we are working on a personal project that nobody else will ever use or modify we are sharing the source code with those we are working with today, and those who will come after us. Take some time when you write your code and make sure your code is readable. Everyone will benefit from the extra bit of effort.
