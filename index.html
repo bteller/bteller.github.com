@@ -3,8 +3,20 @@ layout: default
 title: Home
 ---
 
-<h1 id="welcome-banner">Hi, I'm Brad Teller</h1>
+<h1 id="welcome-banner">Hi, I'm Brad Teller ...</h1>
 
+<div class="container">
+  <img src="/public/hero-image.png" style="max-width: 100%; height: auto;" />
+</div>
+
+<p>
+  Okay, so that isn't really me. All my life, I've never been big on pictures.
+  I've always made snide comments such as <i>"If a moment were meant to be frozen
+  in time, then that is where I'd be!"</i> This is my blog though, and these
+  are my opinions and not those of my employer.
+</p>
+
+<hr>
 <h2>Recent Posts</h2>
 {% for post in site.posts %}
     {% if forloop.index <= 8 %}
