@@ -70,7 +70,7 @@ h1.post-title a {
 #header-icons a {
   font-size: 20px;
   display: inline-block;
-  color: #669999;
+  /*color: #669999;*/
   border-radius: 10px;
   text-align: center;
   padding: 10px 0;
@@ -170,18 +170,26 @@ blockquote p {
   font-size: 14px;
 }
 
-#recent-posts .post-name {
+.recent-post {
+  border: solid 1px #e5e5e5;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #e5e5e5;
+  margin-bottom: 25px;
+}
+
+.recent-post .post-name {
   font-weight: bold;
 }
 
-#recent-posts .post-excerpt {
+.recent-post .post-excerpt {
   font-size: 14px;
   color: #666;
   margin-left: 15px;
 }
 
-#recent-posts .post-excerpt h1,
-#recent-posts .post-excerpt h2,
-#recent-posts .post-excerpt h3 {
+.recent-post .post-excerpt h1,
+.recent-post .post-excerpt h2,
+.recent-post .post-excerpt h3 {
   display: none;
 }

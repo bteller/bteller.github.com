@@ -9,9 +9,10 @@ title: Home
 <h2>Recent Posts</h2>
 {% for post in site.posts %}
     {% if forloop.index <= 8 %}
-    <div id="recent-posts">
+    <div class="recent-post">
       <div class="post-name">
         <a href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date:"%B %-d, %Y" }}</span>
       </div>
       <div class="post-excerpt">
         {{ post.content | strip_html | truncatewords: 50 }}
