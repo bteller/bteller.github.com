@@ -68,13 +68,17 @@ h1.post-title a {
 }
 
 #header-icons a {
-  font-size: 30px;
+  font-size: 20px;
   display: inline-block;
   color: #669999;
-  width: 50px;
   border-radius: 10px;
   text-align: center;
   padding: 10px 0;
+  margin-left: 20px;
+}
+
+#header-icons a:hover {
+  text-decoration: underline;
 }
 
 p {
@@ -164,4 +168,20 @@ blockquote p {
 
 .credits {
   font-size: 14px;
+}
+
+#recent-posts .post-name {
+  font-weight: bold;
+}
+
+#recent-posts .post-excerpt {
+  font-size: 14px;
+  color: #666;
+  margin-left: 15px;
+}
+
+#recent-posts .post-excerpt h1,
+#recent-posts .post-excerpt h2,
+#recent-posts .post-excerpt h3 {
+  display: none;
 }
