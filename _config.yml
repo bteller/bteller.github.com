@@ -3,7 +3,7 @@ markdown:         redcarpet
 pygments:         true
 
 # Permalinks
-permalink:        /:year/:month/:day/:title 
+permalink:        /:year/:month/:day/:title/ 
 
 # Setup
 title:            Brad Teller
