@@ -214,4 +214,9 @@ blockquote p {
 
 figure {
   margin: 0;
+  padding: 8px;
+}
+
+pre.highlight {
+  padding: 10px 20px;
 }
