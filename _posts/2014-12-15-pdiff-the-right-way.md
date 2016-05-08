@@ -5,7 +5,7 @@ showImage: true
 image: "/public/post_images/pdiff-the-right-way.png"
 ---
 
-##What is Perceptual Differencing
+## What is Perceptual Differencing
 Perceptual differencing is a testing technique where browser automation tools take screen captures of the browser contents during test execution. These captures are then compared with baseline captures, and if the capture matches the baseline, the test is deemed to have passed.
 
 ## Why leverage Perceptual Differencing?
