@@ -1,9 +1,9 @@
 # Dependencies
 markdown:         kramdown
-pygments:         true
+highlighter:         rouge
 
 # Permalinks
-permalink:        /:year/:month/:day/:title/ 
+permalink:        /:year/:month/:day/:title/
 
 # Setup
 title:            Brad Teller
