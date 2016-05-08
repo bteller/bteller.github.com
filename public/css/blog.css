@@ -193,3 +193,25 @@ blockquote p {
 .recent-post .post-excerpt h3 {
   display: none;
 }
+
+.PageNavigation {
+  font-size: 14px;
+  display: block;
+  width: auto;
+  overflow: hidden;
+}
+
+.PageNavigation a {
+  display: block;
+  width: 50%;
+  float: left;
+  margin: 1em 0;
+}
+
+.PageNavigation .next {
+  text-align: right;
+}
+
+figure {
+  margin: 0;
+}

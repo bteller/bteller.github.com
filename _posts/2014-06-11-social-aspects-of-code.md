@@ -1,6 +1,7 @@
 ---
 title: Social Aspects of Programming
 published: false
+layout: post
 ---
 
 > Maybe we can drive higher quality through increased socialization at work.
@@ -9,8 +10,8 @@ Every now and then I'm asked what we might be able to do as a team to increase t
 
 ## Increased Socialization
 
-What if, instead of management driving improvements to quality, it was our peers? One aspect of the agile process is paired programming. Is it possible that by having one of our peers looking over our shoulders as we work might give is additional incentive to produce a quality product? I think so. 
+What if, instead of management driving improvements to quality, it was our peers? One aspect of the agile process is paired programming. Is it possible that by having one of our peers looking over our shoulders as we work might give is additional incentive to produce a quality product? I think so.
 
-Take that a step further and think about the last thing you do before releasing a new feature... testing. What if during the testing a peer was also present. Wouldn't there presence again create additonal incentive for us to make sure our test cases are up to snuff, that they cover everything that needs covering, and that we run them? Again, I think so. 
+Take that a step further and think about the last thing you do before releasing a new feature... testing. What if during the testing a peer was also present. Wouldn't there presence again create additonal incentive for us to make sure our test cases are up to snuff, that they cover everything that needs covering, and that we run them? Again, I think so.
 
 Another side of this is getting away from your desk. Call it the pomodoro method, or whatever you want, but I feel it is important to walk away. One of the reasons quality suffers is that the developer gets bored with what they are working on. If they were to get away from their desks every 45 minutes for 10 minutes, I again think we would see an increase in quality and a reduction in bugs.
