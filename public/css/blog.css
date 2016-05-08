@@ -219,4 +219,5 @@ figure {
 
 pre.highlight {
   padding: 10px 20px;
+  overflow: scroll;
 }
