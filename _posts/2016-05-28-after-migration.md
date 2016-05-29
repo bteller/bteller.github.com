@@ -3,7 +3,6 @@ published: true
 layout: post
 title: Trying Out Prose.io
 ---
-## Using Prose.io
 
 The past few weeks I've been trying to decide what to do with my blog. The simplicity of blogging on Medium has been appealing, but I really want syntax highlighting for my code, which you can't do without gists, and even then you have no control over it. I briefly tried Ghost, setting up a droplet on Digital Ocean, but I didn't find that to be any better, and also thought about going back to Wordpress, heaven forbid. So what is a guy to do?
 
