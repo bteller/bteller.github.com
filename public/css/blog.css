@@ -171,11 +171,13 @@ blockquote p {
 }
 
 .recent-post {
-  border: solid 1px #e5e5e5;
+  border-bottom: solid 1px #e5e5e5;
   padding: 15px;
-  border-radius: 10px;
-  background-color: #e5e5e5;
   margin-bottom: 25px;
+}
+
+#recent-posts .recent-post:last-of-type {
+  border-bottom: none;
 }
 
 .recent-post .post-name {
