@@ -4,21 +4,16 @@
   {% include head.html %}
 
   <body>
-      <div class="container" id="header">
-        {% if page.title == "Home2" %}
-          <a href="/">Brad Teller</a>
-        {% endif %}
+    {% if page.title == "Home2" %}
+      <a href="/">Brad Teller</a>
+    {% endif %}
 
-        <div class="pull-right" id="header-icons">
-          <a href="/" class="btn btn-primary">home</a>
-          <a href="/archive">archive</a>
-          <a href="/about">about</a>
-        </div>
-      </div>
-
-      <div class="container content">
-        {{ content }}
-      </div>
+    <div class="pull-right" id="header-icons">
+      <a href="/" class="btn btn-primary">home</a>
+      <a href="/archive">archive</a>
+      <a href="/about">about</a>
     </div>
+
+    {{ content }}
   </body>
 </html>

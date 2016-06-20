@@ -4,26 +4,28 @@
 
 body {
   font-family: "Open Sans", Helvetica;
-  color: #303030;
-  font-size: 1.2em;
-  line-height: 1.6em;
+  color: #333;
+  font-size: 1.25rem;
+  line-height: 2;
   margin-bottom: 50px;
+  padding: 0;
+  margin: 0;
 }
 
-.highlight pre {
-  overflow: auto;
-  overflow-y: hidden;
-  padding: 15px 20px;
+body > p,
+body > h1,
+body > h2,
+body > h3,
+body > ul,
+body > ol,
+body > pre,
+body > div:not(.highlighter-rouge),
+body > div.highlighter-rouge > pre {
+  width: auto;
+  padding: 0 1.25rem;
+  margin: 0 auto 1.875rem;
+  max-width: 50rem;
 }
-
-pre {
-  white-space: pre;
-  word-wrap: normal;
-  background-color: #f9f9f9;
-}
-  .container {
-    margin: 0 20px;
-  }
 
 h1.post-title {
   margin-bottom: 0;
@@ -97,14 +99,6 @@ p code {
   font-size: 14px;
   clear: both;
   text-align: center;
-}
-
-@media (min-width: 750px) {
-  .container {
-    max-width: 790px;
-    padding: 0 20px;
-    margin: 0 auto;
-  }
 }
 
 #archive-list, #recent-posts {
@@ -184,10 +178,6 @@ blockquote p {
   font-weight: bold;
 }
 
-.recent-post .post-excerpt {
-  margin-left: 15px;
-}
-
 .recent-post .post-excerpt h1,
 .recent-post .post-excerpt h2,
 .recent-post .post-excerpt h3 {
@@ -220,4 +210,14 @@ figure {
 pre.highlight {
   padding: 10px 20px;
   overflow: scroll;
+}
+
+li {
+  list-style-type: none;
+}
+
+li::before {
+  content: "\00b7";
+  margin-left: 20px;
+  padding-right: 8px;
 }
