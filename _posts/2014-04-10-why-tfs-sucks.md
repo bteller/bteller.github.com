@@ -13,7 +13,7 @@ The tools I've been having the bulk of my problems with are the:
 
 In quick defense of TFS, I really haven't had any problems with their Task Management System. These other two though, have been a huge thorn in my side for months now.
 
-## Oh,the Horror...
+## Oh, the Horror...
 
 It all started about a year ago, after upgrading from TFS 2010 to TFS2012. I didn't perform the upgrade myself, but we had all sorts of problems.
 - Sharepoint portal projects wouldn't upgrade.
