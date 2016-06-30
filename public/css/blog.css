@@ -4,7 +4,6 @@
 
 body {
   font-family: "Open Sans", Helvetica;
-  color: #333;
   font-size: 1.25rem;
   line-height: 2;
   margin-bottom: 50px;
@@ -76,7 +75,7 @@ h1.post-title a {
   border-radius: 10px;
   text-align: center;
   padding: 10px 0;
-  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #header-icons a:hover {
@@ -165,23 +164,32 @@ blockquote p {
 }
 
 .recent-post {
-  border-bottom: solid 1px #e5e5e5;
-  padding: 15px;
-  margin-bottom: 25px;
+  display: inline-block;
+  width: 30%;
+  height: 200px;
+  float: left;
+  padding: 12px;
+  border: solid 1px #ebebeb;
+  background-color: #99ccff;
+  margin: 1.66666%;
 }
 
-#recent-posts .recent-post:last-of-type {
-  border-bottom: none;
+@media (max-width: 768px) {
+  .recent-post {
+    width: 100%;
+  }
 }
 
-.recent-post .post-name {
-  font-weight: bold;
+.post-title {
+  display: block;
+  line-height: 1.25;
+  text-align: left;
 }
 
-.recent-post .post-excerpt h1,
-.recent-post .post-excerpt h2,
-.recent-post .post-excerpt h3 {
-  display: none;
+.post-date {
+  display: block;
+  margin-bottom: 8px;
+  font-size: .85rem;
 }
 
 .PageNavigation {
