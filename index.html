@@ -7,12 +7,12 @@ title: Home
 
 <p>
 {% for post in site.posts %}
-    {% if forloop.index <= 9 %}
-    <a class="recent-post" href="{{ post.url }}">
+    {% if forloop.index <= 5 %}
+    <div class="recent-post">
       <span class="post-date">{{ post.date | date:"%B %-d, %Y" }}</span>
 
-      <span class="post-title">{{ post.title }}</span>
-    </a>
+      <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+    </div>
     {% endif %}
 {% endfor %}
 </p>

@@ -68,11 +68,15 @@ h1.post-title a {
 
 }
 
+#header-icons {
+  width: 100%;
+  text-align: right;
+}
+
 #header-icons a {
   font-size: 20px;
   display: inline-block;
   /*color: #669999;*/
-  border-radius: 10px;
   text-align: center;
   padding: 10px 0;
   margin-right: 20px;
@@ -164,14 +168,7 @@ blockquote p {
 }
 
 .recent-post {
-  display: inline-block;
-  width: 30%;
-  height: 200px;
-  float: left;
-  padding: 12px;
-  border: solid 1px #ebebeb;
-  background-color: #99ccff;
-  margin: 1.66666%;
+  margin-bottom: 12px;
 }
 
 @media (max-width: 768px) {
