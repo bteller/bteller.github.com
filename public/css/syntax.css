@@ -1,3 +1,9 @@
+/* Milligram Overrides */
+code {
+  background: inherit;
+}
+
+
 /*
   Darkly Pygments Theme
   (c) 2014 Sourcey

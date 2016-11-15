@@ -3,6 +3,8 @@ markdown:         kramdown
 highlighter:         rouge
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
 
 # Permalinks
 permalink:        /:year/:month/:day/:title/
@@ -14,3 +16,5 @@ description:      ''
 url:              http://bradteller.com
 baseurl:          '/'
 paginate:         3
+safe: true
+lsi: false
