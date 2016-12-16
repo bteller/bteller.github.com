@@ -207,3 +207,7 @@ li::before {
   margin-left: 20px;
   padding-right: 8px;
 }
+
+.container {
+  max-width: 80.0rem;
+}
