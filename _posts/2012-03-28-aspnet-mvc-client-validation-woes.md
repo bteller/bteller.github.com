@@ -21,7 +21,7 @@ $('.validation-summary-valid, .validation-summary-errors')
 
 And you also need to add some show/hide styles to your stylesheet. If you don't that thing will start showing up before you want it to.
 
-{% highlight css %}
+``` css
 .validation-summary-valid { display: none; }
 .validation-summary-errors { display: block; }
 ```
