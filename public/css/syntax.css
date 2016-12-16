@@ -1,3 +1,8 @@
+/* Not just syntax, also styles for blog */
+.container {
+  max-width: 80.0rem;
+}
+
 /* Milligram Overrides */
 code {
   background: inherit;
