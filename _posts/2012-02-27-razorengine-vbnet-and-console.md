@@ -9,7 +9,7 @@ Man, ain't it always the case that you can't find good documentation for how to 
 
 More time goes by though, and that's why I'm writing this up at 2:15 AM, and finally a few things started to click. If you want to be able to use this RazorEngine with the VB language there is something you'll need to do which is to tell this thing we are trying to use it with VB. I didn't find any great documentation on the site about this so it took some digging, and we finally arrived at this here. This is so painfully simple, and now there is a VB example.
 
-{% highlight vbnet %}
+``` vbnet
 Imports RazorEngine
 Imports RazorEngine.Configuration
 

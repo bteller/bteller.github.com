@@ -6,7 +6,7 @@ title: SelectFor Helper
 I got a little tired of having to convert things into lists of SelectListItem. Unless I'm missing something with how Microsoft intended you to use Html.DropDownListFor that is. Instead I threw together the following.
 
 
-{% highlight vbnet %}
+``` vbnet
 <Extension()> _
     Public Function SelectFor(Of TModel, TValue)(ByVal helper As HtmlHelper(Of TModel), _
                                                  ByVal expression As Expression(Of Func(Of TModel, TValue)), _

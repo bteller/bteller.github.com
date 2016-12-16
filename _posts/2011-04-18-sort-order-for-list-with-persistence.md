@@ -7,7 +7,7 @@ title: Sort Order for List with Persistence
 
 Something that seems to come up often enough, although not all that recently for myself, is to control the display order for items when presenting them in the user interface. This requirement of course is then paired with another requirement, the content manager needs a means of changing the sort order or items via some administrative tool. I had to do this today, so this will either serve as a reference, or possibly open myself up for criticism, but either way, here it is.
 
-{% highlight vbnet %}
+``` vbnet
 Dim originalOrder = MyService.GetItem(itemId).SortOrder
 Dim lowerBounds As Integer
 Dim upperBounds As Integer

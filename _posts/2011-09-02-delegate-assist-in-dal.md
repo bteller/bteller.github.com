@@ -7,13 +7,13 @@ Not sure about the rest of you out there, but we are still utilizing a hand roll
 
 First we define our delegate. We'll use this to tell our function what conversion function it should use for each object type.
 
-{% highlight vbnet %}
+``` vbnet
 Public Delegate Function GetItemFromReader(Of T)(ByVal dr As IDataReader)
 ```
 
 Then we can write a reusable function that will accepts an instance of our delegate as a parameter. We have some other helper functions out there which is where the 'Me.ExecuteReader' call comes into play, but you could replace this with the traditional 'Using cn as New SqlConnection(_connString) .... End Using' code.
 
-{% highlight vbnet %}
+``` vbnet
 Public Function GetListFromReader(Of T)(ByVal sprocName As String, _
           ByVal params As SqlParameter(), _
           ByVal converter As GetItemFromReader(Of T)) As List(Of T)
@@ -32,7 +32,7 @@ End Function
 
 And then we can go ahead and consume it.
 
-{% highlight vbnet %}
+``` vbnet
 Public Function GetUsers() As ICollection(Of User)
     Return GetListFromReader(Of User)("getUsers", Nothing, AddressOf GetUserFromDataReader)
 End Function
@@ -40,7 +40,7 @@ End Function
 
 The code that does the conversion is:
 
-{% highlight vbnet %}
+``` vbnet
 Private Function GetUserFromDataReader(ByVal dr As IDataReader) As User
     Return New User With {.Id = dr("id"), .Name = dr("name")}
 End Function
