@@ -12,6 +12,7 @@ title: Home
       <span class="post-date">{{ post.date | date:"%B %-d, %Y" }}</span>
 
       <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+      {{ post.excerpt }}
     </div>
     {% endif %}
 {% endfor %}
