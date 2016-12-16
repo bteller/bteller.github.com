@@ -25,4 +25,4 @@ Public Function PrettyValidationSummary(ByVal helper As HtmlHelper) As String
         Return String.Format(template, exceptionList.ToString())
     End If
 End Function
-{% endhighlight %}
+```

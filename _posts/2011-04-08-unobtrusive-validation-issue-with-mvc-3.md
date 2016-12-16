@@ -9,8 +9,8 @@ The problem is with the way Microsoft's validation library works on the client s
 
 The solution was to modify the "parse" function of the jquery.validate.unobtrusive.js file, and add the line below as the first call. With this call in place, if you have forms you want to handle validation manually, you can just add a class of "ms-ignore" to them, and then everything will work as it used to.
 
-{% highlight javascript %}
+``` js
 if($(this).hasClass('ms-ignore')) { return; }
-{% endhighlight %}
+```
 
 The solution feels a little "hacky" to me, but I feel that way most of the time I'm working with some of the newer Microsoft technologies. I'm a huge fan of MVC, and I love the data annotation validations, but even the MVC 2 bolt ons required work arounds to get the correct behavior.

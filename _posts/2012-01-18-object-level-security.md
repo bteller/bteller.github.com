@@ -10,16 +10,16 @@ A few weeks ago at work I had the need to provide object level security in a sys
 
 First we'll create a few objects. Really we only need two objects for the example to work, and then you can build on that for your own implementation. Let's first define a domain object we might work with in a project, Product.
 
-{% highlight csharp %}
+``` csharp
 class Product {
     public int ProductId { get; set; }
     public string Name { get; set; }
 }
-{% endhighlight %}
+```
 
 Not a very helpful object at this point from a business sense, but it will serve the purpose for our simple example. The other important one is the ObjectPermission object which looks something like this.
 
-{% highlight csharp %}
+``` csharp
 class ObjectPermission {
     public int ObjectPermissionId { get; set; }
     public int UserId { get; set; }
@@ -29,13 +29,13 @@ class ObjectPermission {
     public string LimitingField { get; set; }
     public string LimitingValue { get; set; }
 }
-{% endhighlight %}
+```
 
 You can look at the example code attached to this post to see what GrantType and AccessType look like. The Object property is just your objects name, so in our example we'll make this "Product". The other properties **LimitingField** and **LimitingValue** are there so you can say when a product has a name of x then allow or disallow access to the object. This comes in handy if you have different types of objects and you want a user to only have access to a subset of those.
 
 The real work horse is this next class, the ObjectPermissionEnforcer. An intimidating name, right?
 
-{% highlight csharp %}
+``` csharp
 class ObjectPermissionEnforcer {
     private List<ObjectPermission> _permissions;
 
@@ -126,13 +126,13 @@ class ObjectPermissionEnforcer {
         return false;
     }
 }
-{% endhighlight %}
+```
 
 This hopefully isn't too intimidating. Keep in mind that this enforcer assumes you must be explicitly granted permissions to something before you'll be able to see it. For that reason the "All" check exists so you can grant access to administrators on everything in your system. The other important bit about this is the SecureList() method. Slapping this code in your project won't magically secure up everything, you actually have to pass a list through the enforcer, which you can think of as a filter. The objects that come out the other end are those the user can view.
 
 And finally we have a very basic implementation of this.
 
-{% highlight csharp %}
+``` csharp
 var products = new List<Product>();
 products.Add(new Product() {ProductId = 1, Name = "First"});
 products.Add(new Product() {ProductId = 2, Name = "Second"});
@@ -162,7 +162,7 @@ foreach (var p in enforcer.SecureList<Product>(products, AccessType.Write)) {
     Console.WriteLine(p.Name);
 }
 Console.WriteLine();
-{% endhighlight %}
+```
 
 Basically I setup a single permission for a user granting them read access to products that have a name of "Second".
 

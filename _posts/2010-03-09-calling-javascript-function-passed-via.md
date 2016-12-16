@@ -9,7 +9,7 @@ I've had to spend a bit more time with javascript lately than I have in the past
 
 As it turns out, this is very simple to do, as you can see from the example below.
 
-{% highlight javascript %}
+``` js
 $(document).ready(function() {
     doPass();
 });
@@ -31,4 +31,4 @@ function takePass(o) {
         o.onFailure();
     }
 }
-{% endhighlight %}
+```

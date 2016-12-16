@@ -31,13 +31,13 @@ For Each item In MyService.GetAllItems.Where(Function(m) m.SortOrder <= upperBou
  
     item.Update()
 Next
-{% endhighlight %}
+```
 
 If anyone knows if a more simplistic, or perhaps just better, means of accomplishing this please feel free to comment (not that I've received comments from anyone to date, still working on that). The approach here is to update only that which requires updating, rather than iterate back over the entire list.
 
 On the presentation end of this I simply have an HTML table and a bit of javascript that makes use of jQuery UI's .sortable(). The code below is what accomplishes this, which I will explain.
 
-{% highlight javascript %}
+``` js
 $('#myTable tbody').sortable({
   update: function (event, ui) {
     var $tr; 
@@ -64,11 +64,11 @@ $('#myTable tbody').sortable({
   },
   cursor: 'pointer'
 });
-{% endhighlight %}
+```
 
 For the most part this is really straight forward, but there are two things I want to point out. First, jQuery .sortable() will return the targetElement as a `<tr />`, or sometimes a `<td />` and this all depends on where on the row you clicked to drag. For that reason the first few lines of code are responsible for specifically getting the `<tr />` so we can then find out where it was dragged to. Then there is also a call to a helper function called .getRowIndex(). This helper is responsible for performing the comparison and returning the index of the `<tr />`'s new position in the table. With that information we can then increment that index value by 1, since it is 0 based, and then we can call whatever service to perform the update.
 
-{% highlight javascript %}
+``` js
 function getRowIndex(table, target) {
   var result = null;
  
@@ -81,4 +81,4 @@ function getRowIndex(table, target) {
  
   return result;
 }
-{% endhighlight %}
+```

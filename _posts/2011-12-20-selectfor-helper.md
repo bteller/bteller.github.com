@@ -48,4 +48,4 @@ I got a little tired of having to convert things into lists of SelectListItem. U
  
         Return MvcHtmlString.Create(textWriter.ToString())
     End Function
-{% endhighlight %}
+```

@@ -7,13 +7,13 @@ I've not been able to find a real comprehensive article or blog post anywhere th
 
 First, the code for the link looks like this.
 
-{% highlight html %}
+``` html
 <a href="javascript:void(0)" onclick="doDelete(<%= item.Id %>)">Delete</a>
-{% endhighlight %}
+```
 
 The javascript that this link calls looks like the following.
 
-{% highlight javascript %}
+``` js
 function doDelete(id) {
     $('#golfCourseDeleteView').dialog({
         autoOpen: true,
@@ -31,7 +31,7 @@ function doDelete(id) {
         }
     });
 }
-{% endhighlight %}
+```
 
 An extension to this would be to have the contoller action return some sort of success or failure indication and determine if the redirect should be performed based on that, but maybe more on that later.
 

@@ -26,7 +26,7 @@ What is with the form sytax? Why are there div tags floating around all over the
 
 This is an example of the output you might get by using `Html.EditorForModel()`.
 
-{% highlight html %}
+``` html
 <form>
   <div class="editor-label">
     <label for="Name">Name</label>
@@ -37,11 +37,11 @@ This is an example of the output you might get by using `Html.EditorForModel()`.
 
   <input type="submit" value="login">
 </form>
-{% endhighlight %}
+```
 
 What is the purpose of all these div's? Wouldn't it be better to customize standard HTML elements instead of having all these classes all over the place? I would personally rather layout my form like this instead of living in the div hell generated when you use `Html.EditorForModel()`.
 
-{% highlight html %}
+``` html
 <form>
   <fieldset>
     <p>
@@ -53,7 +53,7 @@ What is the purpose of all these div's? Wouldn't it be better to customize stand
     </p>
   </fieldset>
 </form>
-{% endhighlight %}
+```
 
 #### Summary
 

@@ -14,9 +14,9 @@ While probably not all that fancy, I'm sure you can find ways to put some lipsti
 
 And using it couldn't be easier to use. Add references to Twitter Bootstrap and jQuery, and then in the markup for your page just drop in the following.
 
-{% highlight html %}
+``` html
 <div id="example" class="tag"></div>
-{% endhighlight %}
+```
 
 The plugin will automatically set itself up anywhere you have a div with a class of tag. Once it is on the page just click inside of it and start typing. These are the only rules.
 
@@ -31,38 +31,38 @@ It's a short little plugin so you can probably glean what you need from the sour
 
 If you want to add a tag through javascript you would to this.
 
-{% highlight javascript %}
+``` js
 $('#example').tag('addtag', 'add this tag');
-{% endhighlight %}
+```
 
 You can also add a bunch of tags at once if you've got them in an array like so.
 
-{% highlight javascript %}
+``` js
 var tags = ['happy', 'flippin', 'holiday'];
 $('#example').tag('addtags', tags);
-{% endhighlight %}
+```
 
 You can get back an array of tags currently in the list by running this.
 
-{% highlight javascript %}
+``` js
 var tags = $('#example').tag('gettags');
-{% endhighlight %}
+```
 
 And the other thing you could do is check to see if the list of tags already has a particular tag in it.
 
-{% highlight javascript %}
+``` js
 var isItInThere = $('#example').tag('contains', 'hooray');
-{% endhighlight %}
+```
 
 I designed this more with ajax in mind than anything else, so in general you'd just call into `gettags`, but you should be able to do something like this to intercept the post. 
 
-{% highlight javascript %}
+``` js
 $(function() {
   $('#save').submit(function() {
     $('#ttt').val($('#example').tag('gettags').toString());
   });
 });
-{% endhighlight %}
+```
 
 ## The Source
 

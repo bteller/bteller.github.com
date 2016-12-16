@@ -6,21 +6,21 @@ category : lessons
 
 I wanted to commit my code to GitHub for this trial Node.js application I started playing with this weekend but I didn’t want any of my passwords finding there way up to GitHub. To get around this I created a module.
 
-{% highlight javascript %}
+``` js
 module.exports = {
   connString: "postgres://username:password@server/db-name"
 };
-{% endhighlight %}
+```
 
 Then I told my application to consume it.
 
-{% highlight javascript %}
+``` js
 var settings = require('./secure.js');
 
 db.connect(settings.connString, function(err, db) {
   lifejs = db;
 });
-{% endhighlight %}
+```
 
 The thing to pay attention to is where I tell [massive-js](https://github.com/robconery/massive-js) the connection string to use for connecting to my local postresql database. I access it by calling “settings.connString” which is nothing more than a constant at this point.
 

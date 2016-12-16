@@ -14,7 +14,7 @@ Some explanation here ...
 
 **I'm not in love with code first**. At first it seems very appealing, and I'm not entirely convinced at this point I will be trying to avoid it, but I have some problems using it for building anything more than a very basic, spin it up once and never maintain it, site. Perhaps the documentation is forthcoming, but I have yet to see any guidance from the folks over at Microsoft to indicate how to handle updates to existing schemas without overwriting all of the data contained in any of the tables you'd be modifying. It has support so that you can pass in your own custom implementation of `IDatabaseInitializer` if you want (a decent overview can be found [here](http://sankarsan.wordpress.com/2010/10/14/entity-framework-ctp-4-0-database-initialization/)). But basically you are talking about the code below being used to setup your context.
 
-{% highlight csharp %}
+``` csharp
 public class FreedomContext : DbContext
 {
     public DbSet<User> Users { get; set; }
@@ -27,7 +27,7 @@ public class FreedomContext : DbContext
         Database.SetInitializer<FreedomContext>(new DropCreateDatabaseIfModelChanges<FreedomContext>());
     }
 }
-{% endhighlight %}
+```
 
 Unless of course you want to spell out all of the relationships on your own, and in that case you'd have to override OnModelCreating and deal with that mess of code. But with this code above, if you've changed any of your objects then we are going to recreate everything. It appears that Microsoft is actively working on a project to provide better support for migrations, but from what I can tell it isn't actually available at this time ([http://blogs.msdn.com/b/efdesign/archive/2010/10/22/code-first-database-evolution-aka-migrations.aspx](http://blogs.msdn.com/b/efdesign/archive/2010/10/22/code-first-database-evolution-aka-migrations.aspx)).
 
@@ -35,7 +35,7 @@ Unless of course you want to spell out all of the relationships on your own, and
 
 Another issue I have with MySql, and this could just be a knowledge gap, but I was pretty pissed that it wasn't straight forward, is that you can't control the case of characters in your table names. In order to seamlessly use MySql with Entity Framework, we'd want to have table names like Users and Calendars, but MySql likes to rename them to users and calendars. I saw noted somewhere that this may only happen when you introduce foreign keys, and somewhere else noted that this has something to do with the case insensitivity of the Windows file system. That isn't correct though. I will say that I'm trying to use the MySql Workbench to manage everything as a substitute to SSMS, and it has a problem if you try and alter an existing table, say Users, unless you change the name to users, which then changes the database name. You can afterwards then alter users all you want and the name persists. The option available to you here, which might be what I'll use so I can stay on MySql throughout this process, is to follow a more traditional Entity Framework POCO pattern, [http://blogs.msdn.com/b/adonet/archive/2009/05/21/poco-in-the-entity-framework-part-1-the-experience.aspx](http://blogs.msdn.com/b/adonet/archive/2009/05/21/poco-in-the-entity-framework-part-1-the-experience.aspx), and use the MySql .Net Connector, and then just edit the table names on the designer surface. In that way I don't really care what MySql is doing with the table names, and everything is presented to me in code the way I'd prefer to see it. So as illustrated by the [POCO](http://blogs.msdn.com/b/adonet/archive/2009/05/21/poco-in-the-entity-framework-part-1-the-experience.aspx) article I'd end up with code like this here.
 
-{% highlight csharp %}
+``` csharp
 public class FreedomContext : ObjectContext
 {
     public ObjectSet<User> Users { get; set; }
@@ -49,7 +49,7 @@ public class FreedomContext : ObjectContext
         Tasks = CreateObjectSet<Task>();
     }
 }
-{% endhighlight %}
+```
 
 In this way I have avoided some of the issues, and still appear to have a workable solution. What this gains me is that I'm not losing the data because I'm making these changes to the database first, and then updating my Entity Framework model from there. I guess **hate** is a strong word to describe my feelings towards MySql. I do understand they have a unique problem because they are capable of running on multiple platforms, not just Microsoft Windows, so there are inherent challenges in that. And, now that I've done some testing, the solution might be workable after all.
 

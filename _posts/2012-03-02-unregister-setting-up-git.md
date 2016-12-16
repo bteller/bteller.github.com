@@ -11,7 +11,7 @@ I'm sad, and sort of surprised, that after googling different search terms and f
 
 One other important thing when using git is to remember to add a .gitignore file at the root of your repository. I believe I remember reading somewhere that there may be a global location you could do this in, but in my case I prefer to do this on a project by project basis. I've found the following to work pretty well.
 
-{% highlight javascript %}
+``` js
 obj
 bin
 deploy
@@ -26,7 +26,7 @@ _ReSharper.*
 *.gitignore
 packages
 /packages
-{% endhighlight %}
+```
 
 When you are setting up your repository on GitHub you are asked to name it, and then very kindly they provide you with a list of command line instructions to initialize your repository locally and establish the link with GitHub. One of those steps is to create a README file, but that is flat text and if you have seen other repositories out there you'll have noticed that they can contain a little bit more flare. This flare is often courtesy of a markdown file. In the spirit of open-source software, and as a follower of Code 52's efforts, I'm using a tool from them called [MarkPad](https://github.com/Code52/DownmarkerWPF).
 

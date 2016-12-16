@@ -7,7 +7,7 @@ Have you ever wanted to generate action links to your controller and have them b
 
 Regardless of that the requirement here is quite clear. I have action methods on my controller that I'm decorating with the RequireHttps attribute. When I create the equivalent of an Html.ActionLink to them I want the protocol to be automatically specified correctly, that way secure pages will be routed of HTTPS. The following is an extension method to help make life a little easier dealing with that requirement.
 
-{% highlight csharp %}
+``` csharp
 public static MvcHtmlString GenerateUrl(this HtmlHelper helper, string linkText, string actionName, string controllerName) {
     string protocol = "";
 
@@ -21,4 +21,4 @@ public static MvcHtmlString GenerateUrl(this HtmlHelper helper, string linkText,
 
     return helper.ActionLink(linkText, actionName, controllerName, protocol, "", "", null, null);
 }
-{% endhighlight %}
+```

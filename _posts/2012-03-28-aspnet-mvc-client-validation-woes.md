@@ -13,18 +13,18 @@ So I was trying to do something similar to the JQuery UI validation summary with
 
 Rather than fight the machine I thought I'd work around it. My goal, to get my validation summary to use the formatting from Twitter Bootstrap. The solution, pretty simple actually. Just add this bit of javascript in your some global.js or init.js type file, and link it up in your layout page.
 
-{% highlight javascript %}
+``` js
 $('.validation-summary-valid, .validation-summary-errors')
     .addClass('alert alert-error')
     .prepend('<p><strong>Validation Exceptions:</strong></p>');
-{% endhighlight %}
+```
 
 And you also need to add some show/hide styles to your stylesheet. If you don't that thing will start showing up before you want it to.
 
 {% highlight css %}
 .validation-summary-valid { display: none; }
 .validation-summary-errors { display: block; }
-{% endhighlight %}
+```
 
 Now, without having to do anything out of the ordinary you can have a from with an Html.ValidationSummary() inside of it, and when there are errors in the ModelState, or client validation violations you'll see something like this here.
 

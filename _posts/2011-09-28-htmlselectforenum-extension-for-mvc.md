@@ -47,6 +47,6 @@ Public Function SelectForEnum(Of TModel, TValue)(ByVal helper As HtmlHelper(Of T
  
  Return MvcHtmlString.Create(textWriter.ToString())
 End Function
-{% endhighlight %}
+```
 
 As always I hope you find this useful.

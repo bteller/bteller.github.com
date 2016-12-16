@@ -12,7 +12,7 @@ t very helpful. The only indication there was that app.dynamicHelpers has been r
 
 In the end I was able to get something to work. I arrived at this solution through trial and error and have no idea if this was the intended method for defining helpers, but based on how I understand the limited documentation that does exist I believe it is. So, this is how I defined my helper. As it turns out this appears to be the exact same format as when you were setting up dynamic helpers for Express.
 
-{% highlight javascript %}
+``` js
 exports.helpers = {
   stringifyDate: function(d) {
     if (typeof d === "object" && d) {
@@ -28,12 +28,12 @@ exports.helpers = {
     return "";    
   }
 };
-{% endhighlight %}
+```
 
 And this is the code to register the helper methods from my helpers.js file.
 
-{% highlight javascript %}
+``` js
 app.locals = require('./helpers.js').helpers;
-{% endhighlight %}
+```
 
 Now just in case you have the same thought I did, it does not seem to be possible to register helpers from an additional file in this manner, which means all your helpers must be contained in a single file. Please let me know if I am mistaken about that.

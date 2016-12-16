@@ -7,7 +7,7 @@ For anybody that finds themselves unsure as to why the hell the Html.ValidationS
 
 The code below doesn't allow you to turn on and off the use of a validation summary control, but does physically allow it, and will only use it. Hopefully I'll get to edit this post some other time, but in the meantime, you can use this as a starting point.
 
-{% highlight javascript %}
+``` js
 function __MVC_EnableClientValidation(validationContext) {
     // this represents the form containing elements to be validated
     var theForm = $("#" + validationContext.FormId);
@@ -40,4 +40,4 @@ function __MVC_EnableClientValidation(validationContext) {
  
     theForm.validate(options);
 }
-{% endhighlight %}
+```

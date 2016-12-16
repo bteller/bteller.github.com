@@ -7,7 +7,7 @@ The other day I wanted to create a group of radio buttons that corresponded to v
 
 The code below is the extension method itself.
 
-{% highlight csharp %}
+``` csharp
 public static MvcHtmlString RadioButtonGroupFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression)
 {
     ModelMetadata metaData = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
@@ -37,15 +37,15 @@ public static MvcHtmlString RadioButtonGroupFor<TModel, TValue>(this HtmlHelper<
  
     return MvcHtmlString.Create(textWriter.ToString());
 }
-{% endhighlight %}
+```
 
 And the markup below is a simple use case.
 
-{% highlight html %}
+``` html
 <p>
   <label>Type:</label>
   @Html.RadioButtonGroupFor(m => m.AccountType)
 </p>
-{% endhighlight %}
+```
 
 Now provided your Model has a property on it of a type for your Enum, then all of those possible values will be written out to the screen, and of course the current value for the object, if there is one, will be selected.

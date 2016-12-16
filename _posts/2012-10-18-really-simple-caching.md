@@ -7,7 +7,7 @@ summary: "The first post in a mini-series about caching. In this installment we 
 
 Caching is one of those fundamental best practices that any software developer should be aware of. There are plenty of options out there where caching is concerned including Redis and Memcached, just look at [Nuget](http://nuget.org/packages?q=cache). What I wanted to point out though is just how simple this code can be.
 
-{% highlight csharp %}
+``` csharp
 public class LazyCache
 {
     private static Hashtable _cache;
@@ -27,11 +27,11 @@ public class LazyCache
         return (T)_cache[key];
     }
 }
-{% endhighlight %}
+```
 
 This is very simplistic but will provide you with an in-memory cache to decrease load on your database. You can then work with this really simple cache very simply like so.
 
-{% highlight csharp %}
+``` csharp
 public static List<Hoozy> GetAll()
 {
     var result = LazyCache.Retrieve<List<Hoozy>>("hoozies");
@@ -44,4 +44,4 @@ public static List<Hoozy> GetAll()
 
     return result;
 }
-{% endhighlight %}
+```

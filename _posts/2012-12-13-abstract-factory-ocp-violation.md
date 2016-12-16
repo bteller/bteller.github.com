@@ -18,7 +18,7 @@ That is all well and good. They just go ahead and select the weapon they have en
 
 I'm feeling pretty good about it so far. Since players can outfit themselves with any number of weapons, I've got an abstract class that each of the weapon classes will inherit.
 
-{% highlight csharp %}
+``` csharp
 public abstract class Weapon
 {
     public int HitPower { get; protected set; }
@@ -29,11 +29,11 @@ public abstract class Weapon
         opponent.GetHitBy(this);
     }
 }
-{% endhighlight %}
+```
 
 Then we've got individual classes for each of the weapon types. The idea here being that each type of weapon will have some limitations, as well as differing strengths. 
 
-{% highlight csharp %}
+``` csharp
 public class Sword : Weapon
 {
     public Sword()
@@ -51,11 +51,11 @@ public class BeerBottle : Weapon
         this.WaitTime = 1;
     }
 }
-{% endhighlight %}
+```
 
 Then to outfit a player with a weapon I've got an abstract factory to create new instances of the weapons.
 
-{% highlight csharp %}
+``` csharp
 public class WeaponFactory
 {
     public static Weapon CreateWeapon(string weaponName)
@@ -71,7 +71,7 @@ public class WeaponFactory
         }
     }
 }
-{% endhighlight %}
+```
 
 Not bad, right? Perhaps not...
 
@@ -79,7 +79,7 @@ Not bad, right? Perhaps not...
 
 The problem I have with this is that it would seem to violate the open closed principle. If I want to add another weapon into the system I'm fine, all the way up until I want to be able to create instances of these weapons. So if I wanted to add a knife as a weapon I'd have to modify the abstract factory so it can create instances of the knife class, like so.
 
-{% highlight csharp %}
+``` csharp
 public class WeaponFactory
 {
     public static Weapon CreateWeapon(string weaponName)
@@ -97,7 +97,7 @@ public class WeaponFactory
         }
     }
 }
-{% endhighlight %}
+```
 
 But to me that hardly seems like it is closed for modification. The only problem is, what the hell choice do I have? 
 
