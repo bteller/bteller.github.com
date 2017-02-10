@@ -3,3 +3,4 @@ _site/*
 .vagrant
 katas
 node_modules/
+.bundle/config
