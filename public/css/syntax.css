@@ -8,6 +8,11 @@ code {
   background: inherit;
 }
 
+a.button {
+    color: #000;
+    background-color: #ebebeb;
+}
+
 
 /*
   Darkly Pygments Theme

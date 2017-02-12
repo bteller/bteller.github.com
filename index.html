@@ -3,17 +3,14 @@ layout: default
 title: Home
 ---
 
-<h1 id="welcome-banner">Hi, I'm Brad Teller ...</h1>
+<h2 id="welcome-banner">Hi, I'm Brad Teller, this is my blog, and here are the posts.</h1>
 
 <p>
 {% for post in site.posts %}
-    {% if forloop.index <= 5 %}
     <div class="recent-post">
       <span class="post-date">{{ post.date | date:"%B %-d, %Y" }}</span>
 
       <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
-      {{ post.excerpt }}
     </div>
-    {% endif %}
 {% endfor %}
 </p>
