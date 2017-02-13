@@ -4,3 +4,4 @@ _site/*
 katas
 node_modules/
 .bundle/config
+.jekyll-metadata
