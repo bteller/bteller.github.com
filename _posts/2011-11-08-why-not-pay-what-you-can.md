@@ -1,0 +1,10 @@
+---
+layout: post
+title: Why not pay what you can?
+---
+
+I'm a huge fan of internet based tools. At the same time, I'm also a huge fan of paying for the things I use on a daily basis, such as these internet services. I have a [Spotify](http://www.spotify.com/) account which feeds all my music listening needs. I used to buy the odd album here and there, or occasionally pick up a track from iTunes, but lately I have preferred to pay a flat fee for this service which allows me to take music offline on multiple devices. So far I also haven't had any real complaints. Another service I use is [Evernote](http://www.evernote.com/), which is an online notebook system, very similar to OneNote from Microsoft if you are familiar with that. The thing that gets me with this service, and some others but I'll use this as an example, is that their free for use service provides more than enough functionality for the casual user such as myself to never have to worry about anything more than this advertisement driven version. What makes even less sense is that the ads they display aren't even intrusive, but rather blend very naturally into the overall application interface so you don't hardly even notice them. That being the case, what would compel a user such as myself to pay the monthly service fee? To me it seems like services like this one are missing out on a potential revenue stream, but maybe I'm the odd man out on this one.
+
+My question quite simply is this. Would you opt to pay what you could if you were allowed to do so?
+
+I don't know exactly what the model would look like. Maybe you could subscribe for one time donations to the project. Another model might allow you to choose how much you would like billed monthly and setup recurring payments to be automatically charged to a credit card. To me, for my piece of mind, and knowing what goes into building these services, I certainly would.
