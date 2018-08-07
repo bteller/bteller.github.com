@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: Start Planning for Responsive Design, NOW!
 showImage: true
 image: "/public/post_images/responsive-now.jpg"
