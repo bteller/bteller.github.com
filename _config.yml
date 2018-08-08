@@ -18,4 +18,3 @@ baseurl:          '/'
 paginate:         3
 safe: true
 lsi: false
-theme: jekyll-theme-midnight

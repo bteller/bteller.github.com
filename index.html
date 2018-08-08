@@ -3,14 +3,19 @@ layout: default
 title: Home
 ---
 
-<h2 id="welcome-banner">Hi, I'm Brad Teller, this is my blog, and here are the posts.</h1>
+<h1>Hi, I'm Brad Teller</h1>
+
+<ul>
+  <li>I blog on <a href="https://medium.com/@bradteller">Medium</a></li>
+  <li>I tweet on <a href="https://twitter.com/bradteller">Twitter</a></li>
+</ul>
 
 <p>
-{% for post in site.posts %}
-    <div class="recent-post">
-      <span class="post-date">{{ post.date | date:"%B %-d, %Y" }}</span>
+  I'm still not sure if I'll be publishing code to Github.
+  Currently I'm using Visual Studio Online for things code related. 
+</p>
 
-      <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
-    </div>
-{% endfor %}
+<p>
+  I'm not working on any side projects outside of working
+  at the moment. 
 </p>

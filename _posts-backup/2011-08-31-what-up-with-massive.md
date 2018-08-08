@@ -1,0 +1,8 @@
+---
+layout: post
+title: "What's Up With Massive?"
+---
+
+For starters I really like [Rob Conery](http://blog.wekeroad.com/) and find the posts he puts out to be some of the most informative of any blogs I subscribe to. I had tried looking at Massive several months ago back when he first started blogging about it, but I was having some problems falling in love with it. If you aren't familiar with it you can find out more [here](https://github.com/robconery/massive). Now looking back I didn't really love it because at the time I didn't understand it. To me it looked like we were tightly coupling the data-access code with the business object, which for me has always been a no-no (ala seperation of concerns). But, apparently after playing around with it for just a short period of time, that is not the case at all.
+
+This post will hopefully evolve as I experiment with it some more, but for now I've published the code out to a GitHub [repo](https://github.com/bteller/tryoutmassive). It is bare bones at the moment, just some work with some "products". This is an MVC 3 application that I'm using, and I also sprinkled some [Bootstrap](http://twitter.github.com/bootstrap/) from Twitter on top. I haven't ever done anything with Bootstrap, so that will be another learning experience as I go. Though I will say at the moment I suspect it will take some work to get it and jquery playing nicely together. I added some validation to the create form and I already am not happy with what I see (so hopefully I'll get that worked out as well).
