@@ -13,7 +13,7 @@ permalink:        /:year/:month/:day/:title/
 title:            Brad Teller
 tagline:          'Random Musings'
 description:      ''
-url:              http://bradteller.com
+#url:              http://bradteller.com
 baseurl:          '/'
 paginate:         3
 safe: true
